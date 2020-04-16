@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<key>
+	<dictionary>
+		<entry>
+			<original hex="0x41">A</original>
+			<linked hex="0x61">a</linked>
+		</entry>
+		<entry>
+			<original hex="0x42">B</original>
+			<linked hex="0x46">F</linked>
+		</entry>
+		<entry>
+			<original hex="0x43">C</original>
+			<linked hex="0x4d">M</linked>
+		</entry>
+		<entry>
+			<original hex="0x44">D</original>
+			<linked hex="0x6b">k</linked>
+		</entry>
+		<entry>
+			<original hex="0x45">E</original>
+			<linked hex="0x5a">Z</linked>
+		</entry>
+		<entry>
+			<original hex="0x46">F</original>
+			<linked hex="0x56">V</linked>
+		</entry>
+		<entry>
+			<original hex="0x47">G</original>
+			<linked hex="0x77">w</linked>
+		</entry>
+		<entry>
+			<original hex="0x48">H</original>
+			<linked hex="0x4b">K</linked>
+		</entry>
+		<entry>
+			<original hex="0x49">I</original>
+			<linked hex="0x45">E</linked>
+		</entry>
+		<entry>
+			<original hex="0x4a">J</original>
+			<linked hex="0x57">W</linked>
+		</entry>
+		<entry>
+			<original hex="0x4b">K</original>
+			<linked hex="0x73">s</linked>
+		</entry>
+		<entry>
+			<original hex="0x4c">L</original>
+			<linked hex="0x6a">j</linked>
+		</entry>
+		<entry>
+			<original hex="0x4d">M</original>
+			<linked hex="0x55">U</linked>
+		</entry>
+		<entry>
+			<original hex="0x4e">N</original>
+			<linked hex="0x51">Q</linked>
+		</entry>
+		<entry>
+			<original hex="0x4f">O</original>
+			<linked hex="0x64">d</linked>
+		</entry>
+		<entry>
+			<original hex="0x50">P</original>
+			<linked hex="0x67">g</linked>
+		</entry>
+		<entry>
+			<original hex="0x51">Q</original>
+			<linked hex="0x59">Y</linked>
+		</entry>
+		<entry>
+			<original hex="0x52">R</original>
+			<linked hex="0x66">f</linked>
+		</entry>
+		<entry>
+			<original hex="0x53">S</original>
+			<linked hex="0x75">u</linked>
+		</entry>
+		<entry>
+			<original hex="0x54">T</original>
+			<linked hex="0x49">I</linked>
+		</entry>
+		<entry>
+			<original hex="0x55">U</original>
+			<linked hex="0x70">p</linked>
+		</entry>
+		<entry>
+			<original hex="0x56">V</original>
+			<linked hex="0x4e">N</linked>
+		</entry>
+		<entry>
+			<original hex="0x57">W</original>
+			<linked hex="0x47">G</linked>
+		</entry>
+		<entry>
+			<original hex="0x58">X</original>
+			<linked hex="0x53">S</linked>
+		</entry>
+		<entry>
+			<original hex="0x59">Y</original>
+			<linked hex="0x44">D</linked>
+		</entry>
+		<entry>
+			<original hex="0x5a">Z</original>
+			<linked hex="0x6e">n</linked>
+		</entry>
+		<entry>
+			<original hex="0x61">a</original>
+			<linked hex="0x79">y</linked>
+		</entry>
+		<entry>
+			<original hex="0x62">b</original>
+			<linked hex="0x78">x</linked>
+		</entry>
+		<entry>
+			<original hex="0x63">c</original>
+			<linked hex="0x50">P</linked>
+		</entry>
+		<entry>
+			<original hex="0x64">d</original>
+			<linked hex="0x65">e</linked>
+		</entry>
+		<entry>
+			<original hex="0x65">e</original>
+			<linked hex="0x68">h</linked>
+		</entry>
+		<entry>
+			<original hex="0x66">f</original>
+			<linked hex="0x69">i</linked>
+		</entry>
+		<entry>
+			<original hex="0x67">g</original>
+			<linked hex="0x4c">L</linked>
+		</entry>
+		<entry>
+			<original hex="0x68">h</original>
+			<linked hex="0x54">T</linked>
+		</entry>
+		<entry>
+			<original hex="0x69">i</original>
+			<linked hex="0x52">R</linked>
+		</entry>
+		<entry>
+			<original hex="0x6a">j</original>
+			<linked hex="0x62">b</linked>
+		</entry>
+		<entry>
+			<original hex="0x6b">k</original>
+			<linked hex="0x43">C</linked>
+		</entry>
+		<entry>
+			<original hex="0x6c">l</original>
+			<linked hex="0x6f">o</linked>
+		</entry>
+		<entry>
+			<original hex="0x6d">m</original>
+			<linked hex="0x71">q</linked>
+		</entry>
+		<entry>
+			<original hex="0x6e">n</original>
+			<linked hex="0x76">v</linked>
+		</entry>
+		<entry>
+			<original hex="0x6f">o</original>
+			<linked hex="0x58">X</linked>
+		</entry>
+		<entry>
+			<original hex="0x70">p</original>
+			<linked hex="0x6d">m</linked>
+		</entry>
+		<entry>
+			<original hex="0x71">q</original>
+			<linked hex="0x41">A</linked>
+		</entry>
+		<entry>
+			<original hex="0x72">r</original>
+			<linked hex="0x7a">z</linked>
+		</entry>
+		<entry>
+			<original hex="0x73">s</original>
+			<linked hex="0x42">B</linked>
+		</entry>
+		<entry>
+			<original hex="0x74">t</original>
+			<linked hex="0x63">c</linked>
+		</entry>
+		<entry>
+			<original hex="0x75">u</original>
+			<linked hex="0x72">r</linked>
+		</entry>
+		<entry>
+			<original hex="0x76">v</original>
+			<linked hex="0x6c">l</linked>
+		</entry>
+		<entry>
+			<original hex="0x77">w</original>
+			<linked hex="0x74">t</linked>
+		</entry>
+		<entry>
+			<original hex="0x78">x</original>
+			<linked hex="0x48">H</linked>
+		</entry>
+		<entry>
+			<original hex="0x79">y</original>
+			<linked hex="0x4a">J</linked>
+		</entry>
+		<entry>
+			<original hex="0x7a">z</original>
+			<linked hex="0x4f">O</linked>
+		</entry>
+	</dictionary>
+</key>
