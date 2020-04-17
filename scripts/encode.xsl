@@ -5,8 +5,8 @@
 	<xsl:output omit-xml-declaration="yes" indent="yes" />
 
 	<!-- the locations of the config files (hard coded) -->
-	<xsl:param name="chars-config-file" select="'../config/key.xml'" />
-	<xsl:param name="exceptions-config-file" select="'../config/exceptions.xml'" />
+	<xsl:param name="chars-config-file" select="'../configs/key.xml'" />
+	<xsl:param name="exceptions-config-file" select="'../configs/exceptions.xml'" />
 
 	<!-- load configuration -->
 	<xsl:variable name="chars" select="document($chars-config-file)/key/dictionary/*" />

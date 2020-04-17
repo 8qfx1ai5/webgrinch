@@ -1,4 +1,4 @@
-package main
+package encode
 
 import (
 	"fmt"
@@ -16,8 +16,8 @@ func main() {
 
 	in := `<!-- this is a comment -->
 	<p>Lorem ipsum dolor sit amet, consectetur <b>adipisicing</b> elit. Repellat, deleniti!</p>`
-	xCfg := xsltConfig{}
-	out, err := EncodeHTML(in, xCfg)
+	xCfg := XsltConfig{}
+	out, err := HTML(in, xCfg)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -28,7 +28,8 @@ func testController(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprint(w, "bar")
 }
 
-type xsltConfig struct {
+// XsltConfig comming soon
+type XsltConfig struct {
 	// exceptionsCfg ...
 	// keyCfg
 }
@@ -36,11 +37,11 @@ type xsltConfig struct {
 type path string
 
 const (
-	inFile path = "var/input.xml"
+	inFile path = "tmp/input.xml"
 )
 
-//EncodeHTML does stuff...
-func EncodeHTML(in string, xCfg xsltConfig) (out string, err error) {
+//HTML does stuff...
+func HTML(in string, xCfg XsltConfig) (out string, err error) {
 	_ = xCfg
 
 	f, err := os.Create(string(inFile))
@@ -63,7 +64,8 @@ func EncodeHTML(in string, xCfg xsltConfig) (out string, err error) {
 	}
 
 	//xsltproc src/encode.xsl var/input.xml > var/output.xml
-	outByte, err := exec.Command("xsltproc", "src/encode.xsl", "var/input.xml").Output()
+	outByte, err := exec.Command("xsltproc", "scripts/encode.xsl", string(inFile)).Output()
+	fmt.Println(string(inFile))
 
 	if err != nil {
 		return "", fmt.Errorf("command execution failed: %v", err)
