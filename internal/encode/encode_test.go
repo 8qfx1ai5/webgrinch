@@ -109,3 +109,14 @@ func TestEncodeHTML(t *testing.T) {
 		}
 	}
 }
+
+/**
+ * check performance of the encoder
+ */
+func BenchmarkEncoding(b *testing.B) {
+	for x := 0; x < b.N; x++ {
+		for _, testCase := range testCases {
+			HTML(testCase.input, testCase.keyFrom, testCase.keyTo, testCase.configCSS)
+		}
+	}
+}

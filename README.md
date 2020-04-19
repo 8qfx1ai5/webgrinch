@@ -29,6 +29,19 @@ To make the text readable you need to load the corresponding web font to the tex
         }
     </style>
 
+### Run the tests
+
+#### All tests
+
+    $ go test -v -count=1 ./...
+
+#### Benchmark tests
+
+    $ cd internal/encode; go test -v -count=1 -bench=Encoding -cpuprofile=cpu.tmp.out
+    $ go tool pprof perf.test cpu.tmp.out
+    (pprof)$ web > ../../test/results/web_result.tmp.svg
+    (pprof)$ top50 > ../../test/results/top50_result.tmp.svg
+
 ## Project evolution
 
 - version 0.4 was build on plain xslt running with php

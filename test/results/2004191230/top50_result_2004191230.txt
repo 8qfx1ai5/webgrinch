@@ -1,0 +1,53 @@
+Showing nodes accounting for 140ms, 100% of 140ms total
+Showing top 50 nodes out of 60
+      flat  flat%   sum%        cum   cum%
+      40ms 28.57% 28.57%       40ms 28.57%  syscall.syscall
+      20ms 14.29% 42.86%       20ms 14.29%  runtime.usleep
+      10ms  7.14% 50.00%       30ms 21.43%  os.newFile
+      10ms  7.14% 57.14%       10ms  7.14%  runtime.addfinalizer
+      10ms  7.14% 64.29%       10ms  7.14%  runtime.kevent
+      10ms  7.14% 71.43%       10ms  7.14%  runtime.memclrNoHeapPointers
+      10ms  7.14% 78.57%       10ms  7.14%  runtime.nanotime1
+      10ms  7.14% 85.71%       10ms  7.14%  runtime.nextFreeFast (inline)
+      10ms  7.14% 92.86%       10ms  7.14%  runtime.pthread_cond_wait
+      10ms  7.14%   100%       10ms  7.14%  syscall.rawSyscall
+         0     0%   100%       90ms 64.29%  github.com/8qfx1ai5/viewcrypt/internal/encode.BenchmarkEncoding
+         0     0%   100%       90ms 64.29%  github.com/8qfx1ai5/viewcrypt/internal/encode.HTML
+         0     0%   100%       10ms  7.14%  internal/poll.(*FD).Close
+         0     0%   100%       10ms  7.14%  internal/poll.(*FD).Fsync
+         0     0%   100%       10ms  7.14%  internal/poll.(*FD).decref
+         0     0%   100%       10ms  7.14%  internal/poll.(*FD).destroy
+         0     0%   100%       10ms  7.14%  os.(*File).Close
+         0     0%   100%       10ms  7.14%  os.(*File).Sync
+         0     0%   100%       10ms  7.14%  os.(*Process).Wait (inline)
+         0     0%   100%       10ms  7.14%  os.(*Process).wait
+         0     0%   100%       10ms  7.14%  os.(*file).close
+         0     0%   100%       40ms 28.57%  os.Create (inline)
+         0     0%   100%       40ms 28.57%  os.OpenFile
+         0     0%   100%       10ms  7.14%  os.Pipe
+         0     0%   100%       10ms  7.14%  os.StartProcess
+         0     0%   100%       10ms  7.14%  os.newProcess (inline)
+         0     0%   100%       40ms 28.57%  os.openFileNolog
+         0     0%   100%       10ms  7.14%  os.startProcess
+         0     0%   100%       30ms 21.43%  os/exec.(*Cmd).CombinedOutput
+         0     0%   100%       30ms 21.43%  os/exec.(*Cmd).Run
+         0     0%   100%       20ms 14.29%  os/exec.(*Cmd).Start
+         0     0%   100%       10ms  7.14%  os/exec.(*Cmd).Wait
+         0     0%   100%       10ms  7.14%  os/exec.(*Cmd).stdout
+         0     0%   100%       10ms  7.14%  os/exec.(*Cmd).writerDescriptor
+         0     0%   100%       10ms  7.14%  runtime.SetFinalizer
+         0     0%   100%       10ms  7.14%  runtime.SetFinalizer.func2
+         0     0%   100%       20ms 14.29%  runtime.findrunnable
+         0     0%   100%       20ms 14.29%  runtime.mallocgc
+         0     0%   100%       20ms 14.29%  runtime.mcall
+         0     0%   100%       30ms 21.43%  runtime.mstart
+         0     0%   100%       30ms 21.43%  runtime.mstart1
+         0     0%   100%       10ms  7.14%  runtime.nanotime (inline)
+         0     0%   100%       10ms  7.14%  runtime.netpoll
+         0     0%   100%       20ms 14.29%  runtime.newobject
+         0     0%   100%       10ms  7.14%  runtime.notesleep
+         0     0%   100%       20ms 14.29%  runtime.park_m
+         0     0%   100%       20ms 14.29%  runtime.schedule
+         0     0%   100%       10ms  7.14%  runtime.semasleep
+         0     0%   100%       10ms  7.14%  runtime.stopm
+         0     0%   100%       30ms 21.43%  runtime.sysmon
