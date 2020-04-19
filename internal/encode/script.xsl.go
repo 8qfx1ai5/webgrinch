@@ -1,4 +1,7 @@
-<?xml version="1.0" encoding="iso-8859-1" ?>
+package encode
+
+const (
+	script string = `<?xml version="1.0" encoding="iso-8859-1" ?>
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
 	<!-- suppress xml declaration on top of the output file -->
@@ -47,4 +50,5 @@
 		<xsl:value-of select="translate(.,$translateFrom,$translateTo)" />
 	</xsl:template>
 
-</xsl:stylesheet>
+</xsl:stylesheet>`
+)

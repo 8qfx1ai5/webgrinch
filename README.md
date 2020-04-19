@@ -8,11 +8,11 @@ This repository contains all required code to run an api server for the encoding
 
 ### Run the cli script
 
-    $ go run cmd/cli.go
+    $ go run cmd/vcryptcli/main.go
 
 ### Run the server
 
-    $ go run cmd/server.go
+    $ go run cmd/vcryptserver/main.go
 
 ### Include the text into a web page
 
@@ -28,6 +28,11 @@ To make the text readable you need to load the corresponding web font to the tex
             font-family: OpenSans-Regular-vc, sans-serif;
         }
     </style>
+
+### Run builds
+
+    $ cd cmd/vcryptcli; go build
+    $ cd cmd/vcryptserver; go build
 
 ### Run the tests
 
@@ -47,13 +52,14 @@ To make the text readable you need to load the corresponding web font to the tex
 - version 0.4 was build on plain xslt running with php
 - version 0.5 was switched to golang to enable webservice functionality, but running xsltproc over cli exec
 
-## Possible future next steps
+## Possible future steps
 
 - running api web server
 - unsing go xslt packages instead of xsltproc
 - enable decoding
 - font generation for custom keys
 - use contract testing for the api
+- font manipulation (use go bin data)
 
 ## Special thanks
 
