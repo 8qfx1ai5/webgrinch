@@ -1,0 +1,82 @@
+openapi: 3.0.0
+info:
+  version: 0.5
+  title: viewcrypt API
+servers:
+  - url: 'http://localhost:8080'
+paths:
+  /encode:
+    post:
+      summary: 'Encode the text nodes of a HTML fraction'
+      operationId: encodeSingle
+      tags:
+        - encode
+      responses:
+        '200':
+          description: 'Return the encoded text.'
+          headers:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/encode'
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+             type: object
+             required:
+               - content
+             properties:
+               content:
+                 type: string
+                 description: the HTML fragment with text to encode
+               css:
+                 type: string
+                 description: a css class added to the top level nodes
+               from:
+                 type: string
+                 description: a set of all characters, which should be changed in content
+               to:
+                 type: string
+                 description: a set of the resulting characters, in the same order like in the from property
+            examples:
+              example-1:
+                value:
+                   content: '<p>fldsjdjf</p>'
+                   css: 'vc'
+                   from: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
+                   to: 'aFMkZVwKEWsjUQdgYfuIpNGSDnyxPehiLTRbCoqvXmAzBcrltHJO'
+        description: Body example
+      description: Post a HTML text, keys and a css class and get an encoded HTML fraction.
+components:
+  schemas:
+    User:
+      type: object
+      required:
+        - id
+        - name
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        tag:
+          type: string
+    Error:
+      type: object
+      required:
+        - code
+        - message
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
