@@ -2,6 +2,7 @@ package apiencode
 
 import (
 	"encoding/json"
+	"log"
 	"net/http"
 
 	"github.com/8qfx1ai5/viewcrypt/internal/encode"
@@ -51,7 +52,7 @@ func RouteHandler(w http.ResponseWriter, r *http.Request) {
 	// run encoding
 	encoded, err := encode.HTML(content, keyFrom, keyTo, css)
 	if err != nil {
-		// TODO: logging?
+		log.Println(err)
 		http.Error(w, "encoding failed", http.StatusInternalServerError)
 		return
 	}

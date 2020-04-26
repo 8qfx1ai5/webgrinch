@@ -18,10 +18,11 @@ RUN go install ./cmd/vcryptserver
 
 
 # 2nd image is going to be our application image
-FROM alpine:3.8 as app
+FROM alpine:3.10 as app
+
+RUN apk add libxslt --no-cache
 
 COPY --from=compile /go/bin/vcryptserver /vcryptserver
 RUN chmod +x /vcryptserver
 
-ENTRYPOINT ["/vcryptserver", "-p", "8080"]
-
+ENTRYPOINT ["/bin/sh", "-c", "/vcryptserver -p 8080 > server.log 2>&1"]
