@@ -1,0 +1,53 @@
+Showing nodes accounting for 850ms, 100% of 850ms total
+Showing top 50 nodes out of 96
+      flat  flat%   sum%        cum   cum%
+     170ms 20.00% 20.00%      170ms 20.00%  runtime.memclrNoHeapPointers
+     170ms 20.00% 40.00%      170ms 20.00%  runtime.pthread_cond_wait
+     160ms 18.82% 58.82%      160ms 18.82%  runtime.usleep
+      40ms  4.71% 63.53%       40ms  4.71%  runtime.nanotime1
+      30ms  3.53% 67.06%      180ms 21.18%  runtime.mallocgc
+      30ms  3.53% 70.59%       30ms  3.53%  syscall.syscall
+      20ms  2.35% 72.94%       20ms  2.35%  runtime.kevent
+      20ms  2.35% 75.29%       20ms  2.35%  runtime.lock
+      20ms  2.35% 77.65%       20ms  2.35%  runtime.memmove
+      20ms  2.35% 80.00%       40ms  4.71%  runtime.netpoll
+      20ms  2.35% 82.35%       20ms  2.35%  runtime.pthread_cond_signal
+      10ms  1.18% 83.53%       20ms  2.35%  bytes.(*Buffer).ReadFrom
+      10ms  1.18% 84.71%       10ms  1.18%  os.(*Process).wait
+      10ms  1.18% 85.88%      240ms 28.24%  os.newProcess (inline)
+      10ms  1.18% 87.06%       10ms  1.18%  runtime.(*guintptr).set
+      10ms  1.18% 88.24%       10ms  1.18%  runtime.(*mheap).tryAllocMSpan (inline)
+      10ms  1.18% 89.41%       70ms  8.24%  runtime.SetFinalizer
+      10ms  1.18% 90.59%       50ms  5.88%  runtime.addfinalizer
+      10ms  1.18% 91.76%       10ms  1.18%  runtime.dodeltimer0
+      10ms  1.18% 92.94%       10ms  1.18%  runtime.findObject
+      10ms  1.18% 94.12%       10ms  1.18%  runtime.nextFreeFast (inline)
+      10ms  1.18% 95.29%       10ms  1.18%  runtime.pthread_mutex_unlock
+      10ms  1.18% 96.47%       40ms  4.71%  runtime.startm
+      10ms  1.18% 97.65%       20ms  2.35%  syscall.Close
+      10ms  1.18% 98.82%       10ms  1.18%  syscall.Environ
+      10ms  1.18%   100%       10ms  1.18%  syscall.rawSyscall
+         0     0%   100%      330ms 38.82%  github.com/8qfx1ai5/viewcrypt/internal/encode.BenchmarkEncoding
+         0     0%   100%      330ms 38.82%  github.com/8qfx1ai5/viewcrypt/internal/encode.HTML
+         0     0%   100%      330ms 38.82%  github.com/8qfx1ai5/viewcrypt/internal/encode.runCliCommand
+         0     0%   100%       10ms  1.18%  internal/poll.(*FD).Read
+         0     0%   100%       20ms  2.35%  io.Copy (inline)
+         0     0%   100%       20ms  2.35%  io.copyBuffer
+         0     0%   100%       10ms  1.18%  os.(*File).Close (inline)
+         0     0%   100%       10ms  1.18%  os.(*File).Read
+         0     0%   100%       10ms  1.18%  os.(*File).read (inline)
+         0     0%   100%       10ms  1.18%  os.(*Process).Wait (inline)
+         0     0%   100%       10ms  1.18%  os.(*file).close
+         0     0%   100%       10ms  1.18%  os.Environ (inline)
+         0     0%   100%       20ms  2.35%  os.Pipe
+         0     0%   100%      280ms 32.94%  os.StartProcess
+         0     0%   100%      280ms 32.94%  os.startProcess
+         0     0%   100%      330ms 38.82%  os/exec.(*Cmd).CombinedOutput
+         0     0%   100%      330ms 38.82%  os/exec.(*Cmd).Run
+         0     0%   100%      320ms 37.65%  os/exec.(*Cmd).Start
+         0     0%   100%       30ms  3.53%  os/exec.(*Cmd).Start.func1
+         0     0%   100%       10ms  1.18%  os/exec.(*Cmd).Wait
+         0     0%   100%       10ms  1.18%  os/exec.(*Cmd).envv (inline)
+         0     0%   100%       20ms  2.35%  os/exec.(*Cmd).stdin
+         0     0%   100%       30ms  3.53%  os/exec.(*Cmd).writerDescriptor.func1
+         0     0%   100%       40ms  4.71%  runtime.(*fixalloc).alloc

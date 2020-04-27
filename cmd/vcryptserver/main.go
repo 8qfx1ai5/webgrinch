@@ -33,11 +33,3 @@ func handleCliArguments() (out cliArguments) {
 
 	return out
 }
-
-// droplet eintrichten (ist VM)
-// use ubuntu docker image
-// -> login mit ssh; try docker run mit nginx default container
-// docker run --name mynginx1 -p 80:80 -d nginx
-// lpine oder from scratch???
-
-// sicherheit durch TLS bei Go?

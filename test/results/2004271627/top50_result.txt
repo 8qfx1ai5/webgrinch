@@ -1,0 +1,53 @@
+Showing nodes accounting for 340ms, 100% of 340ms total
+Showing top 50 nodes out of 99
+      flat  flat%   sum%        cum   cum%
+      60ms 17.65% 17.65%       60ms 17.65%  runtime.pthread_cond_wait
+      40ms 11.76% 29.41%       80ms 23.53%  runtime.mallocgc
+      40ms 11.76% 41.18%       40ms 11.76%  runtime.usleep
+      30ms  8.82% 50.00%       30ms  8.82%  runtime.addfinalizer
+      20ms  5.88% 55.88%       20ms  5.88%  syscall.syscall
+      10ms  2.94% 58.82%       10ms  2.94%  runtime.(*gcBitsArena).tryAlloc (inline)
+      10ms  2.94% 61.76%       10ms  2.94%  runtime.(*mspan).init (inline)
+      10ms  2.94% 64.71%       10ms  2.94%  runtime.doaddtimer
+      10ms  2.94% 67.65%       10ms  2.94%  runtime.gcBgMarkWorker.func2
+      10ms  2.94% 70.59%       10ms  2.94%  runtime.gogo
+      10ms  2.94% 73.53%       10ms  2.94%  runtime.heapBitsSetType
+      10ms  2.94% 76.47%       10ms  2.94%  runtime.kevent
+      10ms  2.94% 79.41%       10ms  2.94%  runtime.lock
+      10ms  2.94% 82.35%       10ms  2.94%  runtime.memclrNoHeapPointers
+      10ms  2.94% 85.29%       10ms  2.94%  runtime.nanotime1
+      10ms  2.94% 88.24%       10ms  2.94%  runtime.pthread_cond_signal
+      10ms  2.94% 91.18%       10ms  2.94%  runtime.write1
+      10ms  2.94% 94.12%       10ms  2.94%  sync.(*Pool).Get
+      10ms  2.94% 97.06%       20ms  5.88%  syscall.Close
+      10ms  2.94%   100%       10ms  2.94%  syscall.syscall6
+         0     0%   100%       10ms  2.94%  bytes.(*Buffer).ReadFrom
+         0     0%   100%       10ms  2.94%  bytes.(*Buffer).grow
+         0     0%   100%       10ms  2.94%  bytes.makeSlice
+         0     0%   100%       10ms  2.94%  fmt.Sprintf
+         0     0%   100%       10ms  2.94%  fmt.newPrinter
+         0     0%   100%      150ms 44.12%  github.com/8qfx1ai5/viewcrypt/internal/encode.BenchmarkEncoding
+         0     0%   100%      150ms 44.12%  github.com/8qfx1ai5/viewcrypt/internal/encode.HTML
+         0     0%   100%       10ms  2.94%  internal/poll.(*FD).Close
+         0     0%   100%       10ms  2.94%  internal/poll.(*FD).decref
+         0     0%   100%       10ms  2.94%  internal/poll.(*FD).destroy
+         0     0%   100%       10ms  2.94%  io.Copy (inline)
+         0     0%   100%       10ms  2.94%  io.copyBuffer
+         0     0%   100%       10ms  2.94%  os.(*File).Close
+         0     0%   100%       10ms  2.94%  os.(*Process).Wait (inline)
+         0     0%   100%       10ms  2.94%  os.(*Process).wait
+         0     0%   100%       10ms  2.94%  os.(*file).close
+         0     0%   100%      100ms 29.41%  os.StartProcess
+         0     0%   100%       80ms 23.53%  os.newProcess (inline)
+         0     0%   100%      100ms 29.41%  os.startProcess
+         0     0%   100%      120ms 35.29%  os/exec.(*Cmd).CombinedOutput
+         0     0%   100%      120ms 35.29%  os/exec.(*Cmd).Run
+         0     0%   100%      110ms 32.35%  os/exec.(*Cmd).Start
+         0     0%   100%       10ms  2.94%  os/exec.(*Cmd).Start.func1
+         0     0%   100%       10ms  2.94%  os/exec.(*Cmd).Wait
+         0     0%   100%       10ms  2.94%  os/exec.(*Cmd).closeDescriptors
+         0     0%   100%       10ms  2.94%  os/exec.(*Cmd).writerDescriptor.func1
+         0     0%   100%       10ms  2.94%  os/exec.Command
+         0     0%   100%       20ms  5.88%  runtime.(*mcache).nextFree
+         0     0%   100%       20ms  5.88%  runtime.(*mcache).refill
+         0     0%   100%       20ms  5.88%  runtime.(*mcentral).cacheSpan

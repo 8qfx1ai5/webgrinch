@@ -1,4 +1,5 @@
 tmp/*
 *.tmp.*
-cmd/vcryptserver/vcryptserver
-cmd/vcryptctl/vcryptctl
+vcryptserver
+vcryptctl
+*.test

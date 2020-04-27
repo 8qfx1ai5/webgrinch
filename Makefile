@@ -35,6 +35,15 @@ itest:
 	go test -v -count=1 ./test/...
 
 
+# run go benchmark tests
+.PHONY: btest
+btest:
+	cd internal/encode; go test -v -count=1 -bench=Encoding -cpuprofile=cpu.tmp.out
+	cd internal/encode; go tool pprof cpu.tmp.out
+	#web > ../../test/results/web_result.tmp.svg
+	#top50 > ../../test/results/top50_result.tmp.txt
+
+
 # run all tests
 .PHONY: test
 test:
