@@ -22,14 +22,16 @@ type expected struct {
 	wantErr      bool
 }
 
-/**
- * a list of test cases for the conversion
- */
-var testCases = []struct {
+type testCase struct {
 	input       input
 	expected    expected
 	description string
-}{
+}
+
+/**
+ * a list of test cases for the conversion
+ */
+var testCases = []testCase{
 	{
 		input{
 			"<!-- this is a comment -->\n		<p>Lorem ipsum dolor sit amet, consectetur <b>adipisicing</b> elit. Repellat, deleniti!</p>",
@@ -128,26 +130,29 @@ var testCases = []struct {
  */
 func TestEncodeHTML(t *testing.T) {
 
-	for _, testCase := range testCases {
+	for _, currentTest := range testCases {
+		func(tc testCase) {
+			t.Run(tc.description, func(t *testing.T) {
+				observed, err := HTML(tc.input.content, tc.input.keyFrom, tc.input.keyTo, tc.input.configCSS)
+				if err != nil {
+					if tc.expected.wantErr {
+						return
+					}
+					t.Error(err)
+				}
 
-		observed, err := HTML(testCase.input.content, testCase.input.keyFrom, testCase.input.keyTo, testCase.input.configCSS)
-		if err != nil {
-			if testCase.expected.wantErr {
-				continue
-			}
-			t.Error(err)
-		}
+				// create expected string from translations
+				expected := tc.input.content
+				for _, translation := range tc.expected.translations {
+					expected = strings.Replace(expected, translation.original, translation.replacement, -1)
+				}
 
-		// create expected string from translations
-		expected := testCase.input.content
-		for _, translation := range testCase.expected.translations {
-			expected = strings.Replace(expected, translation.original, translation.replacement, -1)
-		}
-
-		// compare
-		if observed != expected {
-			t.Errorf("\ninput='%s',\ntestCase.keyFrom='%s',\ntestCase.keyTo='%s',\ntestCase.configCSS='%s',\nobserved='%s',\nexpected='%s',\ndescription: %s", testCase.input.content, testCase.input.keyFrom, testCase.input.keyTo, testCase.input.configCSS, observed, expected, testCase.description)
-		}
+				// compare
+				if observed != expected {
+					t.Errorf("\ninput='%s',\nkeyFrom='%s',\nkeyTo='%s',\nconfigCSS='%s',\nobserved='%s',\nexpected='%s',\ndescription: %s", tc.input.content, tc.input.keyFrom, tc.input.keyTo, tc.input.configCSS, observed, expected, tc.description)
+				}
+			})
+		}(currentTest)
 	}
 }
 

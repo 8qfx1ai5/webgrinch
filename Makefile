@@ -85,3 +85,11 @@ clear:
 	-docker rm `docker ps -a -q` 2>/dev/null
 	#docker system prune -f
 
+
+# remove temp files
+.PHONY: clean
+clean:
+	find . -type f -name '*.tmp.*' -print0 | xargs -0 rm
+	find . -type f -name 'vcrypt*' -print0 | xargs -0 rm
+	find . -type f -name '*.test' -print0 | xargs -0 rm
+

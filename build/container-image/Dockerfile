@@ -1,7 +1,7 @@
 
 
 # 1st image is going to be our build image
-FROM golang:1.13.5-alpine3.10 AS compile
+FROM golang:1.13.5-alpine3.11 AS compile
 
 RUN apk add git --no-cache
 
@@ -18,7 +18,7 @@ RUN go install ./cmd/vcryptserver
 
 
 # 2nd image is going to be our application image
-FROM alpine:3.10 as app
+FROM alpine:3.11 as app
 
 RUN apk add libxslt --no-cache
 
