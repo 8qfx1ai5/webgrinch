@@ -1,10 +1,9 @@
 package apiencode
 
 import (
-	"encoding/json"
-	"log"
 	"net/http"
 
+	"github.com/8qfx1ai5/viewcrypt/internal/api"
 	"github.com/8qfx1ai5/viewcrypt/internal/encode"
 )
 
@@ -13,27 +12,19 @@ const (
 	keyToDefault   string = "BCDEFGHIJKLMNOPQRSTUVWXYZAbcdefghijklmnopqrstuvwxyza"
 )
 
-// Response the structure of the json response used by the api
-type Response struct {
-	Encoded string
-}
-
 // RouteHandler handles the encoding feature
 func RouteHandler(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-Type", "application/json")
-	w.Header().Set("Server", "The Viewcrypt Go Sebserver")
 
+	// check html method
 	if r.Method != "POST" {
-		// TODO: logging?
-		http.Error(w, "webserver doesn't support this method", http.StatusMethodNotAllowed)
+		api.Error(w, "webserver doesn't support this method", http.StatusMethodNotAllowed, nil)
 		return
 	}
 
-	// get post params
+	// handle post params
 	err := r.ParseForm()
 	if err != nil {
-		// TODO: logging?
-		http.Error(w, "request params invalid", http.StatusNotAcceptable)
+		api.Error(w, "request params invalid", http.StatusNotAcceptable, err)
 		return
 	}
 
@@ -52,22 +43,10 @@ func RouteHandler(w http.ResponseWriter, r *http.Request) {
 	// run encoding
 	encoded, err := encode.HTML(content, keyFrom, keyTo, css)
 	if err != nil {
-		log.Println(err)
-		http.Error(w, "encoding failed", http.StatusInternalServerError)
+		api.Error(w, "encoding failed", http.StatusInternalServerError, err)
 		return
 	}
 
 	// create response
-	response := Response{encoded}
-
-	// convert into json
-	js, err := json.Marshal(response)
-	if err != nil {
-		// TODO: logging?
-		http.Error(w, "response conversion failed", http.StatusInternalServerError)
-		return
-	}
-
-	w.WriteHeader(200)
-	w.Write(js)
+	api.Success(w, api.Response{Content: encoded})
 }
