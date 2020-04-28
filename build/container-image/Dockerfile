@@ -4,17 +4,27 @@
 FROM golang:1.13.5-alpine3.11 AS compile
 
 RUN apk add git --no-cache
+RUN apk add make --no-cache
+RUN apk add build-base --no-cache
+RUN apk add libxslt --no-cache
 
 ENV GO111MODULE on
 ENV WORKDIR /workdir/
 WORKDIR ${WORKDIR}
 
+
 # COPY go.mod go.sum ${WORKDIR}
 COPY go.mod ${WORKDIR}
 RUN go mod download
 
+RUN go get github.com/rakyll/statik
+
 COPY . ${WORKDIR}
-RUN go install ./cmd/vcryptserver
+RUN cp ${WORKDIR}/api/OpenAPI3.0.json ${WORKDIR}/third_party/swagger-ui/dist/
+RUN cd ${WORKDIR}/third_party/swagger-ui; statik -src=${WORKDIR}/third_party/swagger-ui/dist
+RUN cd ${WORKDIR}; go install ./cmd/vcryptserver
+
+RUN make utest
 
 
 # 2nd image is going to be our application image

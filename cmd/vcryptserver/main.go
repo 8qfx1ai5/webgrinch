@@ -6,6 +6,8 @@ import (
 	"net/http"
 
 	"github.com/8qfx1ai5/viewcrypt/internal/apiencode"
+	_ "github.com/8qfx1ai5/viewcrypt/third_party/swagger-ui/statik"
+	"github.com/rakyll/statik/fs"
 )
 
 // configuration for the api and encoder
@@ -15,6 +17,13 @@ const (
 
 // initialize webserver and route to the controllers
 func main() {
+	statikFS, err := fs.New()
+	if err != nil {
+		panic(err)
+	}
+
+	http.Handle("/swagger/", http.StripPrefix("/swagger/", http.FileServer(statikFS)))
+
 	var cliArguments = handleCliArguments()
 	http.HandleFunc(baseURL+"/encode", apiencode.RouteHandler)
 	http.ListenAndServe(fmt.Sprintf(":%s", cliArguments.apiPort), nil)

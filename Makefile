@@ -20,7 +20,7 @@ rundev:
 
 # run service on local docker env for development
 .PHONY: serve
-serve: clear build rundev test
+serve: clear build rundev itest
 
 
 # run go unit tests
