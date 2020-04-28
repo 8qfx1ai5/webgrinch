@@ -1,6 +1,6 @@
 openapi: 3.0.0
 info:
-  version: 0.5
+  version: "0.5"
   title: viewcrypt API
 servers:
   - url: 'http://localhost:8080'
@@ -14,11 +14,10 @@ paths:
       responses:
         '200':
           description: 'Return the encoded text.'
-          headers:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/encode'
+                $ref: '#/components/schemas/Encode'
         default:
           description: Unexpected error
           content:
@@ -56,27 +55,17 @@ paths:
       description: Post a HTML text, keys and a css class and get an encoded HTML fraction.
 components:
   schemas:
-    User:
+    Encode:
       type: object
       required:
-        - id
-        - name
+        - content
       properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-        tag:
+        content:
           type: string
     Error:
-      type: object
+      type: string
       required:
-        - code
         - message
       properties:
-        code:
-          type: integer
-          format: int32
         message:
           type: string
