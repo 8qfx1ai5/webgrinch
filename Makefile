@@ -93,3 +93,10 @@ clean:
 	find . -type f -name 'vcrypt*' -print0 | xargs -0 rm
 	find . -type f -name '*.test' -print0 | xargs -0 rm
 
+
+# swagger
+.PHONY: swagger
+swagger:
+	go get github.com/rakyll/statik
+	cd third_party/swagger-ui; statik -src=`pwd`/dist
+

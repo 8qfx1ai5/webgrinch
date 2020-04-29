@@ -4,6 +4,7 @@ import (
 	"flag"
 	"fmt"
 	"net/http"
+	"path/filepath"
 
 	"github.com/8qfx1ai5/viewcrypt/internal/apiencode"
 	"github.com/8qfx1ai5/viewcrypt/internal/swagger"
@@ -19,7 +20,7 @@ func main() {
 
 	var cliArguments = handleCliArguments()
 
-	// http.Handle("/swagger/", http.StripPrefix("/swagger/", swagger.FileServer()))
+	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir(filepath.Join("viewcrypt", "static")))))
 	http.Handle("/swagger/", http.StripPrefix("/swagger/", swagger.FileServer()))
 	http.HandleFunc(baseURL+"/encode", apiencode.RouteHandler)
 

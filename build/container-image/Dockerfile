@@ -17,12 +17,6 @@ WORKDIR ${WORKDIR}
 COPY go.mod ${WORKDIR}
 RUN go mod download
 
-RUN go get github.com/rakyll/statik
-
-COPY third_party/swagger-ui/dist/* ${WORKDIR}/third_party/swagger-ui/dist/
-COPY api/ViewCrypt_API_v1.json ${WORKDIR}/third_party/swagger-ui/dist/
-RUN cd ${WORKDIR}/third_party/swagger-ui; statik -src=${WORKDIR}/third_party/swagger-ui/dist
-
 COPY . ${WORKDIR}
 RUN cd ${WORKDIR}; go install ./cmd/vcryptserver
 
@@ -33,6 +27,9 @@ RUN make utest
 FROM alpine:3.11 as app
 
 RUN apk add libxslt --no-cache
+
+RUN mkdir -p viewcrypt/static
+COPY api/ViewCrypt_API_v1.json viewcrypt/static
 
 COPY --from=compile /go/bin/vcryptserver /vcryptserver
 RUN chmod +x /vcryptserver
