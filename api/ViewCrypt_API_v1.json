@@ -1,12 +1,15 @@
 {
     "openapi": "3.0.0",
     "info": {
-        "version": "0.5",
+        "version": "1.0.0",
         "title": "viewcrypt API"
     },
     "servers": [
         {
-            "url": "http://localhost:8080"
+            "url": "{{baseUrl}}"
+        },
+        {
+            "url": "http://localhost"
         }
     ],
     "paths": {

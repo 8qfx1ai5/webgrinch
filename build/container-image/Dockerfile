@@ -19,9 +19,11 @@ RUN go mod download
 
 RUN go get github.com/rakyll/statik
 
-COPY . ${WORKDIR}
-RUN cp ${WORKDIR}/api/OpenAPI3.0.json ${WORKDIR}/third_party/swagger-ui/dist/
+COPY third_party/swagger-ui/dist/* ${WORKDIR}/third_party/swagger-ui/dist/
+COPY api/ViewCrypt_API_v1.json ${WORKDIR}/third_party/swagger-ui/dist/
 RUN cd ${WORKDIR}/third_party/swagger-ui; statik -src=${WORKDIR}/third_party/swagger-ui/dist
+
+COPY . ${WORKDIR}
 RUN cd ${WORKDIR}; go install ./cmd/vcryptserver
 
 RUN make utest
