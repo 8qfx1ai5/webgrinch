@@ -168,7 +168,7 @@ var testCases = []testCase{
 
 	// TODO: test big input
 	// TODO: test input with html declaration
-	// TODO: test tags: img, meta
+	// TODO: test tags: img, meta, input
 }
 
 /**

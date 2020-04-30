@@ -5,9 +5,11 @@ import (
 	"log"
 	"net/http"
 
+	"github.com/8qfx1ai5/viewcrypt/configs"
+
+	"github.com/rakyll/statik/fs"
 	// import compiled swagger ui files
 	_ "github.com/8qfx1ai5/viewcrypt/third_party/swagger-ui/statik"
-	"github.com/rakyll/statik/fs"
 )
 
 // FileServer create new file server for swagger ui files
@@ -43,9 +45,9 @@ const (
 )
 
 func (errorHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+	configs.ServerSetDefaultHeaders(w)
 	w.Header().Set("Content-Type", "text/html")
-	w.Header().Set("X-Content-Type-Options", "nosniff")
-	w.Header().Set("Server", "The Viewcrypt Go Sebserver")
+
 	w.WriteHeader(http.StatusInternalServerError)
 	fmt.Fprintln(w, errorFileContent)
 }

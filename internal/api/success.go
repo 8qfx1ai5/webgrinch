@@ -3,11 +3,13 @@ package api
 import (
 	"encoding/json"
 	"net/http"
+
+	"github.com/8qfx1ai5/viewcrypt/configs"
 )
 
 // Response the structure of the json response used by the api
 type Response struct {
-	Content string
+	Content string `json:"content"`
 }
 
 // Success function writes response
@@ -18,9 +20,10 @@ func Success(w http.ResponseWriter, response Response) {
 		Error(w, "response conversion failed", http.StatusInternalServerError, err)
 		return
 	}
+
+	configs.ServerSetDefaultHeaders(w)
 	w.Header().Set("Content-Type", "application/json")
-	w.Header().Set("X-Content-Type-Options", "nosniff")
-	w.Header().Set("Server", "The Viewcrypt Go Sebserver")
+
 	w.WriteHeader(200)
 	w.Write(js)
 }

@@ -12,7 +12,7 @@
     "paths": {
         "/encode/html": {
             "post": {
-                "summary": "Encode the text nodes of a HTML fraction",
+                "summary": "Encode the text nodes of a HTML fraction.",
                 "operationId": "encodehtml",
                 "tags": [
                     "encode"
@@ -80,7 +80,7 @@
                     },
                     "description": "Body example"
                 },
-                "description": "Post a HTML text, keys and a css class and get an encoded HTML fraction."
+                "description": "Post HTML text like multiple 'p', 'div', 'section' tags or plain text. The fraction will be encoded. This encoding is maybe dirty, because of the content must be 'repaired' in the first step to be processable. If you get unexpected output, try XHTML fractions instead."
             }
         },
         "/encode/text": {
