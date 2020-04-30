@@ -42,7 +42,7 @@ var testCases = []struct {
 		},
 		expected{
 			"",
-			404,
+			200,
 		},
 		"check server is reachable",
 	},

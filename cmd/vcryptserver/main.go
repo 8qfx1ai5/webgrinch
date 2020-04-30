@@ -21,7 +21,7 @@ func main() {
 	var cliArguments = handleCliArguments()
 
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir(filepath.Join("viewcrypt", "static")))))
-	http.Handle("/swagger/", http.StripPrefix("/swagger/", swagger.FileServer()))
+	http.Handle("/", http.StripPrefix("/", swagger.FileServer()))
 	http.HandleFunc(baseURL+"/api/encode/html", apiencode.HTMLHandler)
 	http.HandleFunc(baseURL+"/api/encode/text", apiencode.TextHandler)
 
