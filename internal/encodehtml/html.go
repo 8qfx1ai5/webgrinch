@@ -1,4 +1,4 @@
-package encode
+package encodehtml
 
 import (
 	"fmt"
@@ -15,8 +15,8 @@ const (
 
 var scriptFileCreated bool = false
 
-// HTML function encodes content HTML text based on the specified key and add css classes
-func HTML(in string, keyFrom string, keyTo string, cssClass string) (out string, err error) {
+// Run function encodes content HTML text based on the specified key and add css classes
+func Run(in string, keyFrom string, keyTo string, cssClass string) (out string, err error) {
 
 	// TODO: use golang xslt packages (maybe with in memory files)
 

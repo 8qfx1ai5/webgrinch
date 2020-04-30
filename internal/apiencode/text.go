@@ -3,17 +3,13 @@ package apiencode
 import (
 	"net/http"
 
+	"github.com/8qfx1ai5/viewcrypt/configs"
 	"github.com/8qfx1ai5/viewcrypt/internal/api"
-	"github.com/8qfx1ai5/viewcrypt/internal/encode"
+	"github.com/8qfx1ai5/viewcrypt/internal/encodetext"
 )
 
-const (
-	keyFromDefault string = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
-	keyToDefault   string = "BCDEFGHIJKLMNOPQRSTUVWXYZAbcdefghijklmnopqrstuvwxyza"
-)
-
-// RouteHandler handles the encoding feature
-func RouteHandler(w http.ResponseWriter, r *http.Request) {
+// TextHandler handles the encoding feature
+func TextHandler(w http.ResponseWriter, r *http.Request) {
 
 	// check html method
 	if r.Method != "POST" {
@@ -29,19 +25,18 @@ func RouteHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	content := r.Form.Get("content")
-	css := r.Form.Get("css")
 	keyFrom := r.Form.Get("from")
 	keyTo := r.Form.Get("to")
 
 	if keyFrom == "" {
-		keyFrom = keyFromDefault
+		keyFrom = configs.APIDefaultKeyFrom
 	}
 	if keyTo == "" {
-		keyTo = keyToDefault
+		keyTo = configs.APIDefaultKeyTo
 	}
 
 	// run encoding
-	encoded, err := encode.HTML(content, keyFrom, keyTo, css)
+	encoded, err := encodetext.Run(content, keyFrom, keyTo)
 	if err != nil {
 		api.Error(w, "encoding failed", http.StatusInternalServerError, err)
 		return

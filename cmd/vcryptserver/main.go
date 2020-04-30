@@ -22,7 +22,8 @@ func main() {
 
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir(filepath.Join("viewcrypt", "static")))))
 	http.Handle("/swagger/", http.StripPrefix("/swagger/", swagger.FileServer()))
-	http.HandleFunc(baseURL+"/encode", apiencode.RouteHandler)
+	http.HandleFunc(baseURL+"/api/encode/html", apiencode.HTMLHandler)
+	http.HandleFunc(baseURL+"/api/encode/text", apiencode.TextHandler)
 
 	http.ListenAndServe(fmt.Sprintf(":%s", cliArguments.apiPort), nil)
 }

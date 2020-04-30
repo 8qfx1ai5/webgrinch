@@ -1,4 +1,4 @@
-package encode
+package encodehtml
 
 import (
 	"strings"
@@ -133,7 +133,7 @@ func TestEncodeHTML(t *testing.T) {
 	for _, currentTest := range testCases {
 		func(tc testCase) {
 			t.Run(tc.description, func(t *testing.T) {
-				observed, err := HTML(tc.input.content, tc.input.keyFrom, tc.input.keyTo, tc.input.configCSS)
+				observed, err := Run(tc.input.content, tc.input.keyFrom, tc.input.keyTo, tc.input.configCSS)
 				if err != nil {
 					if tc.expected.wantErr {
 						return
@@ -162,7 +162,7 @@ func TestEncodeHTML(t *testing.T) {
 func BenchmarkEncoding(b *testing.B) {
 	for x := 0; x < b.N; x++ {
 		for _, testCase := range testCases {
-			HTML(testCase.input.content, testCase.input.keyFrom, testCase.input.keyTo, testCase.input.configCSS)
+			Run(testCase.input.content, testCase.input.keyFrom, testCase.input.keyTo, testCase.input.configCSS)
 		}
 	}
 }

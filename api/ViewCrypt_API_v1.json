@@ -13,10 +13,10 @@
         }
     ],
     "paths": {
-        "/encode": {
+        "/encode/html": {
             "post": {
                 "summary": "Encode the text nodes of a HTML fraction",
-                "operationId": "encodeSingle",
+                "operationId": "encodehtml",
                 "tags": [
                     "encode"
                 ],
@@ -85,6 +85,74 @@
                 },
                 "description": "Post a HTML text, keys and a css class and get an encoded HTML fraction."
             }
+        },
+        "/encode/text": {
+            "post": {
+                "summary": "Encode the text and all characters",
+                "operationId": "encodetext",
+                "tags": [
+                    "encode"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Return the encoded text.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Encode"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "type": "object",
+                                "required": [
+                                    "content"
+                                ],
+                                "properties": {
+                                    "content": {
+                                        "type": "string",
+                                        "description": "the text to encode"
+                                    },
+                                    "from": {
+                                        "type": "string",
+                                        "description": "a set of all characters, which should be changed in content"
+                                    },
+                                    "to": {
+                                        "type": "string",
+                                        "description": "a set of the resulting characters, in the same order like in the from property"
+                                    }
+                                }
+                            },
+                            "examples": {
+                                "example-1": {
+                                    "value": {
+                                        "content": "<p>Hello World!</p>",
+                                        "from": "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz",
+                                        "to": "aFMkZVwKEWsjUQdgYfuIpNGSDnyxPehiLTRbCoqvXmAzBcrltHJO"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "description": "Body example"
+                },
+                "description": "Post a text, keys and a css class and get an encoded text."
+            }
         }
     },
     "components": {
@@ -97,7 +165,7 @@
                 "properties": {
                     "content": {
                         "type": "string",
-                        "example": "das ist ein Beispiel"
+                        "example": "That is an Example."
                     }
                 }
             },

@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/8qfx1ai5/viewcrypt/internal/encode"
+	"github.com/8qfx1ai5/viewcrypt/internal/encodehtml"
 )
 
 func main() {
@@ -12,7 +12,7 @@ func main() {
 	keyFrom := "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
 	keyTo := "aFMkZVwKEWsjUQdgYfuIpNGSDnyxPehiLTRbCoqvXmAzBcrltHJO"
 	cssClass := "vc"
-	out, err := encode.HTML(in, keyFrom, keyTo, cssClass)
+	out, err := encodehtml.Run(in, keyFrom, keyTo, cssClass)
 
 	if err != nil {
 		log.Fatal(err)
