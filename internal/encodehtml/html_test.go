@@ -152,13 +152,23 @@ var testCases = []testCase{
 		},
 		"test xhtml special cases like <br />",
 	},
+	{
+		input{
+			"<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+			"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz",
+			"aFMkZVwKEWsjUQdgYfuIpNGSDnyxPehiLTRbCoqvXmAzBcrltHJO",
+			"vc",
+		},
+		expected{
+			translations{},
+			true,
+		},
+		"test brocken xml",
+	},
 
-	// TODO: test brocken xml input
 	// TODO: test big input
-	// TODO: test html special cases like <br> (invalid xml)
 	// TODO: test input with html declaration
-	// TODO: test other keys
-	// TODO: test reverse translation
+	// TODO: test tags: img, meta
 }
 
 /**

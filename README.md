@@ -58,6 +58,14 @@ To make the text readable you need to load the corresponding web font to the tex
 - v0.10 use contract testing for the api + swagger
 - v0.11 moved product organisation to GitHub projects
 
+## Products
+
+- plain text conversion
+- html fragments conversion (dirty)
+- xhtml conversion
+- (xml conversion)
+- epub
+
 ## Special thanks
 
 My special thanks goes to my friend and devops kubernetes specialist [Tino](https://github.com/pandorasNox). Without his knowledge and go workshop lessons the project would not look like the same.
