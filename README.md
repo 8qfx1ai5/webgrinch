@@ -8,11 +8,11 @@ This repository contains all required code to run an api server for the encoding
 
 ### Run the cli script
 
-    $ go run cmd/vcryptcli/main.go
+    go run cmd/vcryptcli/main.go
 
 ### Run the server
 
-    $ go run cmd/vcryptserver/main.go
+    go run cmd/vcryptserver/main.go
 
 ### Include the text into a web page
 
@@ -31,14 +31,14 @@ To make the text readable you need to load the corresponding web font to the tex
 
 ### Run builds
 
-    $ cd cmd/vcryptcli; go build
-    $ cd cmd/vcryptserver; go build
+    cd cmd/vcryptcli; go build
+    cd cmd/vcryptserver; go build
 
 ### Run the tests
 
 #### All tests
 
-    $ go test -v -count=1 ./...
+    go test -v -count=1 ./...
 
 #### Benchmark tests
 
@@ -56,16 +56,7 @@ To make the text readable you need to load the corresponding web font to the tex
 - v0.8 enable concurrent xslt processing
 - v0.9 use logging
 - v0.10 use contract testing for the api + swagger
-
-## Possible future steps
-
-- use a project for the upcomming steps
-- enable decoding
-- font generation for custom keys
-- font manipulation (use go bin data)
-- landingpage with simple product communication
-- upload page for browser (drag & drop)
-- enable Data conversion for Products like: Epub, pdf, docx, markdown, plain text
+- v0.11 moved product organisation to GitHub projects
 
 ## Special thanks
 
