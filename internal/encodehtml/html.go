@@ -28,14 +28,19 @@ func Run(in string, keyFrom string, keyTo string, cssClass string) (out string, 
 		}
 		scriptFileCreated = true
 	}
-
-	out, err = runCliCommand(in, keyFrom, keyTo, cssClass)
+	cleanIn := cleanUpInput(in)
+	out, err = runCliCommand(cleanIn, keyFrom, keyTo, cssClass)
 
 	if err != nil {
 		return "", fmt.Errorf("command execution failed: %v", err)
 	}
 
 	return out, err
+}
+
+func cleanUpInput(in string) string {
+	new := strings.Replace(in, "<br>", "<br/>", -1)
+	return new
 }
 
 func runCliCommand(in string, keyFrom string, keyTo string, cssClass string) (string, error) {

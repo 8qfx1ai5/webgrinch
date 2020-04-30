@@ -29,7 +29,7 @@ const (
 	</xsl:template>
 
 	<!-- set css class to second level nodes -->
-	<xsl:template match="/*/*">
+	<xsl:template match="/*/*[name()!='br']">
 		<xsl:copy>
 			<xsl:choose>
 				<xsl:when test="$cssClass  != ''">

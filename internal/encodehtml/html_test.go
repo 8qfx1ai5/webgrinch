@@ -116,6 +116,42 @@ var testCases = []testCase{
 		},
 		"test empty input",
 	},
+	{
+		input{
+			"<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p><br><p>Molestiae minus at aut illo esse.</p>",
+			"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz",
+			"aFMkZVwKEWsjUQdgYfuIpNGSDnyxPehiLTRbCoqvXmAzBcrltHJO",
+			"vc",
+		},
+		expected{
+			translations{
+				{
+					"<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p><br><p>Molestiae minus at aut illo esse.</p>",
+					"<p class=\"vc\">jXzhq RmBrq eXoXz BRc yqhc PXvBhPchcrz yeRmRBRPRvL hoRc.</p><br/><p class=\"vc\">UXohBcRyh qRvrB yc yrc RooX hBBh.</p>",
+				},
+			},
+			false,
+		},
+		"test html special cases like <br>",
+	},
+	{
+		input{
+			"<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p><br /><p>Molestiae minus at aut illo esse.</p>",
+			"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz",
+			"aFMkZVwKEWsjUQdgYfuIpNGSDnyxPehiLTRbCoqvXmAzBcrltHJO",
+			"vc",
+		},
+		expected{
+			translations{
+				{
+					"<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p><br /><p>Molestiae minus at aut illo esse.</p>",
+					"<p class=\"vc\">jXzhq RmBrq eXoXz BRc yqhc PXvBhPchcrz yeRmRBRPRvL hoRc.</p><br/><p class=\"vc\">UXohBcRyh qRvrB yc yrc RooX hBBh.</p>",
+				},
+			},
+			false,
+		},
+		"test xhtml special cases like <br />",
+	},
 
 	// TODO: test brocken xml input
 	// TODO: test big input
