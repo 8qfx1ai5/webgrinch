@@ -67,7 +67,7 @@
                                 }
                             },
                             "examples": {
-                                "example-1": {
+                                "simple p tag": {
                                     "value": {
                                         "content": "<p>fldsjdjf</p>",
                                         "css": "vc",
@@ -136,9 +136,9 @@
                                 }
                             },
                             "examples": {
-                                "example-1": {
+                                "simple text": {
                                     "value": {
-                                        "content": "<p>Hello World!</p>",
+                                        "content": "Hello World!",
                                         "from": "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz",
                                         "to": "aFMkZVwKEWsjUQdgYfuIpNGSDnyxPehiLTRbCoqvXmAzBcrltHJO"
                                     }
@@ -149,6 +149,68 @@
                     "description": "Body example"
                 },
                 "description": "Post a text, keys and a css class and get an encoded text."
+            }
+        },
+        "/key": {
+            "post": {
+                "summary": "Create a new random key to use for the encoding",
+                "operationId": "createkey",
+                "tags": [
+                    "key"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Return the new key.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Key"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "regex": {
+                                        "type": "string",
+                                        "description": "a selector for the contained characters",
+                                        "example": "[abcde0-9&§]",
+                                        "default": "[A-Za-z0-9]"
+                                    }
+                                }
+                            },
+                            "examples": {
+                                "onlycharacters": {
+                                    "value": {
+                                        "regex": "[A-Za-z]"
+                                    }
+                                },
+                                "subsets": {
+                                    "value": {
+                                        "regex": "[A-Z][a-z]"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "description": "Body example"
+                },
+                "description": "Create and get a new key to use in the encoding steps."
             }
         }
     },
@@ -166,14 +228,32 @@
                     }
                 }
             },
-            "Error": {
-                "type": "string",
+            "Key": {
+                "type": "object",
                 "required": [
-                    "message"
+                    "from",
+                    "to"
                 ],
                 "properties": {
-                    "message": {
-                        "type": "string"
+                    "from": {
+                        "type": "string",
+                        "example": "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                    },
+                    "to": {
+                        "type": "string",
+                        "example": "MNOPQRSTUVWXYZABCDEFGHIJKL"
+                    }
+                }
+            },
+            "Error": {
+                "type": "object",
+                "required": [
+                    "method"
+                ],
+                "properties": {
+                    "method": {
+                        "type": "string",
+                        "example": "something went wrong"
                     }
                 }
             }

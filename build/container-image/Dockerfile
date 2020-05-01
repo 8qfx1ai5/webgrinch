@@ -12,9 +12,8 @@ ENV GO111MODULE on
 ENV WORKDIR /workdir/
 WORKDIR ${WORKDIR}
 
-
-# COPY go.mod go.sum ${WORKDIR}
 COPY go.mod ${WORKDIR}
+COPY go.sum ${WORKDIR}
 RUN go mod download
 
 COPY . ${WORKDIR}

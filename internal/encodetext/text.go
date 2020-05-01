@@ -1,17 +1,15 @@
 package encodetext
 
-var m map[rune]rune
-
-// Run function encodes content HTML text based on the specified key and add css classes
-func Run(in string, keyFrom string, keyTo string) (out string, err error) {
-
-	m = make(map[rune]rune)
+// Run function encodes text based on the specified key
+func Run(in string, keyFrom string, keyTo string) (string, error) {
 
 	runesFrom := []rune(keyFrom)
 	runesTo := []rune(keyTo)
 	runesIn := []rune(in)
 
 	// create key map
+	m := make(map[rune]rune)
+
 	for position, vRune := range runesFrom {
 		if len(runesTo) <= position {
 			break

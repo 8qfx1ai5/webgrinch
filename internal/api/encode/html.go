@@ -1,4 +1,4 @@
-package apiencode
+package encode
 
 import (
 	"net/http"

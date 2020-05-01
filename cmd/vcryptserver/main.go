@@ -6,7 +6,8 @@ import (
 	"net/http"
 	"path/filepath"
 
-	"github.com/8qfx1ai5/viewcrypt/internal/apiencode"
+	"github.com/8qfx1ai5/viewcrypt/internal/api/encode"
+	"github.com/8qfx1ai5/viewcrypt/internal/api/key"
 	"github.com/8qfx1ai5/viewcrypt/internal/swagger"
 )
 
@@ -22,8 +23,9 @@ func main() {
 
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir(filepath.Join("viewcrypt", "static")))))
 	http.Handle("/", http.StripPrefix("/", swagger.FileServer()))
-	http.HandleFunc(baseURL+"/api/encode/html", apiencode.HTMLHandler)
-	http.HandleFunc(baseURL+"/api/encode/text", apiencode.TextHandler)
+	http.HandleFunc(baseURL+"/api/encode/html", encode.HTMLHandler)
+	http.HandleFunc(baseURL+"/api/encode/text", encode.TextHandler)
+	http.HandleFunc(baseURL+"/api/key", key.Handler)
 
 	http.ListenAndServe(fmt.Sprintf(":%s", cliArguments.apiPort), nil)
 }

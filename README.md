@@ -6,13 +6,17 @@ This repository contains all required code to run an api server for the encoding
 
 ## How to use
 
-### Run the cli script
+### Deploy in production
 
-    go run cmd/vcryptcli/main.go
+Currently there is no automated pibeline. But it is comming soon.
 
-### Run the server
+### Deploy local for dev (docker required)
 
-    go run cmd/vcryptserver/main.go
+**ATTENTION**: this command will **stop and remove** all your local docker containers and start the server on port 80. Unit tests and integration tests are executed automatically during the deploy.
+
+You can access over <http://localhost/>
+
+    make serve
 
 ### Include the text into a web page
 
@@ -39,6 +43,14 @@ To make the text readable you need to load the corresponding web font to the tex
 #### All tests
 
     go test -v -count=1 ./...
+
+#### Unit tests
+
+    go test -v -count=1 ./internal/...
+
+#### Integration tests
+
+    go test -v -count=1 ./test/...
 
 #### Benchmark tests
 
