@@ -20,3 +20,6 @@ func Error(w http.ResponseWriter, message string, code int, err error) {
 	w.WriteHeader(code)
 	fmt.Fprintln(w, fmt.Sprintf("{\"message\":\"%s\"}", message))
 }
+
+// TODO: handle Server Errors
+// TODO: handle Special Client errors like 404, 406

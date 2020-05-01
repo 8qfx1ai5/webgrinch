@@ -9,6 +9,7 @@ type expected struct {
 	wantErr bool
 }
 
+// TODO: check param error vs system error
 type testCase struct {
 	input       string
 	expected    expected

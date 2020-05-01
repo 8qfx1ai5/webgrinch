@@ -33,7 +33,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/Error"
+                                    "$ref": "#/components/schemas/5xx"
                                 }
                             }
                         }
@@ -106,7 +106,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/Error"
+                                    "$ref": "#/components/schemas/5xx"
                                 }
                             }
                         }
@@ -169,12 +169,22 @@
                             }
                         }
                     },
+                    "406": {
+                        "description": "Parameter invalid.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/406"
+                                }
+                            }
+                        }
+                    },
                     "default": {
                         "description": "Unexpected error",
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/Error"
+                                    "$ref": "#/components/schemas/5xx"
                                 }
                             }
                         }
@@ -245,15 +255,27 @@
                     }
                 }
             },
-            "Error": {
+            "406": {
                 "type": "object",
                 "required": [
-                    "method"
+                    "hint"
                 ],
                 "properties": {
-                    "method": {
+                    "hint": {
                         "type": "string",
-                        "example": "something went wrong"
+                        "example": "the param is not supported"
+                    }
+                }
+            },
+            "5xx": {
+                "type": "object",
+                "required": [
+                    "hint"
+                ],
+                "properties": {
+                    "hint": {
+                        "type": "string",
+                        "example": "Upps.. not your fault. We can do better than 500."
                     }
                 }
             }

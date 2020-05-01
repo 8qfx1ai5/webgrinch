@@ -19,15 +19,22 @@ func (k *Key) UseFrom(in string) (err error) {
 	k.from = in
 	k.subsets = make([][]rune, 1)
 	k.subsets[0] = []rune(in)
-	k.shuffle()
-	return nil
+	err = k.shuffle()
+	return err
 }
 
 // UseRegex generates new key based on a regex
-func (k *Key) UseRegex(regex string) (err error) {
+func (k *Key) UseRegex(regex string) (success bool, err error) {
 	subsets, err := createSubsetsFromRegex(regex)
-	k.UseSubsets(subsets)
-	return nil
+	if err != nil {
+		if err.Error() == paramError {
+			return false, nil
+		}
+		return false, err
+	}
+
+	err = k.UseSubsets(subsets)
+	return true, err
 }
 
 // UseSubsets generates new key based on a slice of slices
@@ -37,8 +44,8 @@ func (k *Key) UseSubsets(subsets [][]rune) (err error) {
 	for _, subset := range k.subsets {
 		k.from += string(subset)
 	}
-	k.shuffle()
-	return nil
+	err = k.shuffle()
+	return err
 }
 
 // UseExistingKey takes the values and does not shuffle
@@ -60,7 +67,7 @@ func (k *Key) shuffle() (err error) {
 		rand.Shuffle(len(newSubset), func(i, j int) { newSubset[i], newSubset[j] = newSubset[j], newSubset[i] })
 		k.to += string(newSubset)
 	}
-	return nil
+	return err
 }
 
 // GetTo returns the current 'to' value
@@ -73,6 +80,8 @@ func (k *Key) GetFrom() (to string) {
 	return k.from
 }
 
+const paramError string = "param regex invalid"
+
 // analyse a regex and try to figure out the contained  characters
 // function is unit tested
 func createSubsetsFromRegex(regex string) (out [][]rune, err error) {
@@ -81,7 +90,7 @@ func createSubsetsFromRegex(regex string) (out [][]rune, err error) {
 	if submatchall == nil {
 		out = make([][]rune, 1)
 		out[0], err = processSingleRegexSubset(regex)
-		return
+		return out, err
 	}
 	out = make([][]rune, 0)
 	for _, submatch := range submatchall {
@@ -91,7 +100,7 @@ func createSubsetsFromRegex(regex string) (out [][]rune, err error) {
 		}
 		out = append(out, sub)
 	}
-	return out, nil
+	return out, err
 }
 
 type regexCase struct {
@@ -100,9 +109,9 @@ type regexCase struct {
 }
 
 var ranges = []regexCase{
-	regexCase{`[A-Z]-[A-Z]`, "ABCDEFGHIJKLMNOPQRSTUVWXYZ"},
-	regexCase{`\d-\d`, "0123456789"},
-	regexCase{`[a-z]-[a-z]`, "abcdefghijklmnopqrstuvwxyz"},
+	{`[A-Z]-[A-Z]`, "ABCDEFGHIJKLMNOPQRSTUVWXYZ"},
+	{`\d-\d`, "0123456789"},
+	{`[a-z]-[a-z]`, "abcdefghijklmnopqrstuvwxyz"},
 }
 
 // process single subset
@@ -117,7 +126,7 @@ func processSingleRegexSubset(regex string) (out []rune, err error) {
 		r2 := regexp.MustCompile("[" + submatch + "]*")
 		thisMatch := r2.FindString(matchCandidate.all)
 		if thisMatch == "" {
-			return out, fmt.Errorf("regex '" + submatch + "' not implemented")
+			return out, fmt.Errorf(paramError)
 		}
 		out = []rune(thisMatch)
 		r3 := regexp.MustCompile(submatch)
@@ -136,5 +145,5 @@ func processSingleRegexSubset(regex string) (out []rune, err error) {
 	}
 
 	// no regex found, return original
-	return []rune(regex), nil
+	return []rune(regex), err
 }

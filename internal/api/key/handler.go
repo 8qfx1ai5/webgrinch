@@ -21,9 +21,13 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 		}
 		regex := r.Form.Get("regex")
 		var newKey = enkey.Key{}
-		err = newKey.UseRegex(regex)
+		ok, err := newKey.UseRegex(regex)
 		if err != nil {
 			api.Error(w, "something went wrong", http.StatusInternalServerError, err)
+			return
+		}
+		if !ok {
+			api.Error(w, "regex not supported", http.StatusBadRequest, nil)
 			return
 		}
 		api.Success(w, api.Response{Content: fmt.Sprint(newKey)})

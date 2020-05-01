@@ -27,3 +27,5 @@ func Success(w http.ResponseWriter, response Response) {
 	w.WriteHeader(200)
 	w.Write(js)
 }
+
+// TODO: use interface for payload (more generic) or find route based solution
