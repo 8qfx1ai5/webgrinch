@@ -13,7 +13,7 @@ type Response struct {
 }
 
 // Success function writes response
-func Success(w http.ResponseWriter, response Response) {
+func Success(w http.ResponseWriter, response interface{}) {
 	// convert into json
 	js, err := json.Marshal(response)
 	if err != nil {

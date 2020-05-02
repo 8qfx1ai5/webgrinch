@@ -1,12 +1,18 @@
 package key
 
 import (
-	"fmt"
 	"net/http"
 
+	"github.com/8qfx1ai5/viewcrypt/configs"
 	"github.com/8qfx1ai5/viewcrypt/internal/api"
 	"github.com/8qfx1ai5/viewcrypt/internal/types/enkey"
 )
+
+// Response the structure of the json response used by the api
+type Response struct {
+	From string `json:"from"`
+	To   string `json:"to"`
+}
 
 // Handler handles the features to the encoding keys
 func Handler(w http.ResponseWriter, r *http.Request) {
@@ -20,6 +26,9 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		regex := r.Form.Get("regex")
+		if regex == "" {
+			regex = configs.APIDefaultKeyRegex
+		}
 		var newKey = enkey.Key{}
 		ok, err := newKey.UseRegex(regex)
 		if err != nil {
@@ -30,7 +39,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 			api.Error(w, "regex not supported", http.StatusBadRequest, nil)
 			return
 		}
-		api.Success(w, api.Response{Payload: fmt.Sprint(newKey)})
+		api.Success(w, Response{From: newKey.GetFrom(), To: newKey.GetTo()})
 		return
 	default:
 		api.Error(w, "try an other http method or have a look into our api documentation", http.StatusMethodNotAllowed, nil)
