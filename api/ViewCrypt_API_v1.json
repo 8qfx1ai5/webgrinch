@@ -2,54 +2,29 @@
     "openapi": "3.0.0",
     "info": {
         "version": "1.0.0",
-        "title": "viewcrypt API"
+        "title": "viewcrypt API",
+        "description": "An API to simply run the smart viewcrypt encoding algorithm on any kind of digital content.",
+        "contact": {
+            "email": "viewcrypt@8qfx1ai5.de",
+            "name": "Felix Ohnesorge",
+            "url": "https://8qfx1ai5.de"
+        },
+        "termsOfService": "/api/terms_of_service"
     },
     "servers": [
         {
-            "url": "/api"
+            "url": "/api",
+            "description": "no server, useful for debugging"
         }
     ],
     "paths": {
         "/encode/html": {
             "post": {
+                "description": "Post HTML text like multiple 'p', 'div', 'section' tags or plain text. The fraction will be encoded. This encoding is maybe dirty, because of the content must be 'repaired' in the first step to be processable. If you get unexpected output, try XHTML fractions instead.",
                 "summary": "Encode the text nodes of a HTML fraction.",
                 "operationId": "encodehtml",
-                "tags": [
-                    "encode"
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Return the encoded text",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/Encode"
-                                }
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "Parameter invalid",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/400"
-                                }
-                            }
-                        }
-                    },
-                    "500": {
-                        "description": "Unexpected error",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/5xx"
-                                }
-                            }
-                        }
-                    }
-                },
                 "requestBody": {
+                    "required": true,
                     "content": {
                         "application/x-www-form-urlencoded": {
                             "schema": {
@@ -62,7 +37,8 @@
                                         "type": "string",
                                         "description": "the HTML fragment with text to encode",
                                         "example": "<h2>Hello World!</h2><p>Nice to see you.</p>",
-                                        "default": ""
+                                        "default": "",
+                                        "minLength": 1
                                     },
                                     "css": {
                                         "type": "string",
@@ -98,29 +74,19 @@
                     },
                     "description": "Body example"
                 },
-                "description": "Post HTML text like multiple 'p', 'div', 'section' tags or plain text. The fraction will be encoded. This encoding is maybe dirty, because of the content must be 'repaired' in the first step to be processable. If you get unexpected output, try XHTML fractions instead."
-            }
-        },
-        "/encode/text": {
-            "post": {
-                "summary": "Encode the text and all characters",
-                "operationId": "encodetext",
-                "tags": [
-                    "encode"
-                ],
                 "responses": {
                     "200": {
-                        "description": "Return the encoded text",
+                        "description": "HTML encoding was sucessfull and the results are returned.",
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/Encode"
+                                    "$ref": "#/components/schemas/200_Encode"
                                 }
                             }
                         }
                     },
                     "400": {
-                        "description": "Parameter invalid",
+                        "description": "Encoding aborded, because of invalid request information.",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -130,7 +96,7 @@
                         }
                     },
                     "500": {
-                        "description": "Unexpected error",
+                        "description": "Unexpected error, nobody knows what was happening yet.",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -140,7 +106,18 @@
                         }
                     }
                 },
+                "tags": [
+                    "encode"
+                ]
+            }
+        },
+        "/encode/text": {
+            "post": {
+                "description": "Post a text, keys and a css class and get an encoded text.",
+                "summary": "Encode the text and all characters",
+                "operationId": "encodetext",
                 "requestBody": {
+                    "required": true,
                     "content": {
                         "application/x-www-form-urlencoded": {
                             "schema": {
@@ -153,7 +130,8 @@
                                         "type": "string",
                                         "description": "the text to encode",
                                         "example": "Hello World!\n\nNice to see you.",
-                                        "default": ""
+                                        "default": "",
+                                        "minLength": 1
                                     },
                                     "from": {
                                         "type": "string",
@@ -182,29 +160,19 @@
                     },
                     "description": "Body example"
                 },
-                "description": "Post a text, keys and a css class and get an encoded text."
-            }
-        },
-        "/key": {
-            "post": {
-                "summary": "Create a new random key to use for the encoding",
-                "operationId": "createkey",
-                "tags": [
-                    "key"
-                ],
                 "responses": {
                     "200": {
-                        "description": "Return the new key",
+                        "description": "Return the encoded text",
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/Key"
+                                    "$ref": "#/components/schemas/200_Encode"
                                 }
                             }
                         }
                     },
                     "400": {
-                        "description": "Parameter invalid",
+                        "description": "Encoding aborded, because of invalid request information.",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -214,7 +182,7 @@
                         }
                     },
                     "500": {
-                        "description": "Unexpected error",
+                        "description": "Unexpected error, nobody knows what was happening yet.",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -224,7 +192,18 @@
                         }
                     }
                 },
+                "tags": [
+                    "encode"
+                ]
+            }
+        },
+        "/key": {
+            "post": {
+                "description": "Create and get a new key to use in the encoding steps.",
+                "summary": "Create a new random key to use for the encoding",
+                "operationId": "createkey",
                 "requestBody": {
+                    "required": true,
                     "content": {
                         "application/x-www-form-urlencoded": {
                             "schema": {
@@ -234,7 +213,8 @@
                                         "type": "string",
                                         "description": "a selector for the contained characters",
                                         "example": "[abcde0-9&§]",
-                                        "default": "[A-Za-z0-9]"
+                                        "default": "[A-Za-z0-9]",
+                                        "maxLength": 200
                                     }
                                 }
                             },
@@ -254,13 +234,61 @@
                     },
                     "description": "Body example"
                 },
-                "description": "Create and get a new key to use in the encoding steps."
+                "responses": {
+                    "200": {
+                        "description": "New key created sucessfully. Response contains the key information.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "required": [
+                                        "from",
+                                        "to"
+                                    ],
+                                    "properties": {
+                                        "from": {
+                                            "type": "string",
+                                            "example": "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                                        },
+                                        "to": {
+                                            "type": "string",
+                                            "example": "MNOPQRSTUVWXYZABCDEFGHIJKL"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Key creation aborded, because of invalid request information.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/400"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Unexpected error, nobody knows what was happening yet.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/5xx"
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "key"
+                ]
             }
         }
     },
     "components": {
         "schemas": {
-            "Encode": {
+            "200_Encode": {
                 "type": "object",
                 "required": [
                     "payload"
@@ -269,23 +297,6 @@
                     "payload": {
                         "type": "string",
                         "example": "That is an Example."
-                    }
-                }
-            },
-            "Key": {
-                "type": "object",
-                "required": [
-                    "from",
-                    "to"
-                ],
-                "properties": {
-                    "from": {
-                        "type": "string",
-                        "example": "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-                    },
-                    "to": {
-                        "type": "string",
-                        "example": "MNOPQRSTUVWXYZABCDEFGHIJKL"
                     }
                 }
             },

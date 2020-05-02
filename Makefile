@@ -9,13 +9,13 @@ build:
 # run container based on an image
 .PHONY: run
 run:
-	docker run --restart=always -d -p "80:8080" viewcrypt-alpha
+	docker run --restart=always -d -p "80:80" viewcrypt-alpha
 
 
 # run container for dev local based on an image
 .PHONY: rundev
 rundev:
-	docker run --rm  -d -p "80:8080" viewcrypt-alpha
+	docker run --rm  -d -p "80:80" viewcrypt-alpha
 
 
 # run service on local docker env for development
@@ -41,6 +41,14 @@ utestd:
 itestd:
 	@echo "RUN go integration tests..."
 	@go test -count=1 ./test/... | egrep "^(FAIL.|ok)" | sed ''/ok/s//`printf "\033[32mok\033[0m"`/'' | sed ''/FAIL/s//`printf "\033[31mFAIL\033[0m"`/'' | sed ''/?/s//`printf "\033[33m?\033[0m"`/''
+
+
+# run go integration tests during deploy
+.PHONY: itest
+itest:
+	@echo "RUN go integration tests..."
+	@go test -v -count=1 ./test/... | sed ''/PASS/s//`printf "\033[32mPASS\033[0m"`/'' | sed ''/ok/s//`printf "\033[32mok\033[0m"`/'' | sed ''/FAIL/s//`printf "\033[31mFAIL\033[0m"`/'' | sed ''/?/s//`printf "\033[33m?\033[0m"`/''
+
 
 
 # run go benchmark tests

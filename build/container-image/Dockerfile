@@ -33,4 +33,4 @@ COPY api/ViewCrypt_API_v1.json viewcrypt/static
 COPY --from=compile /go/bin/vcryptserver /vcryptserver
 RUN chmod +x /vcryptserver
 
-ENTRYPOINT ["/bin/sh", "-c", "/vcryptserver -p 8080 > server.log 2>&1"]
+ENTRYPOINT ["/bin/sh", "-c", "/vcryptserver -p 80 > server.log 2>&1"]
