@@ -9,7 +9,7 @@ import (
 
 // Response the structure of the json response used by the api
 type Response struct {
-	Content string `json:"content"`
+	Payload string `json:"payload"`
 }
 
 // Success function writes response

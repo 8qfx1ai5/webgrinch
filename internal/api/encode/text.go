@@ -43,5 +43,5 @@ func TextHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// create response
-	api.Success(w, api.Response{Content: encoded})
+	api.Success(w, api.Response{Payload: encoded})
 }

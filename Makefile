@@ -20,19 +20,27 @@ rundev:
 
 # run service on local docker env for development
 .PHONY: serve
-serve: clear build rundev itest
+serve: clear build rundev itestd
 
 
 # run go unit tests
-.PHONY: utest
+.PHONY: utest 
 utest:
-	go test -v -count=1 ./internal/...
+	go test -v -count=1 ./internal/... | sed ''/PASS/s//`printf "\033[32mPASS\033[0m"`/'' | sed ''/FAIL/s//`printf "\033[31mFAIL\033[0m"`/''
 
 
-# run go integration tests
-.PHONY: itest
-itest:
-	go test -v -count=1 ./test/...
+# run go unit tests during deploy
+.PHONY: utestd 
+utestd:
+	@echo "RUN go unit tests..."
+	@go test -count=1 ./internal/... | egrep "^(FAIL.|ok)" | sed ''/ok/s//`printf "\033[32mok\033[0m"`/'' | sed ''/FAIL/s//`printf "\033[31mFAIL\033[0m"`/'' | sed ''/?/s//`printf "\033[33m?\033[0m"`/''
+
+
+# run go integration tests during deploy
+.PHONY: itestd
+itestd:
+	@echo "RUN go integration tests..."
+	@go test -count=1 ./test/... | egrep "^(FAIL.|ok)" | sed ''/ok/s//`printf "\033[32mok\033[0m"`/'' | sed ''/FAIL/s//`printf "\033[31mFAIL\033[0m"`/'' | sed ''/?/s//`printf "\033[33m?\033[0m"`/''
 
 
 # run go benchmark tests
@@ -47,7 +55,7 @@ btest:
 # run all tests
 .PHONY: test
 test:
-	go test -count=1 ./...
+	go test -count=1 ./... | egrep "^(FAIL.|ok|?)" | sed ''/ok/s//`printf "\033[32mok\033[0m"`/'' | sed ''/FAIL/s//`printf "\033[31mFAIL\033[0m"`/'' | sed ''/?/s//`printf "\033[33m?\033[0m"`/''
 
 
 .PHONY: ps

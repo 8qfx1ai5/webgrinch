@@ -165,6 +165,19 @@ var testCases = []testCase{
 		},
 		"test brocken xml",
 	},
+	{
+		input{
+			"<h2>Hello World!</h2><p>Nice to see you<.</p>",
+			"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz",
+			"BCDEFGHIJKLMNOPQRSTUVWXYZAbcdefghijklmnopqrstuvwxyza",
+			"my-special-css-class-name",
+		},
+		expected{
+			translations{},
+			true,
+		},
+		"test brocken xml, additional <",
+	},
 
 	// TODO: test big input
 	// TODO: test input with html declaration
@@ -195,7 +208,7 @@ func TestEncodeHTML(t *testing.T) {
 
 				// compare
 				if observed != expected {
-					t.Errorf("\ninput='%s',\nkeyFrom='%s',\nkeyTo='%s',\nconfigCSS='%s',\nobserved='%s',\nexpected='%s',\ndescription: %s", tc.input.content, tc.input.keyFrom, tc.input.keyTo, tc.input.configCSS, observed, expected, tc.description)
+					t.Errorf("\ninput=     '%s',\nkeyFrom=   '%s',\nkeyTo=     '%s',\nconfigCSS= '%s',\nobserved=  '%s',\nexpected=  '%s',\ndescription: %s", tc.input.content, tc.input.keyFrom, tc.input.keyTo, tc.input.configCSS, observed, expected, tc.description)
 				}
 			})
 		}(currentTest)

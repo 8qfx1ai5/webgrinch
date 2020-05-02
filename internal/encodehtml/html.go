@@ -32,7 +32,7 @@ func Run(in string, keyFrom string, keyTo string, cssClass string) (out string, 
 	out, err = runCliCommand(cleanIn, keyFrom, keyTo, cssClass)
 
 	if err != nil {
-		return "", fmt.Errorf("command execution failed: %v", err)
+		return out, err
 	}
 
 	return out, err
@@ -46,12 +46,13 @@ func cleanUpInput(in string) string {
 func runCliCommand(in string, keyFrom string, keyTo string, cssClass string) (string, error) {
 	cmd := exec.Command("xsltproc", "--stringparam", "translateFrom", keyFrom, "--stringparam", "translateTo", keyTo, "--stringparam", "cssClass", cssClass, string(scriptFile), "-")
 
-	cmd.Stdin = strings.NewReader(fmt.Sprintf("<foo>%s</foo>", in))
+	xmlIn := fmt.Sprintf("<foo>%s</foo>", in)
+	cmd.Stdin = strings.NewReader(xmlIn)
 	outByte, err := cmd.CombinedOutput()
-	if err != nil {
-		return "", fmt.Errorf("command execution failed: %v", err)
-	}
 	out := string(outByte)
+	if err != nil {
+		return "", fmt.Errorf("command execution failed:\nerror=     '%v'\noutput=    '%s'\ncmd=       'echo \"%s\" | %s'", err, out, xmlIn, cmd.String())
+	}
 	return out, nil
 }
 

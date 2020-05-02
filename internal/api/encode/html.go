@@ -1,6 +1,7 @@
 package encode
 
 import (
+	"fmt"
 	"net/http"
 
 	"github.com/8qfx1ai5/viewcrypt/configs"
@@ -24,7 +25,7 @@ func HTMLHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	content := r.Form.Get("content")
+	payload := r.Form.Get("payload")
 	css := r.Form.Get("css")
 	keyFrom := r.Form.Get("from")
 	keyTo := r.Form.Get("to")
@@ -37,12 +38,12 @@ func HTMLHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// run encoding
-	encoded, err := encodehtml.Run(content, keyFrom, keyTo, css)
+	encoded, err := encodehtml.Run(payload, keyFrom, keyTo, css)
 	if err != nil {
-		api.Error(w, "encoding failed", http.StatusInternalServerError, err)
+		api.Error(w, "encoding failed", http.StatusInternalServerError, fmt.Errorf(fmt.Sprintf("payload='%s' keyFrom='%s' keyTo='%s' css='%s'\n", payload, keyFrom, keyTo, css), err))
 		return
 	}
 
 	// create response
-	api.Success(w, api.Response{Content: encoded})
+	api.Success(w, api.Response{Payload: encoded})
 }

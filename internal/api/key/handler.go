@@ -30,7 +30,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 			api.Error(w, "regex not supported", http.StatusBadRequest, nil)
 			return
 		}
-		api.Success(w, api.Response{Content: fmt.Sprint(newKey)})
+		api.Success(w, api.Response{Payload: fmt.Sprint(newKey)})
 		return
 	default:
 		api.Error(w, "try an other http method or have a look into our api documentation", http.StatusMethodNotAllowed, nil)

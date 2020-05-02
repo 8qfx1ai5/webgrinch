@@ -14,6 +14,9 @@ const (
 
 	// APIDefaultKeyRegex used for key generation if nothing specified
 	APIDefaultKeyRegex string = "[A-Za-z0-9]"
+
+	// APIDefaultServerError500Hint a hint to the developer coding against the api
+	APIDefaultServerError500Hint string = "Not your fault. We will fix that asap. If you want to contribute you are cordially invited. Contact us :D"
 )
 
 // ServerSetDefaultHeaders must be called in every api handler

@@ -19,7 +19,7 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "Return the encoded text.",
+                        "description": "Return the encoded text",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -28,7 +28,17 @@
                             }
                         }
                     },
-                    "default": {
+                    "406": {
+                        "description": "Parameter invalid",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/406"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
                         "description": "Unexpected error",
                         "content": {
                             "application/json": {
@@ -48,21 +58,29 @@
                                     "content"
                                 ],
                                 "properties": {
-                                    "content": {
+                                    "payload": {
                                         "type": "string",
-                                        "description": "the HTML fragment with text to encode"
+                                        "description": "the HTML fragment with text to encode",
+                                        "example": "<h2>Hello World!</h2><p>Nice to see you.</p>",
+                                        "default": ""
                                     },
                                     "css": {
                                         "type": "string",
-                                        "description": "a css class added to the top level nodes"
+                                        "description": "a css class added to the top level nodes",
+                                        "example": "my-special-css-class-name",
+                                        "default": ""
                                     },
                                     "from": {
                                         "type": "string",
-                                        "description": "a set of all characters, which should be changed in content"
+                                        "description": "a set of all characters, which should be changed in content",
+                                        "example": "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789",
+                                        "default": "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
                                     },
                                     "to": {
                                         "type": "string",
-                                        "description": "a set of the resulting characters, in the same order like in the from property"
+                                        "description": "a set of the resulting characters, in the same order like in the from property",
+                                        "example": "BCDEFGHIJKLMNOPQRSTUVWXYZAbcdefghijklmnopqrstuvwxyza1234567890",
+                                        "default": "BCDEFGHIJKLMNOPQRSTUVWXYZAbcdefghijklmnopqrstuvwxyza"
                                     }
                                 }
                             },
@@ -92,7 +110,7 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "Return the encoded text.",
+                        "description": "Return the encoded text",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -101,7 +119,17 @@
                             }
                         }
                     },
-                    "default": {
+                    "406": {
+                        "description": "Parameter invalid",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/406"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
                         "description": "Unexpected error",
                         "content": {
                             "application/json": {
@@ -118,10 +146,10 @@
                             "schema": {
                                 "type": "object",
                                 "required": [
-                                    "content"
+                                    "payload"
                                 ],
                                 "properties": {
-                                    "content": {
+                                    "payload": {
                                         "type": "string",
                                         "description": "the text to encode"
                                     },
@@ -160,7 +188,7 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "Return the new key.",
+                        "description": "Return the new key",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -170,7 +198,7 @@
                         }
                     },
                     "406": {
-                        "description": "Parameter invalid.",
+                        "description": "Parameter invalid",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -179,7 +207,7 @@
                             }
                         }
                     },
-                    "default": {
+                    "500": {
                         "description": "Unexpected error",
                         "content": {
                             "application/json": {
@@ -229,10 +257,10 @@
             "Encode": {
                 "type": "object",
                 "required": [
-                    "content"
+                    "payload"
                 ],
                 "properties": {
-                    "content": {
+                    "payload": {
                         "type": "string",
                         "example": "That is an Example."
                     }
@@ -258,12 +286,19 @@
             "406": {
                 "type": "object",
                 "required": [
+                    "pname",
                     "hint"
                 ],
                 "properties": {
+                    "pname": {
+                        "type": "string",
+                        "example": "regex",
+                        "description": "the name of the invalid parameter"
+                    },
                     "hint": {
                         "type": "string",
-                        "example": "the param is not supported"
+                        "example": "do not use values bigger than x",
+                        "description": "some help for the developer to fix the issue"
                     }
                 }
             },
@@ -275,7 +310,8 @@
                 "properties": {
                     "hint": {
                         "type": "string",
-                        "example": "Upps.. not your fault. We can do better than 500."
+                        "example": "Upps... We can do better than 500",
+                        "description": "Not your fault. We will fix that asap."
                     }
                 }
             }

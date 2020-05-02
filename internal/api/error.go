@@ -9,7 +9,7 @@ import (
 )
 
 // Error function modifies the http.Error function
-func Error(w http.ResponseWriter, message string, code int, err error) {
+func Error(w http.ResponseWriter, hint string, code int, err error) {
 	configs.ServerSetDefaultHeaders(w)
 
 	if err != nil {
@@ -18,7 +18,15 @@ func Error(w http.ResponseWriter, message string, code int, err error) {
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(code)
-	fmt.Fprintln(w, fmt.Sprintf("{\"message\":\"%s\"}", message))
+
+	// don't use json formatting to omit additional errors
+	switch code {
+	case 500:
+		fmt.Fprintln(w, fmt.Sprintf("{\"hint\":\"%s\"}", configs.APIDefaultServerError500Hint))
+	default:
+		fmt.Fprintln(w, fmt.Sprintf("{\"hint\":\"%s\"}", hint))
+	}
+
 }
 
 // TODO: handle Server Errors

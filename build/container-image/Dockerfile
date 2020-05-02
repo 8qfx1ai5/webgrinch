@@ -19,7 +19,7 @@ RUN go mod download
 COPY . ${WORKDIR}
 RUN cd ${WORKDIR}; go install ./cmd/vcryptserver
 
-RUN make utest
+RUN make utestd
 
 
 # 2nd image is going to be our application image
