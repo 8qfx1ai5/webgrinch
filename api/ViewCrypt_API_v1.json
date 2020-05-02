@@ -28,12 +28,12 @@
                             }
                         }
                     },
-                    "406": {
+                    "400": {
                         "description": "Parameter invalid",
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/406"
+                                    "$ref": "#/components/schemas/400"
                                 }
                             }
                         }
@@ -55,7 +55,7 @@
                             "schema": {
                                 "type": "object",
                                 "required": [
-                                    "content"
+                                    "payload"
                                 ],
                                 "properties": {
                                     "payload": {
@@ -119,12 +119,12 @@
                             }
                         }
                     },
-                    "406": {
+                    "400": {
                         "description": "Parameter invalid",
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/406"
+                                    "$ref": "#/components/schemas/400"
                                 }
                             }
                         }
@@ -151,15 +151,21 @@
                                 "properties": {
                                     "payload": {
                                         "type": "string",
-                                        "description": "the text to encode"
+                                        "description": "the text to encode",
+                                        "example": "Hello World!\n\nNice to see you.",
+                                        "default": ""
                                     },
                                     "from": {
                                         "type": "string",
-                                        "description": "a set of all characters, which should be changed in content"
+                                        "description": "a set of all characters, which should be changed in content",
+                                        "example": "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789",
+                                        "default": "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
                                     },
                                     "to": {
                                         "type": "string",
-                                        "description": "a set of the resulting characters, in the same order like in the from property"
+                                        "description": "a set of the resulting characters, in the same order like in the from property",
+                                        "example": "BCDEFGHIJKLMNOPQRSTUVWXYZAbcdefghijklmnopqrstuvwxyza1234567890",
+                                        "default": "BCDEFGHIJKLMNOPQRSTUVWXYZAbcdefghijklmnopqrstuvwxyza"
                                     }
                                 }
                             },
@@ -197,12 +203,12 @@
                             }
                         }
                     },
-                    "406": {
+                    "400": {
                         "description": "Parameter invalid",
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/406"
+                                    "$ref": "#/components/schemas/400"
                                 }
                             }
                         }
@@ -283,7 +289,7 @@
                     }
                 }
             },
-            "406": {
+            "400": {
                 "type": "object",
                 "required": [
                     "pname",

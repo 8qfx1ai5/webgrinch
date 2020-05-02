@@ -29,5 +29,17 @@ func Error(w http.ResponseWriter, hint string, code int, err error) {
 
 }
 
-// TODO: handle Server Errors
-// TODO: handle Special Client errors like 404, 406
+// ParamError function modifies the http.Error function
+func ParamError(w http.ResponseWriter, pname string, hint string, err error) {
+	configs.ServerSetDefaultHeaders(w)
+
+	if err != nil {
+		log.Println(err)
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusBadRequest)
+
+	// don't use json formatting to omit additional errors
+	fmt.Fprintln(w, fmt.Sprintf("{\"pname\":\"%s\",\"hint\":\"%s\"}", pname, hint))
+}

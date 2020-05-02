@@ -20,11 +20,16 @@ func TextHandler(w http.ResponseWriter, r *http.Request) {
 	// handle post params
 	err := r.ParseForm()
 	if err != nil {
-		api.Error(w, "request params invalid", http.StatusNotAcceptable, err)
+		api.Error(w, "params could not be parsed", http.StatusInternalServerError, err)
 		return
 	}
 
-	content := r.Form.Get("content")
+	payload := r.Form.Get("payload")
+	if payload == "" {
+		api.ParamError(w, "payload", "payload is empty", nil)
+		return
+	}
+
 	keyFrom := r.Form.Get("from")
 	keyTo := r.Form.Get("to")
 
@@ -36,7 +41,7 @@ func TextHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// run encoding
-	encoded, err := encodetext.Run(content, keyFrom, keyTo)
+	encoded, err := encodetext.Run(payload, keyFrom, keyTo)
 	if err != nil {
 		api.Error(w, "encoding failed", http.StatusInternalServerError, err)
 		return
