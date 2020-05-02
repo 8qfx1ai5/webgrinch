@@ -6,9 +6,9 @@ This repository contains all required code to run an api server for the encoding
 
 ## How to use
 
-[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/0c3bbddf36204db54b25#?env%5Blocal%5D=W3sia2V5IjoiYmFzZVVybCIsInZhbHVlIjoiaHR0cDovL2xvY2FsaG9zdC9hcGkiLCJlbmFibGVkIjp0cnVlfV0=)
+<a href="https://app.getpostman.com/run-collection/0c3bbddf36204db54b25#?env%5Blocal%5D=W3sia2V5IjoiYmFzZVVybCIsInZhbHVlIjoiaHR0cDovL2xvY2FsaG9zdC9hcGkiLCJlbmFibGVkIjp0cnVlfV0=" target="_blank"><img src="https://run.pstmn.io/button.svg" height="30px" alt="Run in Postman" /></a>
 
-[![Run in Swagger-UI](https://static1.smartbear.co/swagger/media/assets/images/swagger_logo.svg)](http://localhost)
+<a href="http://localhost" target="_blank"><img src="https://static1.smartbear.co/swagger/media/assets/images/swagger_logo.svg" height="30px" alt="Run in Swagger-UI" /></a>
 
 ### Deploy in production
 
