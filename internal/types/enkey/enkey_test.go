@@ -11,7 +11,7 @@ import (
  */
 func TestKeyRegexConversion(t *testing.T) {
 
-	for _, currentTest := range keyregexdata.TestCasesKeyRegex {
+	for _, currentTest := range keyregexdata.TestCases {
 		func(tc keyregexdata.TestCase) {
 			t.Run(tc.Description, func(t *testing.T) {
 				observed, err := createSubsetsFromRegex(tc.Input)

@@ -43,7 +43,8 @@
                                         "type": "string",
                                         "description": "a css class added to the top level nodes",
                                         "example": "my-special-css-class-name",
-                                        "default": ""
+                                        "default": "",
+                                        "maxLength": 50
                                     },
                                     "from": {
                                         "type": "string",

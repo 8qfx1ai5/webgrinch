@@ -1,5 +1,7 @@
 package keyregexdata
 
+import "encoding/json"
+
 // Expected what the test cases expect
 type Expected struct {
 	Output  string
@@ -15,8 +17,10 @@ type TestCase struct {
 	Description string
 }
 
-// TestCasesKeyRegex a list of test cases for the conversion
-var TestCasesKeyRegex = []TestCase{
+type tests []TestCase
+
+// TestCases a list of test cases for the conversion
+var TestCases = tests{
 	{
 		"A-Z",
 		Expected{
@@ -129,4 +133,18 @@ var TestCasesKeyRegex = []TestCase{
 		},
 		"special characters without regex",
 	},
+}
+
+// FilePath defines where to export the testcases
+func (t tests) FilePath() string {
+	return "test/data/keyregexdata/export.json"
+}
+
+// FilePath defines where to export the testcases
+func (t tests) Export() (out string, err error) {
+	outByte, err := json.MarshalIndent(t, "", "  ")
+	if err != nil {
+		return
+	}
+	return string(outByte), nil
 }
