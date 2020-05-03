@@ -37,7 +37,6 @@
                                         "type": "string",
                                         "description": "the HTML fragment with text to encode",
                                         "example": "<h2>Hello World!</h2><p>Nice to see you.</p>",
-                                        "default": "",
                                         "minLength": 1
                                     },
                                     "css": {
