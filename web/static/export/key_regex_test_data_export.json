@@ -1,0 +1,114 @@
+[
+  {
+    "Input": "A-Z",
+    "Expected": {
+      "Output": "[[ABCDEFGHIJKLMNOPQRSTUVWXYZ]]",
+      "WantErr": false
+    },
+    "Description": "simple upper case letter range"
+  },
+  {
+    "Input": "[A-Z]",
+    "Expected": {
+      "Output": "[[ABCDEFGHIJKLMNOPQRSTUVWXYZ]]",
+      "WantErr": false
+    },
+    "Description": "simple upper case letter range with square brackets"
+  },
+  {
+    "Input": "a-z",
+    "Expected": {
+      "Output": "[[abcdefghijklmnopqrstuvwxyz]]",
+      "WantErr": false
+    },
+    "Description": "simple lower case letter range"
+  },
+  {
+    "Input": "b-f",
+    "Expected": {
+      "Output": "[[bcdef]]",
+      "WantErr": true
+    },
+    "Description": "partial lower case letter range"
+  },
+  {
+    "Input": "[a-z]",
+    "Expected": {
+      "Output": "[[abcdefghijklmnopqrstuvwxyz]]",
+      "WantErr": false
+    },
+    "Description": "simple lower case letter range with square brackets"
+  },
+  {
+    "Input": "0-9",
+    "Expected": {
+      "Output": "[[0123456789]]",
+      "WantErr": false
+    },
+    "Description": "simple digits range"
+  },
+  {
+    "Input": "5-8",
+    "Expected": {
+      "Output": "[[0123456789]]",
+      "WantErr": true
+    },
+    "Description": "partial digits range"
+  },
+  {
+    "Input": "[0-9]",
+    "Expected": {
+      "Output": "[[0123456789]]",
+      "WantErr": false
+    },
+    "Description": "simple digits range with square brackets"
+  },
+  {
+    "Input": "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789",
+    "Expected": {
+      "Output": "[[ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789]]",
+      "WantErr": false
+    },
+    "Description": "input without regex"
+  },
+  {
+    "Input": "[ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789]",
+    "Expected": {
+      "Output": "[[ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789]]",
+      "WantErr": false
+    },
+    "Description": "input without regex, with square brackets"
+  },
+  {
+    "Input": "[ABCD][abcd]",
+    "Expected": {
+      "Output": "[[ABCD][abcd]]",
+      "WantErr": false
+    },
+    "Description": "double square brackets without regex"
+  },
+  {
+    "Input": "[A-Z][a-z][0-9]",
+    "Expected": {
+      "Output": "[[ABCDEFGHIJKLMNOPQRSTUVWXYZ][abcdefghijklmnopqrstuvwxyz][0123456789]]",
+      "WantErr": false
+    },
+    "Description": "trible square brackets with regex"
+  },
+  {
+    "Input": "[0-5a-y][A-Dafg]",
+    "Expected": {
+      "Output": "[[012345abcdefghijklmnopqrstuvwxy][ABCDafg]]",
+      "WantErr": false
+    },
+    "Description": "complex example with partial regex, combined with no regex and double square brackets"
+  },
+  {
+    "Input": "[%\u0026/()=?]",
+    "Expected": {
+      "Output": "[[%\u0026/()=?]]",
+      "WantErr": false
+    },
+    "Description": "special characters without regex"
+  }
+]
