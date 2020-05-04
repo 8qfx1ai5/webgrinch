@@ -1,6 +1,9 @@
 package keyregexdata
 
-import "encoding/json"
+import (
+	"encoding/json"
+	"strings"
+)
 
 // Expected what the test cases expect
 type Expected struct {
@@ -136,12 +139,16 @@ var TestCases = tests{
 }
 
 // FilePath defines where to export the testcases
-func (t tests) FilePath() string {
-	return "test/data/keyregexdata/export.json"
+func (t tests) FileName() string {
+	return "key_regex_test_data_export.json"
 }
 
 // FilePath defines where to export the testcases
 func (t tests) Export() (out string, err error) {
+	for i := range t {
+		t[i].Expected.Output = strings.ReplaceAll(t[i].Expected.Output, "[", "")
+		t[i].Expected.Output = strings.ReplaceAll(t[i].Expected.Output, "]", "")
+	}
 	outByte, err := json.MarshalIndent(t, "", "  ")
 	if err != nil {
 		return

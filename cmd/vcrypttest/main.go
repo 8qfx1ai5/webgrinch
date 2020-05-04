@@ -4,12 +4,15 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"path/filepath"
 
-	"github.com/8qfx1ai5/viewcrypt/internal/types/testcases"
+	e "github.com/8qfx1ai5/viewcrypt/internal/types/export"
 	"github.com/8qfx1ai5/viewcrypt/test/data/keyregexdata"
 )
 
-var testsuites []testcases.TestCases = []testcases.TestCases{
+var exportPath = filepath.Join("web", "static", "export")
+
+var testsuites []e.Export = []e.Export{
 	keyregexdata.TestCases,
 }
 
@@ -20,7 +23,7 @@ func main() {
 // function writes files
 func exportTestCasesToGit() {
 	for _, t := range testsuites {
-		f, err := os.Create(string(t.FilePath()))
+		f, err := os.Create(filepath.Join(exportPath, t.FileName()))
 		if err != nil {
 			log.Print(fmt.Errorf("file creation failed: %v", err))
 			continue

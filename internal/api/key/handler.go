@@ -36,7 +36,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		if !ok {
-			api.Error(w, "regex not supported", http.StatusBadRequest, nil)
+			api.ParamError(w, "regex", "regex not supported", nil)
 			return
 		}
 		api.Success(w, Response{From: newKey.GetFrom(), To: newKey.GetTo()})

@@ -27,8 +27,11 @@ FROM alpine:3.11 as app
 
 RUN apk add libxslt --no-cache
 
-RUN mkdir -p viewcrypt/static
+RUN mkdir -p viewcrypt
+COPY web viewcrypt
 COPY api/ViewCrypt_API_v1.json viewcrypt/static
+
+RUN chmod -R +x viewcrypt
 
 COPY --from=compile /go/bin/vcryptserver /vcryptserver
 RUN chmod +x /vcryptserver
