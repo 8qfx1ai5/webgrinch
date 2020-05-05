@@ -12,10 +12,20 @@ run:
 	docker run --restart=always -d -p "80:80" viewcrypt-alpha
 
 
+# run local api tests
+.PHONY: runtapid
+# call like: make runt url=http://api/api
+# docker run --rm --link api -t postman/newman run
+# docker run --rm --link api newman run /Contract_Tests.postman_collection.json --env-var baseUrl=http://api/api
+runtapid:
+	docker build -t newman -f ./build/container-image-newman/Dockerfile .
+	docker run --rm --link api newman run /Contract_Tests.postman_collection.json --env-var baseUrl=http://api/api
+
+
 # run container for dev local based on an image
 .PHONY: rundev
 rundev:
-	docker run --rm  -d -p "80:80" viewcrypt-alpha
+	docker run --rm  -d -p "80:80" --name api viewcrypt-alpha
 
 
 # run service on local docker env for development
@@ -48,7 +58,6 @@ itestd:
 itest:
 	@echo "RUN go integration tests..."
 	@go test -v -count=1 ./test/... | sed ''/PASS/s//`printf "\033[32mPASS\033[0m"`/'' | sed ''/ok/s//`printf "\033[32mok\033[0m"`/'' | sed ''/FAIL/s//`printf "\033[31mFAIL\033[0m"`/'' | sed ''/?/s//`printf "\033[33m?\033[0m"`/''
-
 
 
 # run go benchmark tests
@@ -84,6 +93,7 @@ access:
  # call like: make deploy dir=$(pwd) ip=64.225.104.7
  deploy: prep-do 
 	ssh root@$(ip) "cd /viewcrypt; make build run"
+
 
 # prepare droplet on digital ocean from remote
  .PHONY: prep-do

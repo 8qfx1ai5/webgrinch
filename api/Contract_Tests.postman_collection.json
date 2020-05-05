@@ -1,0 +1,2656 @@
+{
+	"info": {
+		"_postman_id": "e4330b54-8be1-4671-8735-da5bf69b4b18",
+		"name": "Contract Tests",
+		"description": "An API to simply run the smart viewcrypt encoding algorithm on any kind of digital content.\n\nContact Support:\n Name: Felix Ohnesorge\n Email: viewcrypt@8qfx1ai5.de",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "encode",
+			"item": [
+				{
+					"name": "html",
+					"item": [
+						{
+							"name": "check request properties",
+							"item": [
+								{
+									"name": "payload min length",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "fea01d84-e3de-442b-89ce-f99b4778d4eb",
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {",
+													"    pm.response.to.have.status(200);",
+													"});",
+													"",
+													"pm.test(\"check response body\", function () {",
+													"    var jsonData = pm.response.json();",
+													"    pm.expect(jsonData).to.have.property('payload').that.is.an('string');",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/x-www-form-urlencoded"
+											}
+										],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "payload",
+													"value": "a",
+													"description": "the HTML fragment with text to encode"
+												},
+												{
+													"key": "css",
+													"value": "",
+													"description": "a css class added to the top level nodes"
+												},
+												{
+													"key": "from",
+													"value": "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz",
+													"description": "a set of all characters, which should be changed in content"
+												},
+												{
+													"key": "to",
+													"value": "BCDEFGHIJKLMNOPQRSTUVWXYZAbcdefghijklmnopqrstuvwxyza",
+													"description": "a set of the resulting characters, in the same order like in the from property"
+												}
+											],
+											"options": {
+												"urlencoded": {}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/{{endpoint}}",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"{{endpoint}}"
+											]
+										},
+										"description": "Post HTML text like multiple 'p', 'div', 'section' tags or plain text. The fraction will be encoded. This encoding is maybe dirty, because of the content must be 'repaired' in the first step to be processable. If you get unexpected output, try XHTML fractions instead."
+									},
+									"response": [
+										{
+											"name": "HTML encoding was sucessfull and the results are returned.",
+											"originalRequest": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "urlencoded",
+													"urlencoded": [
+														{
+															"key": "content",
+															"value": "<p>fldsjdjf</p>",
+															"description": {
+																"content": "",
+																"type": "text/plain"
+															}
+														},
+														{
+															"key": "css",
+															"value": "vc",
+															"description": {
+																"content": "a css class added to the top level nodes",
+																"type": "text/plain"
+															}
+														},
+														{
+															"key": "from",
+															"value": "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz",
+															"description": {
+																"content": "a set of all characters, which should be changed in content",
+																"type": "text/plain"
+															}
+														},
+														{
+															"key": "to",
+															"value": "aFMkZVwKEWsjUQdgYfuIpNGSDnyxPehiLTRbCoqvXmAzBcrltHJO",
+															"description": {
+																"content": "a set of the resulting characters, in the same order like in the from property",
+																"type": "text/plain"
+															}
+														}
+													]
+												},
+												"url": {
+													"raw": "{{baseUrl}}/encode/html",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"encode",
+														"html"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"payload\": \"That is an Example.\"\n}"
+										},
+										{
+											"name": "Unexpected error, nobody knows what was happening yet.",
+											"originalRequest": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "urlencoded",
+													"urlencoded": [
+														{
+															"key": "content",
+															"value": "<p>fldsjdjf</p>",
+															"description": {
+																"content": "",
+																"type": "text/plain"
+															}
+														},
+														{
+															"key": "css",
+															"value": "vc",
+															"description": {
+																"content": "a css class added to the top level nodes",
+																"type": "text/plain"
+															}
+														},
+														{
+															"key": "from",
+															"value": "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz",
+															"description": {
+																"content": "a set of all characters, which should be changed in content",
+																"type": "text/plain"
+															}
+														},
+														{
+															"key": "to",
+															"value": "aFMkZVwKEWsjUQdgYfuIpNGSDnyxPehiLTRbCoqvXmAzBcrltHJO",
+															"description": {
+																"content": "a set of the resulting characters, in the same order like in the from property",
+																"type": "text/plain"
+															}
+														}
+													]
+												},
+												"url": {
+													"raw": "{{baseUrl}}/encode/html",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"encode",
+														"html"
+													]
+												}
+											},
+											"status": "Internal Server Error",
+											"code": 500,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"hint\": \"Upps... We can do better than 500\"\n}"
+										},
+										{
+											"name": "Encoding aborded, because of invalid request information.",
+											"originalRequest": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "urlencoded",
+													"urlencoded": [
+														{
+															"key": "content",
+															"value": "<p>fldsjdjf</p>",
+															"description": {
+																"content": "",
+																"type": "text/plain"
+															}
+														},
+														{
+															"key": "css",
+															"value": "vc",
+															"description": {
+																"content": "a css class added to the top level nodes",
+																"type": "text/plain"
+															}
+														},
+														{
+															"key": "from",
+															"value": "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz",
+															"description": {
+																"content": "a set of all characters, which should be changed in content",
+																"type": "text/plain"
+															}
+														},
+														{
+															"key": "to",
+															"value": "aFMkZVwKEWsjUQdgYfuIpNGSDnyxPehiLTRbCoqvXmAzBcrltHJO",
+															"description": {
+																"content": "a set of the resulting characters, in the same order like in the from property",
+																"type": "text/plain"
+															}
+														}
+													]
+												},
+												"url": {
+													"raw": "{{baseUrl}}/encode/html",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"encode",
+														"html"
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"pname\": \"regex\",\n \"hint\": \"do not use values bigger than x\"\n}"
+										}
+									]
+								},
+								{
+									"name": "css max length",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "46f9fa2b-7e1d-48a1-8e0a-e099b81c3e36",
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {",
+													"    pm.response.to.have.status(200);",
+													"});",
+													"",
+													"pm.test(\"check response body\", function () {",
+													"    var jsonData = pm.response.json();",
+													"    pm.expect(jsonData).to.have.property('payload').that.is.an('string');",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/x-www-form-urlencoded"
+											}
+										],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "payload",
+													"value": "asdf",
+													"description": "the HTML fragment with text to encode"
+												},
+												{
+													"key": "css",
+													"value": "01234567890123456789012345678901234567890123456789",
+													"description": "a css class added to the top level nodes"
+												},
+												{
+													"key": "from",
+													"value": "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz",
+													"description": "a set of all characters, which should be changed in content"
+												},
+												{
+													"key": "to",
+													"value": "BCDEFGHIJKLMNOPQRSTUVWXYZAbcdefghijklmnopqrstuvwxyza",
+													"description": "a set of the resulting characters, in the same order like in the from property"
+												}
+											],
+											"options": {
+												"urlencoded": {}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/{{endpoint}}",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"{{endpoint}}"
+											]
+										},
+										"description": "Post HTML text like multiple 'p', 'div', 'section' tags or plain text. The fraction will be encoded. This encoding is maybe dirty, because of the content must be 'repaired' in the first step to be processable. If you get unexpected output, try XHTML fractions instead."
+									},
+									"response": [
+										{
+											"name": "Encoding aborded, because of invalid request information.",
+											"originalRequest": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "urlencoded",
+													"urlencoded": [
+														{
+															"key": "content",
+															"value": "<p>fldsjdjf</p>",
+															"description": {
+																"content": "",
+																"type": "text/plain"
+															}
+														},
+														{
+															"key": "css",
+															"value": "vc",
+															"description": {
+																"content": "a css class added to the top level nodes",
+																"type": "text/plain"
+															}
+														},
+														{
+															"key": "from",
+															"value": "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz",
+															"description": {
+																"content": "a set of all characters, which should be changed in content",
+																"type": "text/plain"
+															}
+														},
+														{
+															"key": "to",
+															"value": "aFMkZVwKEWsjUQdgYfuIpNGSDnyxPehiLTRbCoqvXmAzBcrltHJO",
+															"description": {
+																"content": "a set of the resulting characters, in the same order like in the from property",
+																"type": "text/plain"
+															}
+														}
+													]
+												},
+												"url": {
+													"raw": "{{baseUrl}}/encode/html",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"encode",
+														"html"
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"pname\": \"regex\",\n \"hint\": \"do not use values bigger than x\"\n}"
+										},
+										{
+											"name": "Unexpected error, nobody knows what was happening yet.",
+											"originalRequest": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "urlencoded",
+													"urlencoded": [
+														{
+															"key": "content",
+															"value": "<p>fldsjdjf</p>",
+															"description": {
+																"content": "",
+																"type": "text/plain"
+															}
+														},
+														{
+															"key": "css",
+															"value": "vc",
+															"description": {
+																"content": "a css class added to the top level nodes",
+																"type": "text/plain"
+															}
+														},
+														{
+															"key": "from",
+															"value": "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz",
+															"description": {
+																"content": "a set of all characters, which should be changed in content",
+																"type": "text/plain"
+															}
+														},
+														{
+															"key": "to",
+															"value": "aFMkZVwKEWsjUQdgYfuIpNGSDnyxPehiLTRbCoqvXmAzBcrltHJO",
+															"description": {
+																"content": "a set of the resulting characters, in the same order like in the from property",
+																"type": "text/plain"
+															}
+														}
+													]
+												},
+												"url": {
+													"raw": "{{baseUrl}}/encode/html",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"encode",
+														"html"
+													]
+												}
+											},
+											"status": "Internal Server Error",
+											"code": 500,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"hint\": \"Upps... We can do better than 500\"\n}"
+										},
+										{
+											"name": "HTML encoding was sucessfull and the results are returned.",
+											"originalRequest": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "urlencoded",
+													"urlencoded": [
+														{
+															"key": "content",
+															"value": "<p>fldsjdjf</p>",
+															"description": {
+																"content": "",
+																"type": "text/plain"
+															}
+														},
+														{
+															"key": "css",
+															"value": "vc",
+															"description": {
+																"content": "a css class added to the top level nodes",
+																"type": "text/plain"
+															}
+														},
+														{
+															"key": "from",
+															"value": "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz",
+															"description": {
+																"content": "a set of all characters, which should be changed in content",
+																"type": "text/plain"
+															}
+														},
+														{
+															"key": "to",
+															"value": "aFMkZVwKEWsjUQdgYfuIpNGSDnyxPehiLTRbCoqvXmAzBcrltHJO",
+															"description": {
+																"content": "a set of the resulting characters, in the same order like in the from property",
+																"type": "text/plain"
+															}
+														}
+													]
+												},
+												"url": {
+													"raw": "{{baseUrl}}/encode/html",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"encode",
+														"html"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"payload\": \"That is an Example.\"\n}"
+										}
+									]
+								},
+								{
+									"name": "css min length",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "974e3254-96d0-42c0-b776-1cc378cbe5bd",
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {",
+													"    pm.response.to.have.status(200);",
+													"});",
+													"",
+													"pm.test(\"check response body\", function () {",
+													"    var jsonData = pm.response.json();",
+													"    pm.expect(jsonData).to.have.property('payload').that.is.an('string');",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/x-www-form-urlencoded"
+											}
+										],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "payload",
+													"value": "asdf",
+													"description": "the HTML fragment with text to encode"
+												},
+												{
+													"key": "css",
+													"value": "",
+													"description": "a css class added to the top level nodes"
+												},
+												{
+													"key": "from",
+													"value": "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz",
+													"description": "a set of all characters, which should be changed in content"
+												},
+												{
+													"key": "to",
+													"value": "BCDEFGHIJKLMNOPQRSTUVWXYZAbcdefghijklmnopqrstuvwxyza",
+													"description": "a set of the resulting characters, in the same order like in the from property"
+												}
+											],
+											"options": {
+												"urlencoded": {}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/{{endpoint}}",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"{{endpoint}}"
+											]
+										},
+										"description": "Post HTML text like multiple 'p', 'div', 'section' tags or plain text. The fraction will be encoded. This encoding is maybe dirty, because of the content must be 'repaired' in the first step to be processable. If you get unexpected output, try XHTML fractions instead."
+									},
+									"response": [
+										{
+											"name": "HTML encoding was sucessfull and the results are returned.",
+											"originalRequest": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "urlencoded",
+													"urlencoded": [
+														{
+															"key": "content",
+															"value": "<p>fldsjdjf</p>",
+															"description": {
+																"content": "",
+																"type": "text/plain"
+															}
+														},
+														{
+															"key": "css",
+															"value": "vc",
+															"description": {
+																"content": "a css class added to the top level nodes",
+																"type": "text/plain"
+															}
+														},
+														{
+															"key": "from",
+															"value": "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz",
+															"description": {
+																"content": "a set of all characters, which should be changed in content",
+																"type": "text/plain"
+															}
+														},
+														{
+															"key": "to",
+															"value": "aFMkZVwKEWsjUQdgYfuIpNGSDnyxPehiLTRbCoqvXmAzBcrltHJO",
+															"description": {
+																"content": "a set of the resulting characters, in the same order like in the from property",
+																"type": "text/plain"
+															}
+														}
+													]
+												},
+												"url": {
+													"raw": "{{baseUrl}}/encode/html",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"encode",
+														"html"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"payload\": \"That is an Example.\"\n}"
+										},
+										{
+											"name": "Unexpected error, nobody knows what was happening yet.",
+											"originalRequest": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "urlencoded",
+													"urlencoded": [
+														{
+															"key": "content",
+															"value": "<p>fldsjdjf</p>",
+															"description": {
+																"content": "",
+																"type": "text/plain"
+															}
+														},
+														{
+															"key": "css",
+															"value": "vc",
+															"description": {
+																"content": "a css class added to the top level nodes",
+																"type": "text/plain"
+															}
+														},
+														{
+															"key": "from",
+															"value": "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz",
+															"description": {
+																"content": "a set of all characters, which should be changed in content",
+																"type": "text/plain"
+															}
+														},
+														{
+															"key": "to",
+															"value": "aFMkZVwKEWsjUQdgYfuIpNGSDnyxPehiLTRbCoqvXmAzBcrltHJO",
+															"description": {
+																"content": "a set of the resulting characters, in the same order like in the from property",
+																"type": "text/plain"
+															}
+														}
+													]
+												},
+												"url": {
+													"raw": "{{baseUrl}}/encode/html",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"encode",
+														"html"
+													]
+												}
+											},
+											"status": "Internal Server Error",
+											"code": 500,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"hint\": \"Upps... We can do better than 500\"\n}"
+										},
+										{
+											"name": "Encoding aborded, because of invalid request information.",
+											"originalRequest": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "urlencoded",
+													"urlencoded": [
+														{
+															"key": "content",
+															"value": "<p>fldsjdjf</p>",
+															"description": {
+																"content": "",
+																"type": "text/plain"
+															}
+														},
+														{
+															"key": "css",
+															"value": "vc",
+															"description": {
+																"content": "a css class added to the top level nodes",
+																"type": "text/plain"
+															}
+														},
+														{
+															"key": "from",
+															"value": "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz",
+															"description": {
+																"content": "a set of all characters, which should be changed in content",
+																"type": "text/plain"
+															}
+														},
+														{
+															"key": "to",
+															"value": "aFMkZVwKEWsjUQdgYfuIpNGSDnyxPehiLTRbCoqvXmAzBcrltHJO",
+															"description": {
+																"content": "a set of the resulting characters, in the same order like in the from property",
+																"type": "text/plain"
+															}
+														}
+													]
+												},
+												"url": {
+													"raw": "{{baseUrl}}/encode/html",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"encode",
+														"html"
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"pname\": \"regex\",\n \"hint\": \"do not use values bigger than x\"\n}"
+										}
+									]
+								},
+								{
+									"name": "from min length",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "22c99d69-54ac-4278-9235-e7c04efc4315",
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {",
+													"    pm.response.to.have.status(200);",
+													"});",
+													"",
+													"pm.test(\"check response body\", function () {",
+													"    var jsonData = pm.response.json();",
+													"    pm.expect(jsonData).to.have.property('payload').that.is.an('string');",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/x-www-form-urlencoded"
+											}
+										],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "payload",
+													"value": "asdf",
+													"description": "the HTML fragment with text to encode"
+												},
+												{
+													"key": "css",
+													"value": "01234567890123456789012345678901234567890123456789",
+													"description": "a css class added to the top level nodes"
+												},
+												{
+													"key": "from",
+													"value": "",
+													"description": "a set of all characters, which should be changed in content"
+												},
+												{
+													"key": "to",
+													"value": "BCDEFGHIJKLMNOPQRSTUVWXYZAbcdefghijklmnopqrstuvwxyza",
+													"description": "a set of the resulting characters, in the same order like in the from property"
+												}
+											],
+											"options": {
+												"urlencoded": {}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/{{endpoint}}",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"{{endpoint}}"
+											]
+										},
+										"description": "Post HTML text like multiple 'p', 'div', 'section' tags or plain text. The fraction will be encoded. This encoding is maybe dirty, because of the content must be 'repaired' in the first step to be processable. If you get unexpected output, try XHTML fractions instead."
+									},
+									"response": [
+										{
+											"name": "Encoding aborded, because of invalid request information.",
+											"originalRequest": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "urlencoded",
+													"urlencoded": [
+														{
+															"key": "content",
+															"value": "<p>fldsjdjf</p>",
+															"description": {
+																"content": "",
+																"type": "text/plain"
+															}
+														},
+														{
+															"key": "css",
+															"value": "vc",
+															"description": {
+																"content": "a css class added to the top level nodes",
+																"type": "text/plain"
+															}
+														},
+														{
+															"key": "from",
+															"value": "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz",
+															"description": {
+																"content": "a set of all characters, which should be changed in content",
+																"type": "text/plain"
+															}
+														},
+														{
+															"key": "to",
+															"value": "aFMkZVwKEWsjUQdgYfuIpNGSDnyxPehiLTRbCoqvXmAzBcrltHJO",
+															"description": {
+																"content": "a set of the resulting characters, in the same order like in the from property",
+																"type": "text/plain"
+															}
+														}
+													]
+												},
+												"url": {
+													"raw": "{{baseUrl}}/encode/html",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"encode",
+														"html"
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"pname\": \"regex\",\n \"hint\": \"do not use values bigger than x\"\n}"
+										},
+										{
+											"name": "HTML encoding was sucessfull and the results are returned.",
+											"originalRequest": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "urlencoded",
+													"urlencoded": [
+														{
+															"key": "content",
+															"value": "<p>fldsjdjf</p>",
+															"description": {
+																"content": "",
+																"type": "text/plain"
+															}
+														},
+														{
+															"key": "css",
+															"value": "vc",
+															"description": {
+																"content": "a css class added to the top level nodes",
+																"type": "text/plain"
+															}
+														},
+														{
+															"key": "from",
+															"value": "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz",
+															"description": {
+																"content": "a set of all characters, which should be changed in content",
+																"type": "text/plain"
+															}
+														},
+														{
+															"key": "to",
+															"value": "aFMkZVwKEWsjUQdgYfuIpNGSDnyxPehiLTRbCoqvXmAzBcrltHJO",
+															"description": {
+																"content": "a set of the resulting characters, in the same order like in the from property",
+																"type": "text/plain"
+															}
+														}
+													]
+												},
+												"url": {
+													"raw": "{{baseUrl}}/encode/html",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"encode",
+														"html"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"payload\": \"That is an Example.\"\n}"
+										},
+										{
+											"name": "Unexpected error, nobody knows what was happening yet.",
+											"originalRequest": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "urlencoded",
+													"urlencoded": [
+														{
+															"key": "content",
+															"value": "<p>fldsjdjf</p>",
+															"description": {
+																"content": "",
+																"type": "text/plain"
+															}
+														},
+														{
+															"key": "css",
+															"value": "vc",
+															"description": {
+																"content": "a css class added to the top level nodes",
+																"type": "text/plain"
+															}
+														},
+														{
+															"key": "from",
+															"value": "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz",
+															"description": {
+																"content": "a set of all characters, which should be changed in content",
+																"type": "text/plain"
+															}
+														},
+														{
+															"key": "to",
+															"value": "aFMkZVwKEWsjUQdgYfuIpNGSDnyxPehiLTRbCoqvXmAzBcrltHJO",
+															"description": {
+																"content": "a set of the resulting characters, in the same order like in the from property",
+																"type": "text/plain"
+															}
+														}
+													]
+												},
+												"url": {
+													"raw": "{{baseUrl}}/encode/html",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"encode",
+														"html"
+													]
+												}
+											},
+											"status": "Internal Server Error",
+											"code": 500,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"hint\": \"Upps... We can do better than 500\"\n}"
+										}
+									]
+								},
+								{
+									"name": "to min length",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "193017be-032e-48fb-b978-68f492115192",
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {",
+													"    pm.response.to.have.status(200);",
+													"});",
+													"",
+													"pm.test(\"check response body\", function () {",
+													"    var jsonData = pm.response.json();",
+													"    pm.expect(jsonData).to.have.property('payload').that.is.an('string');",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/x-www-form-urlencoded"
+											}
+										],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "payload",
+													"value": "asdf",
+													"description": "the HTML fragment with text to encode"
+												},
+												{
+													"key": "css",
+													"value": "01234567890123456789012345678901234567890123456789",
+													"description": "a css class added to the top level nodes"
+												},
+												{
+													"key": "from",
+													"value": "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz",
+													"description": "a set of all characters, which should be changed in content"
+												},
+												{
+													"key": "to",
+													"value": "",
+													"description": "a set of the resulting characters, in the same order like in the from property"
+												}
+											],
+											"options": {
+												"urlencoded": {}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/{{endpoint}}",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"{{endpoint}}"
+											]
+										},
+										"description": "Post HTML text like multiple 'p', 'div', 'section' tags or plain text. The fraction will be encoded. This encoding is maybe dirty, because of the content must be 'repaired' in the first step to be processable. If you get unexpected output, try XHTML fractions instead."
+									},
+									"response": [
+										{
+											"name": "HTML encoding was sucessfull and the results are returned.",
+											"originalRequest": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "urlencoded",
+													"urlencoded": [
+														{
+															"key": "content",
+															"value": "<p>fldsjdjf</p>",
+															"description": {
+																"content": "",
+																"type": "text/plain"
+															}
+														},
+														{
+															"key": "css",
+															"value": "vc",
+															"description": {
+																"content": "a css class added to the top level nodes",
+																"type": "text/plain"
+															}
+														},
+														{
+															"key": "from",
+															"value": "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz",
+															"description": {
+																"content": "a set of all characters, which should be changed in content",
+																"type": "text/plain"
+															}
+														},
+														{
+															"key": "to",
+															"value": "aFMkZVwKEWsjUQdgYfuIpNGSDnyxPehiLTRbCoqvXmAzBcrltHJO",
+															"description": {
+																"content": "a set of the resulting characters, in the same order like in the from property",
+																"type": "text/plain"
+															}
+														}
+													]
+												},
+												"url": {
+													"raw": "{{baseUrl}}/encode/html",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"encode",
+														"html"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"payload\": \"That is an Example.\"\n}"
+										},
+										{
+											"name": "Encoding aborded, because of invalid request information.",
+											"originalRequest": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "urlencoded",
+													"urlencoded": [
+														{
+															"key": "content",
+															"value": "<p>fldsjdjf</p>",
+															"description": {
+																"content": "",
+																"type": "text/plain"
+															}
+														},
+														{
+															"key": "css",
+															"value": "vc",
+															"description": {
+																"content": "a css class added to the top level nodes",
+																"type": "text/plain"
+															}
+														},
+														{
+															"key": "from",
+															"value": "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz",
+															"description": {
+																"content": "a set of all characters, which should be changed in content",
+																"type": "text/plain"
+															}
+														},
+														{
+															"key": "to",
+															"value": "aFMkZVwKEWsjUQdgYfuIpNGSDnyxPehiLTRbCoqvXmAzBcrltHJO",
+															"description": {
+																"content": "a set of the resulting characters, in the same order like in the from property",
+																"type": "text/plain"
+															}
+														}
+													]
+												},
+												"url": {
+													"raw": "{{baseUrl}}/encode/html",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"encode",
+														"html"
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"pname\": \"regex\",\n \"hint\": \"do not use values bigger than x\"\n}"
+										},
+										{
+											"name": "Unexpected error, nobody knows what was happening yet.",
+											"originalRequest": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "urlencoded",
+													"urlencoded": [
+														{
+															"key": "content",
+															"value": "<p>fldsjdjf</p>",
+															"description": {
+																"content": "",
+																"type": "text/plain"
+															}
+														},
+														{
+															"key": "css",
+															"value": "vc",
+															"description": {
+																"content": "a css class added to the top level nodes",
+																"type": "text/plain"
+															}
+														},
+														{
+															"key": "from",
+															"value": "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz",
+															"description": {
+																"content": "a set of all characters, which should be changed in content",
+																"type": "text/plain"
+															}
+														},
+														{
+															"key": "to",
+															"value": "aFMkZVwKEWsjUQdgYfuIpNGSDnyxPehiLTRbCoqvXmAzBcrltHJO",
+															"description": {
+																"content": "a set of the resulting characters, in the same order like in the from property",
+																"type": "text/plain"
+															}
+														}
+													]
+												},
+												"url": {
+													"raw": "{{baseUrl}}/encode/html",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"encode",
+														"html"
+													]
+												}
+											},
+											"status": "Internal Server Error",
+											"code": 500,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"hint\": \"Upps... We can do better than 500\"\n}"
+										}
+									]
+								}
+							],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "2b23685d-4a5c-4ee5-a1b2-05b302d5356e",
+								"type": "text/javascript",
+								"exec": [
+									"pm.variables.set(\"endpoint\", \"encode/html\");"
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "02f8e1d1-d3ae-463b-84a0-0a230dbe0d22",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "text",
+					"item": [
+						{
+							"name": "check request properties",
+							"item": [
+								{
+									"name": "payload min length",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "d1b290cc-6558-4830-940e-679a703723ab",
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {",
+													"    pm.response.to.have.status(200);",
+													"});",
+													"",
+													"pm.test(\"check response body\", function () {",
+													"    var jsonData = pm.response.json();",
+													"    pm.expect(jsonData).to.have.property('payload').that.is.an('string');",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/x-www-form-urlencoded"
+											}
+										],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "payload",
+													"value": "a",
+													"description": "the HTML fragment with text to encode"
+												},
+												{
+													"key": "css",
+													"value": "",
+													"description": "a css class added to the top level nodes"
+												},
+												{
+													"key": "from",
+													"value": "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz",
+													"description": "a set of all characters, which should be changed in content"
+												},
+												{
+													"key": "to",
+													"value": "BCDEFGHIJKLMNOPQRSTUVWXYZAbcdefghijklmnopqrstuvwxyza",
+													"description": "a set of the resulting characters, in the same order like in the from property"
+												}
+											],
+											"options": {
+												"urlencoded": {}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/{{endpoint}}",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"{{endpoint}}"
+											]
+										},
+										"description": "Post HTML text like multiple 'p', 'div', 'section' tags or plain text. The fraction will be encoded. This encoding is maybe dirty, because of the content must be 'repaired' in the first step to be processable. If you get unexpected output, try XHTML fractions instead."
+									},
+									"response": [
+										{
+											"name": "HTML encoding was sucessfull and the results are returned.",
+											"originalRequest": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "urlencoded",
+													"urlencoded": [
+														{
+															"key": "content",
+															"value": "<p>fldsjdjf</p>",
+															"description": {
+																"content": "",
+																"type": "text/plain"
+															}
+														},
+														{
+															"key": "css",
+															"value": "vc",
+															"description": {
+																"content": "a css class added to the top level nodes",
+																"type": "text/plain"
+															}
+														},
+														{
+															"key": "from",
+															"value": "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz",
+															"description": {
+																"content": "a set of all characters, which should be changed in content",
+																"type": "text/plain"
+															}
+														},
+														{
+															"key": "to",
+															"value": "aFMkZVwKEWsjUQdgYfuIpNGSDnyxPehiLTRbCoqvXmAzBcrltHJO",
+															"description": {
+																"content": "a set of the resulting characters, in the same order like in the from property",
+																"type": "text/plain"
+															}
+														}
+													]
+												},
+												"url": {
+													"raw": "{{baseUrl}}/encode/html",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"encode",
+														"html"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"payload\": \"That is an Example.\"\n}"
+										},
+										{
+											"name": "Unexpected error, nobody knows what was happening yet.",
+											"originalRequest": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "urlencoded",
+													"urlencoded": [
+														{
+															"key": "content",
+															"value": "<p>fldsjdjf</p>",
+															"description": {
+																"content": "",
+																"type": "text/plain"
+															}
+														},
+														{
+															"key": "css",
+															"value": "vc",
+															"description": {
+																"content": "a css class added to the top level nodes",
+																"type": "text/plain"
+															}
+														},
+														{
+															"key": "from",
+															"value": "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz",
+															"description": {
+																"content": "a set of all characters, which should be changed in content",
+																"type": "text/plain"
+															}
+														},
+														{
+															"key": "to",
+															"value": "aFMkZVwKEWsjUQdgYfuIpNGSDnyxPehiLTRbCoqvXmAzBcrltHJO",
+															"description": {
+																"content": "a set of the resulting characters, in the same order like in the from property",
+																"type": "text/plain"
+															}
+														}
+													]
+												},
+												"url": {
+													"raw": "{{baseUrl}}/encode/html",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"encode",
+														"html"
+													]
+												}
+											},
+											"status": "Internal Server Error",
+											"code": 500,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"hint\": \"Upps... We can do better than 500\"\n}"
+										},
+										{
+											"name": "Encoding aborded, because of invalid request information.",
+											"originalRequest": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "urlencoded",
+													"urlencoded": [
+														{
+															"key": "content",
+															"value": "<p>fldsjdjf</p>",
+															"description": {
+																"content": "",
+																"type": "text/plain"
+															}
+														},
+														{
+															"key": "css",
+															"value": "vc",
+															"description": {
+																"content": "a css class added to the top level nodes",
+																"type": "text/plain"
+															}
+														},
+														{
+															"key": "from",
+															"value": "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz",
+															"description": {
+																"content": "a set of all characters, which should be changed in content",
+																"type": "text/plain"
+															}
+														},
+														{
+															"key": "to",
+															"value": "aFMkZVwKEWsjUQdgYfuIpNGSDnyxPehiLTRbCoqvXmAzBcrltHJO",
+															"description": {
+																"content": "a set of the resulting characters, in the same order like in the from property",
+																"type": "text/plain"
+															}
+														}
+													]
+												},
+												"url": {
+													"raw": "{{baseUrl}}/encode/html",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"encode",
+														"html"
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"pname\": \"regex\",\n \"hint\": \"do not use values bigger than x\"\n}"
+										}
+									]
+								},
+								{
+									"name": "from min length",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "467bbe92-e72a-4560-81d9-8d844acf6212",
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {",
+													"    pm.response.to.have.status(200);",
+													"});",
+													"",
+													"pm.test(\"check response body\", function () {",
+													"    var jsonData = pm.response.json();",
+													"    pm.expect(jsonData).to.have.property('payload').that.is.an('string');",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/x-www-form-urlencoded"
+											}
+										],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "payload",
+													"value": "asdf",
+													"description": "the HTML fragment with text to encode"
+												},
+												{
+													"key": "css",
+													"value": "01234567890123456789012345678901234567890123456789",
+													"description": "a css class added to the top level nodes"
+												},
+												{
+													"key": "from",
+													"value": "",
+													"description": "a set of all characters, which should be changed in content"
+												},
+												{
+													"key": "to",
+													"value": "BCDEFGHIJKLMNOPQRSTUVWXYZAbcdefghijklmnopqrstuvwxyza",
+													"description": "a set of the resulting characters, in the same order like in the from property"
+												}
+											],
+											"options": {
+												"urlencoded": {}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/{{endpoint}}",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"{{endpoint}}"
+											]
+										},
+										"description": "Post HTML text like multiple 'p', 'div', 'section' tags or plain text. The fraction will be encoded. This encoding is maybe dirty, because of the content must be 'repaired' in the first step to be processable. If you get unexpected output, try XHTML fractions instead."
+									},
+									"response": [
+										{
+											"name": "Unexpected error, nobody knows what was happening yet.",
+											"originalRequest": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "urlencoded",
+													"urlencoded": [
+														{
+															"key": "content",
+															"value": "<p>fldsjdjf</p>",
+															"description": {
+																"content": "",
+																"type": "text/plain"
+															}
+														},
+														{
+															"key": "css",
+															"value": "vc",
+															"description": {
+																"content": "a css class added to the top level nodes",
+																"type": "text/plain"
+															}
+														},
+														{
+															"key": "from",
+															"value": "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz",
+															"description": {
+																"content": "a set of all characters, which should be changed in content",
+																"type": "text/plain"
+															}
+														},
+														{
+															"key": "to",
+															"value": "aFMkZVwKEWsjUQdgYfuIpNGSDnyxPehiLTRbCoqvXmAzBcrltHJO",
+															"description": {
+																"content": "a set of the resulting characters, in the same order like in the from property",
+																"type": "text/plain"
+															}
+														}
+													]
+												},
+												"url": {
+													"raw": "{{baseUrl}}/encode/html",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"encode",
+														"html"
+													]
+												}
+											},
+											"status": "Internal Server Error",
+											"code": 500,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"hint\": \"Upps... We can do better than 500\"\n}"
+										},
+										{
+											"name": "Encoding aborded, because of invalid request information.",
+											"originalRequest": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "urlencoded",
+													"urlencoded": [
+														{
+															"key": "content",
+															"value": "<p>fldsjdjf</p>",
+															"description": {
+																"content": "",
+																"type": "text/plain"
+															}
+														},
+														{
+															"key": "css",
+															"value": "vc",
+															"description": {
+																"content": "a css class added to the top level nodes",
+																"type": "text/plain"
+															}
+														},
+														{
+															"key": "from",
+															"value": "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz",
+															"description": {
+																"content": "a set of all characters, which should be changed in content",
+																"type": "text/plain"
+															}
+														},
+														{
+															"key": "to",
+															"value": "aFMkZVwKEWsjUQdgYfuIpNGSDnyxPehiLTRbCoqvXmAzBcrltHJO",
+															"description": {
+																"content": "a set of the resulting characters, in the same order like in the from property",
+																"type": "text/plain"
+															}
+														}
+													]
+												},
+												"url": {
+													"raw": "{{baseUrl}}/encode/html",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"encode",
+														"html"
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"pname\": \"regex\",\n \"hint\": \"do not use values bigger than x\"\n}"
+										},
+										{
+											"name": "HTML encoding was sucessfull and the results are returned.",
+											"originalRequest": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "urlencoded",
+													"urlencoded": [
+														{
+															"key": "content",
+															"value": "<p>fldsjdjf</p>",
+															"description": {
+																"content": "",
+																"type": "text/plain"
+															}
+														},
+														{
+															"key": "css",
+															"value": "vc",
+															"description": {
+																"content": "a css class added to the top level nodes",
+																"type": "text/plain"
+															}
+														},
+														{
+															"key": "from",
+															"value": "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz",
+															"description": {
+																"content": "a set of all characters, which should be changed in content",
+																"type": "text/plain"
+															}
+														},
+														{
+															"key": "to",
+															"value": "aFMkZVwKEWsjUQdgYfuIpNGSDnyxPehiLTRbCoqvXmAzBcrltHJO",
+															"description": {
+																"content": "a set of the resulting characters, in the same order like in the from property",
+																"type": "text/plain"
+															}
+														}
+													]
+												},
+												"url": {
+													"raw": "{{baseUrl}}/encode/html",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"encode",
+														"html"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"payload\": \"That is an Example.\"\n}"
+										}
+									]
+								},
+								{
+									"name": "to min length",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "c83486af-9368-48dc-932b-c02dc9733f77",
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {",
+													"    pm.response.to.have.status(200);",
+													"});",
+													"",
+													"pm.test(\"check response body\", function () {",
+													"    var jsonData = pm.response.json();",
+													"    pm.expect(jsonData).to.have.property('payload').that.is.an('string');",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/x-www-form-urlencoded"
+											}
+										],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "payload",
+													"value": "asdf",
+													"description": "the HTML fragment with text to encode"
+												},
+												{
+													"key": "css",
+													"value": "01234567890123456789012345678901234567890123456789",
+													"description": "a css class added to the top level nodes"
+												},
+												{
+													"key": "from",
+													"value": "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz",
+													"description": "a set of all characters, which should be changed in content"
+												},
+												{
+													"key": "to",
+													"value": "",
+													"description": "a set of the resulting characters, in the same order like in the from property"
+												}
+											],
+											"options": {
+												"urlencoded": {}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/{{endpoint}}",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"{{endpoint}}"
+											]
+										},
+										"description": "Post HTML text like multiple 'p', 'div', 'section' tags or plain text. The fraction will be encoded. This encoding is maybe dirty, because of the content must be 'repaired' in the first step to be processable. If you get unexpected output, try XHTML fractions instead."
+									},
+									"response": [
+										{
+											"name": "Unexpected error, nobody knows what was happening yet.",
+											"originalRequest": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "urlencoded",
+													"urlencoded": [
+														{
+															"key": "content",
+															"value": "<p>fldsjdjf</p>",
+															"description": {
+																"content": "",
+																"type": "text/plain"
+															}
+														},
+														{
+															"key": "css",
+															"value": "vc",
+															"description": {
+																"content": "a css class added to the top level nodes",
+																"type": "text/plain"
+															}
+														},
+														{
+															"key": "from",
+															"value": "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz",
+															"description": {
+																"content": "a set of all characters, which should be changed in content",
+																"type": "text/plain"
+															}
+														},
+														{
+															"key": "to",
+															"value": "aFMkZVwKEWsjUQdgYfuIpNGSDnyxPehiLTRbCoqvXmAzBcrltHJO",
+															"description": {
+																"content": "a set of the resulting characters, in the same order like in the from property",
+																"type": "text/plain"
+															}
+														}
+													]
+												},
+												"url": {
+													"raw": "{{baseUrl}}/encode/html",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"encode",
+														"html"
+													]
+												}
+											},
+											"status": "Internal Server Error",
+											"code": 500,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"hint\": \"Upps... We can do better than 500\"\n}"
+										},
+										{
+											"name": "HTML encoding was sucessfull and the results are returned.",
+											"originalRequest": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "urlencoded",
+													"urlencoded": [
+														{
+															"key": "content",
+															"value": "<p>fldsjdjf</p>",
+															"description": {
+																"content": "",
+																"type": "text/plain"
+															}
+														},
+														{
+															"key": "css",
+															"value": "vc",
+															"description": {
+																"content": "a css class added to the top level nodes",
+																"type": "text/plain"
+															}
+														},
+														{
+															"key": "from",
+															"value": "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz",
+															"description": {
+																"content": "a set of all characters, which should be changed in content",
+																"type": "text/plain"
+															}
+														},
+														{
+															"key": "to",
+															"value": "aFMkZVwKEWsjUQdgYfuIpNGSDnyxPehiLTRbCoqvXmAzBcrltHJO",
+															"description": {
+																"content": "a set of the resulting characters, in the same order like in the from property",
+																"type": "text/plain"
+															}
+														}
+													]
+												},
+												"url": {
+													"raw": "{{baseUrl}}/encode/html",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"encode",
+														"html"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"payload\": \"That is an Example.\"\n}"
+										},
+										{
+											"name": "Encoding aborded, because of invalid request information.",
+											"originalRequest": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "urlencoded",
+													"urlencoded": [
+														{
+															"key": "content",
+															"value": "<p>fldsjdjf</p>",
+															"description": {
+																"content": "",
+																"type": "text/plain"
+															}
+														},
+														{
+															"key": "css",
+															"value": "vc",
+															"description": {
+																"content": "a css class added to the top level nodes",
+																"type": "text/plain"
+															}
+														},
+														{
+															"key": "from",
+															"value": "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz",
+															"description": {
+																"content": "a set of all characters, which should be changed in content",
+																"type": "text/plain"
+															}
+														},
+														{
+															"key": "to",
+															"value": "aFMkZVwKEWsjUQdgYfuIpNGSDnyxPehiLTRbCoqvXmAzBcrltHJO",
+															"description": {
+																"content": "a set of the resulting characters, in the same order like in the from property",
+																"type": "text/plain"
+															}
+														}
+													]
+												},
+												"url": {
+													"raw": "{{baseUrl}}/encode/html",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"encode",
+														"html"
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n \"pname\": \"regex\",\n \"hint\": \"do not use values bigger than x\"\n}"
+										}
+									]
+								}
+							],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "385c3ec6-c619-4ce8-897c-ecfd9f997a14",
+								"type": "text/javascript",
+								"exec": [
+									"pm.variables.set(\"endpoint\", \"encode/text\");"
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "e8f6d391-fa26-4ed9-9ed5-e7f20aefbc69",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "key",
+			"item": [
+				{
+					"name": "check request properties",
+					"item": [
+						{
+							"name": "regex min length",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "c706954d-88b1-4b82-a33b-13321ed918ba",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test(\"check response body\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData).to.have.property('from').that.is.an('string').and.not.empty;",
+											"    pm.expect(jsonData).to.have.property('to').that.is.an('string').and.not.empty;",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "regex",
+											"value": "",
+											"type": "text"
+										}
+									],
+									"options": {
+										"urlencoded": {}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/{{endpoint}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"{{endpoint}}"
+									]
+								},
+								"description": "Create and get a new key to use in the encoding steps."
+							},
+							"response": [
+								{
+									"name": "Key creation aborded, because of invalid request information.",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "regex",
+													"value": "[A-Za-z]",
+													"description": {
+														"content": "a selector for the contained characters",
+														"type": "text/plain"
+													}
+												}
+											]
+										},
+										"url": {
+											"raw": "{{baseUrl}}/key",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"key"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"pname\": \"regex\",\n \"hint\": \"do not use values bigger than x\"\n}"
+								},
+								{
+									"name": "New key created sucessfully. Response contains the key information.",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "regex",
+													"value": "[A-Za-z]",
+													"description": {
+														"content": "a selector for the contained characters",
+														"type": "text/plain"
+													}
+												}
+											]
+										},
+										"url": {
+											"raw": "{{baseUrl}}/key",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"key"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"from\": \"ABCDEFGHIJKLMNOPQRSTUVWXYZ\",\n \"to\": \"MNOPQRSTUVWXYZABCDEFGHIJKL\"\n}"
+								},
+								{
+									"name": "Unexpected error, nobody knows what was happening yet.",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "regex",
+													"value": "[A-Za-z]",
+													"description": {
+														"content": "a selector for the contained characters",
+														"type": "text/plain"
+													}
+												}
+											]
+										},
+										"url": {
+											"raw": "{{baseUrl}}/key",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"key"
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"hint\": \"Upps... We can do better than 500\"\n}"
+								}
+							]
+						},
+						{
+							"name": "regex max length",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "71772d89-a724-4e4a-a6b2-ba52d8a4e0d3",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test(\"check response body\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.expect(jsonData).to.have.property('from').that.is.an('string').and.not.empty;",
+											"    pm.expect(jsonData).to.have.property('to').that.is.an('string').and.not.empty;",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "regex",
+											"value": "01234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789",
+											"description": "a selector for the contained characters"
+										}
+									],
+									"options": {
+										"urlencoded": {}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/{{endpoint}}",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"{{endpoint}}"
+									]
+								},
+								"description": "Create and get a new key to use in the encoding steps."
+							},
+							"response": [
+								{
+									"name": "New key created sucessfully. Response contains the key information.",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "regex",
+													"value": "[A-Za-z]",
+													"description": {
+														"content": "a selector for the contained characters",
+														"type": "text/plain"
+													}
+												}
+											]
+										},
+										"url": {
+											"raw": "{{baseUrl}}/key",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"key"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"from\": \"ABCDEFGHIJKLMNOPQRSTUVWXYZ\",\n \"to\": \"MNOPQRSTUVWXYZABCDEFGHIJKL\"\n}"
+								},
+								{
+									"name": "Unexpected error, nobody knows what was happening yet.",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "regex",
+													"value": "[A-Za-z]",
+													"description": {
+														"content": "a selector for the contained characters",
+														"type": "text/plain"
+													}
+												}
+											]
+										},
+										"url": {
+											"raw": "{{baseUrl}}/key",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"key"
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"hint\": \"Upps... We can do better than 500\"\n}"
+								},
+								{
+									"name": "Key creation aborded, because of invalid request information.",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "regex",
+													"value": "[A-Za-z]",
+													"description": {
+														"content": "a selector for the contained characters",
+														"type": "text/plain"
+													}
+												}
+											]
+										},
+										"url": {
+											"raw": "{{baseUrl}}/key",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"key"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"pname\": \"regex\",\n \"hint\": \"do not use values bigger than x\"\n}"
+								}
+							]
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "e0a061db-9969-4730-b592-c7849b806b30",
+						"type": "text/javascript",
+						"exec": [
+							"pm.variables.set(\"endpoint\", \"key\");"
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "7136b9cc-23c7-4aa0-98c5-1fa1e899ab63",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "7c8769a8-5595-4e70-85da-934ea1130fda",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "d39305e5-7e75-44b8-b83e-2132963928cd",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "953de15a-2d6d-498a-89e4-69740f1425b6",
+			"key": "endpoint",
+			"value": "",
+			"type": "string"
+		}
+	],
+	"protocolProfileBehavior": {}
+}
