@@ -78,12 +78,21 @@ access:
 	ssh -t root@$(ip) "cd /viewcrypt ; bash"
 
 
-# deploy on digital ocean
- .PHONY: deploy
+# deploy from local with production config to remote
+# just select ip address from digital ocean droplet
+.PHONY: deploy
  # call like: make deploy dir=$(pwd) ip=64.225.104.7
- deploy:
-	scp -r $(dir) root@$(ip):/
-	ssh root@$(ip) "apt install make; cd /viewcrypt; docker system prune -f; make build; make run"
+ deploy: prep-do 
+	ssh root@$(ip) "cd /viewcrypt; make build run"
+
+# prepare droplet on digital ocean from remote
+ .PHONY: prep-do
+ # call like: make prep-do dir=$(pwd) ip=64.225.104.7
+ prep-do: clean
+	#ssh root@$(ip) "mkdir viewcrypt"
+	rsync -v --archive --delete --exclude=.git* --compress $(dir) root@$(ip):/
+	#scp -r $(dir) root@$(ip):/
+	ssh root@$(ip) "apt install make; cd /viewcrypt; make clear"
 
 
 # get shell inside of the first running docker container

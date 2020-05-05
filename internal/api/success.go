@@ -14,11 +14,18 @@ type Response struct {
 
 // Success function writes response
 func Success(w http.ResponseWriter, response interface{}) {
-	// convert into json
-	js, err := json.Marshal(response)
-	if err != nil {
-		Error(w, "response conversion failed", http.StatusInternalServerError, err)
-		return
+	var js []byte
+	switch r := response.(type) {
+	case string:
+		js = []byte(r)
+	default:
+		// convert into json
+		out, err := json.Marshal(response)
+		if err != nil {
+			Error(w, "response conversion failed", http.StatusInternalServerError, err)
+			return
+		}
+		js = out
 	}
 
 	configs.ServerSetDefaultHeaders(w)

@@ -6,6 +6,7 @@ import (
 	"github.com/8qfx1ai5/viewcrypt/configs"
 	"github.com/8qfx1ai5/viewcrypt/internal/api"
 	"github.com/8qfx1ai5/viewcrypt/internal/types/enkey"
+	"github.com/8qfx1ai5/viewcrypt/test/data/keyregexdata"
 )
 
 // Response the structure of the json response used by the api
@@ -40,6 +41,23 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		api.Success(w, Response{From: newKey.GetFrom(), To: newKey.GetTo()})
+		return
+	case http.MethodGet:
+		// handle hidden functionality of returning api test data
+		// use method GET in combination with param "apitestdata=json"
+		p, ok := r.URL.Query()["apitestdata"]
+
+		if !ok || len(p) < 1 || p[0] != "json" {
+			api.Error(w, "try an other http method or have a look into our api documentation", http.StatusMethodNotAllowed, nil)
+			return
+		}
+
+		testExport, err := keyregexdata.TestCases.Export()
+		if err != nil {
+			api.Error(w, "test export failed", http.StatusInternalServerError, nil)
+		}
+		api.Success(w, testExport)
+
 		return
 	default:
 		api.Error(w, "try an other http method or have a look into our api documentation", http.StatusMethodNotAllowed, nil)

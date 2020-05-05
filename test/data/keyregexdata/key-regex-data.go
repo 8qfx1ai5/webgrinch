@@ -139,11 +139,6 @@ var TestCases = tests{
 }
 
 // FilePath defines where to export the testcases
-func (t tests) FileName() string {
-	return "key_regex_test_data_export.json"
-}
-
-// FilePath defines where to export the testcases
 func (t tests) Export() (out string, err error) {
 	for i := range t {
 		t[i].Expected.Output = strings.ReplaceAll(t[i].Expected.Output, "[", "")

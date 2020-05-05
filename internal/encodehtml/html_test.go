@@ -178,6 +178,19 @@ var testCases = []testCase{
 		},
 		"test brocken xml, additional <",
 	},
+	{
+		input{
+			"<h2>Hello World!</h2><p>Nice to see you.</dp>",
+			"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz",
+			"BCDEFGHIJKLMNOPQRSTUVWXYZAbcdefghijklmnopqrstuvwxyza",
+			"",
+		},
+		expected{
+			translations{},
+			false,
+		},
+		"test brocken xml, wrong closing tag",
+	},
 
 	// TODO: test big input
 	// TODO: test input with html declaration
