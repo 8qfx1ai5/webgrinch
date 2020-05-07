@@ -18,6 +18,7 @@ RUN go mod download
 
 COPY . ${WORKDIR}
 RUN cd ${WORKDIR}; go install ./cmd/vcryptserver
+RUN cd ${WORKDIR}; go install ./cmd/vcryptreverseproxy
 
 RUN make utestd
 
@@ -30,10 +31,14 @@ RUN apk add libxslt --no-cache
 RUN mkdir -p viewcrypt
 COPY web viewcrypt
 COPY api/ViewCrypt_API_v1.json viewcrypt/static
-
 RUN chmod -R +x viewcrypt
+COPY build/run.sh /
+RUN chmod +x /run.sh
+
 
 COPY --from=compile /go/bin/vcryptserver /vcryptserver
 RUN chmod +x /vcryptserver
+COPY --from=compile /go/bin/vcryptreverseproxy /vcryptreverseproxy
+RUN chmod +x /vcryptreverseproxy
 
-ENTRYPOINT ["/bin/sh", "-c", "/vcryptserver -p 80 > server.log 2>&1"]
+ENTRYPOINT ["/bin/sh", "-c", "/run.sh >> /server.log 2>&1"]

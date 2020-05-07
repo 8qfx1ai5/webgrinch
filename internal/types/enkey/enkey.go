@@ -71,13 +71,18 @@ func (k *Key) shuffle() (err error) {
 }
 
 // GetTo returns the current 'to' value
-func (k *Key) GetTo() (to string) {
+func (k *Key) GetTo() string {
 	return k.to
 }
 
 // GetFrom returns the current 'from' value
-func (k *Key) GetFrom() (to string) {
+func (k *Key) GetFrom() string {
 	return k.from
+}
+
+// GetSubsets returns the current subsets
+func (k *Key) GetSubsets() [][]rune {
+	return k.subsets
 }
 
 const paramError string = "param regex invalid"

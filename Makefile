@@ -50,6 +50,7 @@ utestd:
 .PHONY: itestd
 itestd:
 	@echo "RUN go integration tests..."
+	@sleep 2 # starting the server is to slow
 	@go test -count=1 ./test/... | egrep "^(FAIL.|ok)" | sed ''/ok/s//`printf "\033[32mok\033[0m"`/'' | sed ''/FAIL/s//`printf "\033[31mFAIL\033[0m"`/'' | sed ''/?/s//`printf "\033[33m?\033[0m"`/''
 
 
@@ -110,6 +111,13 @@ access:
  # call like: make login
  login:
 	docker exec -it `docker ps -a -q | head -n 1` /bin/sh
+
+
+# get shell inside of a stoped docker container
+ .PHONY: loginforce
+ # call like: make loginforce
+ loginforce:
+	docker run -it --entrypoint /bin/sh viewcrypt-alpha -s
 
 
 # stop and remove all docker container
