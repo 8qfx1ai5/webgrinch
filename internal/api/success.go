@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"net/http"
 
-	"github.com/8qfx1ai5/viewcrypt/configs"
+	"github.com/8qfx1ai5/webgrinch/configs"
 )
 
 // Response the structure of the json response used by the api

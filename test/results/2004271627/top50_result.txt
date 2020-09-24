@@ -26,8 +26,8 @@ Showing top 50 nodes out of 99
          0     0%   100%       10ms  2.94%  bytes.makeSlice
          0     0%   100%       10ms  2.94%  fmt.Sprintf
          0     0%   100%       10ms  2.94%  fmt.newPrinter
-         0     0%   100%      150ms 44.12%  github.com/8qfx1ai5/viewcrypt/internal/encode.BenchmarkEncoding
-         0     0%   100%      150ms 44.12%  github.com/8qfx1ai5/viewcrypt/internal/encode.HTML
+         0     0%   100%      150ms 44.12%  github.com/8qfx1ai5/webgrinch/internal/encode.BenchmarkEncoding
+         0     0%   100%      150ms 44.12%  github.com/8qfx1ai5/webgrinch/internal/encode.HTML
          0     0%   100%       10ms  2.94%  internal/poll.(*FD).Close
          0     0%   100%       10ms  2.94%  internal/poll.(*FD).decref
          0     0%   100%       10ms  2.94%  internal/poll.(*FD).destroy

@@ -3,10 +3,10 @@ package key
 import (
 	"net/http"
 
-	"github.com/8qfx1ai5/viewcrypt/configs"
-	"github.com/8qfx1ai5/viewcrypt/internal/api"
-	"github.com/8qfx1ai5/viewcrypt/internal/types/enkey"
-	"github.com/8qfx1ai5/viewcrypt/test/data/keyregexdata"
+	"github.com/8qfx1ai5/webgrinch/configs"
+	"github.com/8qfx1ai5/webgrinch/internal/api"
+	"github.com/8qfx1ai5/webgrinch/internal/types/enkey"
+	"github.com/8qfx1ai5/webgrinch/test/data/keyregexdata"
 )
 
 // Response the structure of the json response used by the api

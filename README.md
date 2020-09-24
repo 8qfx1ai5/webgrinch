@@ -1,4 +1,4 @@
-# Project "viewcrypt" for html/content encoding
+# Project "webgrinch" for html/content encoding
 
 Trigger: the idea was publish content readable for all people, but which is not processable by automated systems and crallers.
 
@@ -39,8 +39,8 @@ To make the text readable you need to load the corresponding web font to the tex
 
 ### Run builds
 
-    cd cmd/vcryptcli; go build
-    cd cmd/vcryptserver; go build
+    cd cmd/webgrinchcli; go build
+    cd cmd/webgrinchserver; go build
 
 ### Run the tests
 

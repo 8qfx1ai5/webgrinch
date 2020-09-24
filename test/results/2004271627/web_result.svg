@@ -484,7 +484,7 @@ function handleMouseUp(evt) {
 <!-- N3 -->
 <g id="node3" class="node">
 <title>N3</title>
-<g id="a_node3"><a xlink:title="github.com/8qfx1ai5/viewcrypt/internal/encode.HTML (150ms)">
+<g id="a_node3"><a xlink:title="github.com/8qfx1ai5/webgrinch/internal/encode.HTML (150ms)">
 <polygon fill="#eddad5" stroke="#b22600" points="517.9922,-2073 434.0078,-2073 434.0078,-2037 517.9922,-2037 517.9922,-2073"/>
 <text text-anchor="middle" x="476" y="-2060.6" font-family="Times,serif" font-size="8.00" fill="#000000">encode</text>
 <text text-anchor="middle" x="476" y="-2052.6" font-family="Times,serif" font-size="8.00" fill="#000000">HTML</text>
@@ -495,12 +495,12 @@ function handleMouseUp(evt) {
 <!-- N3&#45;&gt;N1 -->
 <g id="edge43" class="edge">
 <title>N3&#45;&gt;N1</title>
-<g id="a_edge43"><a xlink:title="github.com/8qfx1ai5/viewcrypt/internal/encode.HTML ... runtime.mallocgc (10ms)">
+<g id="a_edge43"><a xlink:title="github.com/8qfx1ai5/webgrinch/internal/encode.HTML ... runtime.mallocgc (10ms)">
 <path fill="none" stroke="#b2a998" stroke-dasharray="1,5" d="M518.2341,-2043.0561C566.8261,-2026.425 640,-1991.2175 640,-1930 640,-1930 640,-1930 640,-1265 640,-1243.3019 631.1367,-1222.1047 619.7179,-1203.7993"/>
 <polygon fill="#b2a998" stroke="#b2a998" points="622.3706,-1201.4655 613.9346,-1195.0558 616.5322,-1205.3273 622.3706,-1201.4655"/>
 </a>
 </g>
-<g id="a_edge43&#45;label"><a xlink:title="github.com/8qfx1ai5/viewcrypt/internal/encode.HTML ... runtime.mallocgc (10ms)">
+<g id="a_edge43&#45;label"><a xlink:title="github.com/8qfx1ai5/webgrinch/internal/encode.HTML ... runtime.mallocgc (10ms)">
 <text text-anchor="middle" x="656.9189" y="-1557.8" font-family="Times,serif" font-size="14.00" fill="#000000"> 10ms</text>
 </a>
 </g>
@@ -519,12 +519,12 @@ function handleMouseUp(evt) {
 <!-- N3&#45;&gt;N44 -->
 <g id="edge41" class="edge">
 <title>N3&#45;&gt;N44</title>
-<g id="a_edge41"><a xlink:title="github.com/8qfx1ai5/viewcrypt/internal/encode.HTML &#45;&gt; fmt.Sprintf (10ms)">
+<g id="a_edge41"><a xlink:title="github.com/8qfx1ai5/webgrinch/internal/encode.HTML &#45;&gt; fmt.Sprintf (10ms)">
 <path fill="none" stroke="#b2a998" d="M457.9693,-2036.8239C436.6638,-2015.3466 401.0863,-1979.4821 377.0968,-1955.2992"/>
 <polygon fill="#b2a998" stroke="#b2a998" points="379.5799,-1952.8325 370.0524,-1948.198 374.6103,-1957.7624 379.5799,-1952.8325"/>
 </a>
 </g>
-<g id="a_edge41&#45;label"><a xlink:title="github.com/8qfx1ai5/viewcrypt/internal/encode.HTML &#45;&gt; fmt.Sprintf (10ms)">
+<g id="a_edge41&#45;label"><a xlink:title="github.com/8qfx1ai5/webgrinch/internal/encode.HTML &#45;&gt; fmt.Sprintf (10ms)">
 <text text-anchor="middle" x="449.9189" y="-1994.8" font-family="Times,serif" font-size="14.00" fill="#000000"> 10ms</text>
 </a>
 </g>
@@ -544,12 +544,12 @@ function handleMouseUp(evt) {
 <!-- N3&#45;&gt;N57 -->
 <g id="edge3" class="edge">
 <title>N3&#45;&gt;N57</title>
-<g id="a_edge3"><a xlink:title="github.com/8qfx1ai5/viewcrypt/internal/encode.HTML &#45;&gt; os/exec.(*Cmd).CombinedOutput (120ms)">
+<g id="a_edge3"><a xlink:title="github.com/8qfx1ai5/webgrinch/internal/encode.HTML &#45;&gt; os/exec.(*Cmd).CombinedOutput (120ms)">
 <path fill="none" stroke="#b22f00" stroke-width="2" d="M476,-2036.8239C476,-2016.8595 476,-1984.4636 476,-1960.5746"/>
 <polygon fill="#b22f00" stroke="#b22f00" stroke-width="2" points="479.5001,-1960.2723 476,-1950.2723 472.5001,-1960.2724 479.5001,-1960.2723"/>
 </a>
 </g>
-<g id="a_edge3&#45;label"><a xlink:title="github.com/8qfx1ai5/viewcrypt/internal/encode.HTML &#45;&gt; os/exec.(*Cmd).CombinedOutput (120ms)">
+<g id="a_edge3&#45;label"><a xlink:title="github.com/8qfx1ai5/webgrinch/internal/encode.HTML &#45;&gt; os/exec.(*Cmd).CombinedOutput (120ms)">
 <text text-anchor="middle" x="496.4189" y="-1994.8" font-family="Times,serif" font-size="14.00" fill="#000000"> 120ms</text>
 </a>
 </g>
@@ -568,12 +568,12 @@ function handleMouseUp(evt) {
 <!-- N3&#45;&gt;N61 -->
 <g id="edge42" class="edge">
 <title>N3&#45;&gt;N61</title>
-<g id="a_edge42"><a xlink:title="github.com/8qfx1ai5/viewcrypt/internal/encode.HTML &#45;&gt; os/exec.Command (10ms)">
+<g id="a_edge42"><a xlink:title="github.com/8qfx1ai5/webgrinch/internal/encode.HTML &#45;&gt; os/exec.Command (10ms)">
 <path fill="none" stroke="#b2a998" d="M497.6914,-2036.7855C505.4671,-2029.748 514.0273,-2021.3785 521,-2013 535.5797,-1995.4808 549.3473,-1973.6997 559.1948,-1956.8465"/>
 <polygon fill="#b2a998" stroke="#b2a998" points="562.3016,-1958.4644 564.2426,-1948.0489 556.2301,-1954.9807 562.3016,-1958.4644"/>
 </a>
 </g>
-<g id="a_edge42&#45;label"><a xlink:title="github.com/8qfx1ai5/viewcrypt/internal/encode.HTML &#45;&gt; os/exec.Command (10ms)">
+<g id="a_edge42&#45;label"><a xlink:title="github.com/8qfx1ai5/webgrinch/internal/encode.HTML &#45;&gt; os/exec.Command (10ms)">
 <text text-anchor="middle" x="557.9189" y="-1994.8" font-family="Times,serif" font-size="14.00" fill="#000000"> 10ms</text>
 </a>
 </g>
@@ -593,7 +593,7 @@ function handleMouseUp(evt) {
 <!-- N46 -->
 <g id="node46" class="node">
 <title>N46</title>
-<g id="a_node46"><a xlink:title="github.com/8qfx1ai5/viewcrypt/internal/encode.BenchmarkEncoding (150ms)">
+<g id="a_node46"><a xlink:title="github.com/8qfx1ai5/webgrinch/internal/encode.BenchmarkEncoding (150ms)">
 <polygon fill="#eddad5" stroke="#b22600" points="517.9922,-2173.5 434.0078,-2173.5 434.0078,-2137.5 517.9922,-2137.5 517.9922,-2173.5"/>
 <text text-anchor="middle" x="476" y="-2161.1" font-family="Times,serif" font-size="8.00" fill="#000000">encode</text>
 <text text-anchor="middle" x="476" y="-2153.1" font-family="Times,serif" font-size="8.00" fill="#000000">BenchmarkEncoding</text>
@@ -604,12 +604,12 @@ function handleMouseUp(evt) {
 <!-- N4&#45;&gt;N46 -->
 <g id="edge2" class="edge">
 <title>N4&#45;&gt;N46</title>
-<g id="a_edge2"><a xlink:title="testing.(*B).launch ... github.com/8qfx1ai5/viewcrypt/internal/encode.BenchmarkEncoding (150ms)">
+<g id="a_edge2"><a xlink:title="testing.(*B).launch ... github.com/8qfx1ai5/webgrinch/internal/encode.BenchmarkEncoding (150ms)">
 <path fill="none" stroke="#b22600" stroke-width="3" stroke-dasharray="1,5" d="M476,-2255.831C476,-2236.1396 476,-2205.9946 476,-2183.8861"/>
 <polygon fill="#b22600" stroke="#b22600" stroke-width="3" points="479.5001,-2183.7594 476,-2173.7594 472.5001,-2183.7594 479.5001,-2183.7594"/>
 </a>
 </g>
-<g id="a_edge2&#45;label"><a xlink:title="testing.(*B).launch ... github.com/8qfx1ai5/viewcrypt/internal/encode.BenchmarkEncoding (150ms)">
+<g id="a_edge2&#45;label"><a xlink:title="testing.(*B).launch ... github.com/8qfx1ai5/webgrinch/internal/encode.BenchmarkEncoding (150ms)">
 <text text-anchor="middle" x="496.4189" y="-2202.8" font-family="Times,serif" font-size="14.00" fill="#000000"> 150ms</text>
 </a>
 </g>
@@ -1660,12 +1660,12 @@ function handleMouseUp(evt) {
 <!-- N46&#45;&gt;N3 -->
 <g id="edge1" class="edge">
 <title>N46&#45;&gt;N3</title>
-<g id="a_edge1"><a xlink:title="github.com/8qfx1ai5/viewcrypt/internal/encode.BenchmarkEncoding &#45;&gt; github.com/8qfx1ai5/viewcrypt/internal/encode.HTML (150ms)">
+<g id="a_edge1"><a xlink:title="github.com/8qfx1ai5/webgrinch/internal/encode.BenchmarkEncoding &#45;&gt; github.com/8qfx1ai5/webgrinch/internal/encode.HTML (150ms)">
 <path fill="none" stroke="#b22600" stroke-width="3" d="M476,-2137.0668C476,-2122.05 476,-2100.5933 476,-2083.3858"/>
 <polygon fill="#b22600" stroke="#b22600" stroke-width="3" points="479.5001,-2083.3164 476,-2073.3164 472.5001,-2083.3164 479.5001,-2083.3164"/>
 </a>
 </g>
-<g id="a_edge1&#45;label"><a xlink:title="github.com/8qfx1ai5/viewcrypt/internal/encode.BenchmarkEncoding &#45;&gt; github.com/8qfx1ai5/viewcrypt/internal/encode.HTML (150ms)">
+<g id="a_edge1&#45;label"><a xlink:title="github.com/8qfx1ai5/webgrinch/internal/encode.BenchmarkEncoding &#45;&gt; github.com/8qfx1ai5/webgrinch/internal/encode.HTML (150ms)">
 <text text-anchor="middle" x="496.4189" y="-2099.8" font-family="Times,serif" font-size="14.00" fill="#000000"> 150ms</text>
 </a>
 </g>

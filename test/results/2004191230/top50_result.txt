@@ -11,8 +11,8 @@ Showing top 50 nodes out of 60
       10ms  7.14% 85.71%       10ms  7.14%  runtime.nextFreeFast (inline)
       10ms  7.14% 92.86%       10ms  7.14%  runtime.pthread_cond_wait
       10ms  7.14%   100%       10ms  7.14%  syscall.rawSyscall
-         0     0%   100%       90ms 64.29%  github.com/8qfx1ai5/viewcrypt/internal/encode.BenchmarkEncoding
-         0     0%   100%       90ms 64.29%  github.com/8qfx1ai5/viewcrypt/internal/encode.HTML
+         0     0%   100%       90ms 64.29%  github.com/8qfx1ai5/webgrinch/internal/encode.BenchmarkEncoding
+         0     0%   100%       90ms 64.29%  github.com/8qfx1ai5/webgrinch/internal/encode.HTML
          0     0%   100%       10ms  7.14%  internal/poll.(*FD).Close
          0     0%   100%       10ms  7.14%  internal/poll.(*FD).Fsync
          0     0%   100%       10ms  7.14%  internal/poll.(*FD).decref

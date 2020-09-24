@@ -1,4 +1,4 @@
-module github.com/8qfx1ai5/viewcrypt
+module github.com/8qfx1ai5/webgrinch
 
 go 1.14
 

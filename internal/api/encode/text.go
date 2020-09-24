@@ -3,9 +3,9 @@ package encode
 import (
 	"net/http"
 
-	"github.com/8qfx1ai5/viewcrypt/configs"
-	"github.com/8qfx1ai5/viewcrypt/internal/api"
-	"github.com/8qfx1ai5/viewcrypt/internal/encodetext"
+	"github.com/8qfx1ai5/webgrinch/configs"
+	"github.com/8qfx1ai5/webgrinch/internal/api"
+	"github.com/8qfx1ai5/webgrinch/internal/encodetext"
 )
 
 // TextHandler handles the encoding feature

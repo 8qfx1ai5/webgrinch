@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/8qfx1ai5/viewcrypt/configs"
-	"github.com/8qfx1ai5/viewcrypt/internal/api"
-	"github.com/8qfx1ai5/viewcrypt/internal/encodehtml"
+	"github.com/8qfx1ai5/webgrinch/configs"
+	"github.com/8qfx1ai5/webgrinch/internal/api"
+	"github.com/8qfx1ai5/webgrinch/internal/encodehtml"
 )
 
 // HTMLHandler handles the encoding feature

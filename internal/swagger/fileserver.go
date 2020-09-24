@@ -5,11 +5,11 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/8qfx1ai5/viewcrypt/configs"
+	"github.com/8qfx1ai5/webgrinch/configs"
 
 	"github.com/rakyll/statik/fs"
 	// import compiled swagger ui files
-	_ "github.com/8qfx1ai5/viewcrypt/third_party/swagger-ui/statik"
+	_ "github.com/8qfx1ai5/webgrinch/third_party/swagger-ui/statik"
 )
 
 // FileServer create new file server for swagger ui files

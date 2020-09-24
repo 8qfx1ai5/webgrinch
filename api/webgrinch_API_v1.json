@@ -2,10 +2,10 @@
     "openapi": "3.0.0",
     "info": {
         "version": "1.0.0",
-        "title": "viewcrypt API",
-        "description": "An API to simply run the smart viewcrypt encoding algorithm on any kind of digital content.",
+        "title": "webgrinch API",
+        "description": "An API to simply run the smart webgrinch encoding algorithm on any kind of digital content.",
         "contact": {
-            "email": "viewcrypt@8qfx1ai5.de",
+            "email": "webgrinch@8qfx1ai5.de",
             "name": "Felix Ohnesorge",
             "url": "https://8qfx1ai5.de"
         },

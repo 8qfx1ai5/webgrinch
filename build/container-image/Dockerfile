@@ -17,8 +17,8 @@ COPY go.sum ${WORKDIR}
 RUN go mod download
 
 COPY . ${WORKDIR}
-RUN cd ${WORKDIR}; go install ./cmd/vcryptserver
-RUN cd ${WORKDIR}; go install ./cmd/vcryptreverseproxy
+RUN cd ${WORKDIR}; go install ./cmd/webgrinchserver
+RUN cd ${WORKDIR}; go install ./cmd/webgrinchreverseproxy
 
 RUN make utestd
 
@@ -28,17 +28,17 @@ FROM alpine:3.11 as app
 
 RUN apk add libxslt --no-cache
 
-RUN mkdir -p viewcrypt
-COPY web viewcrypt
-COPY api/ViewCrypt_API_v1.json viewcrypt/static
-RUN chmod -R +x viewcrypt
+RUN mkdir -p webgrinch
+COPY web webgrinch
+COPY api/webgrinch_API_v1.json webgrinch/static
+RUN chmod -R +x webgrinch
 COPY build/run.sh /
 RUN chmod +x /run.sh
 
 
-COPY --from=compile /go/bin/vcryptserver /vcryptserver
-RUN chmod +x /vcryptserver
-COPY --from=compile /go/bin/vcryptreverseproxy /vcryptreverseproxy
-RUN chmod +x /vcryptreverseproxy
+COPY --from=compile /go/bin/webgrinchserver /webgrinchserver
+RUN chmod +x /webgrinchserver
+COPY --from=compile /go/bin/webgrinchreverseproxy /webgrinchreverseproxy
+RUN chmod +x /webgrinchreverseproxy
 
 ENTRYPOINT ["/bin/sh", "-c", "/run.sh >> /server.log 2>&1"]

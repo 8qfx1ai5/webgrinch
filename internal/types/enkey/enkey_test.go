@@ -3,8 +3,8 @@ package enkey_test
 import (
 	"testing"
 
-	"github.com/8qfx1ai5/viewcrypt/internal/types/enkey"
-	"github.com/8qfx1ai5/viewcrypt/test/data/keyregexdata"
+	"github.com/8qfx1ai5/webgrinch/internal/types/enkey"
+	"github.com/8qfx1ai5/webgrinch/test/data/keyregexdata"
 )
 
 /**

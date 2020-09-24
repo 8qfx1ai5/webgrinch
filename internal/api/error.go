@@ -5,7 +5,7 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/8qfx1ai5/viewcrypt/configs"
+	"github.com/8qfx1ai5/webgrinch/configs"
 )
 
 // Error function modifies the http.Error function
