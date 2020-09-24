@@ -18,7 +18,6 @@ RUN go mod download
 
 COPY . ${WORKDIR}
 RUN cd ${WORKDIR}; go install ./cmd/webgrinchserver
-RUN cd ${WORKDIR}; go install ./cmd/webgrinchreverseproxy
 
 RUN make utestd
 
@@ -38,7 +37,5 @@ RUN chmod +x /run.sh
 
 COPY --from=compile /go/bin/webgrinchserver /webgrinchserver
 RUN chmod +x /webgrinchserver
-COPY --from=compile /go/bin/webgrinchreverseproxy /webgrinchreverseproxy
-RUN chmod +x /webgrinchreverseproxy
 
 ENTRYPOINT ["/bin/sh", "-c", "/run.sh >> /server.log 2>&1"]
