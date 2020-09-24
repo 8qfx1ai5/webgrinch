@@ -85,14 +85,3 @@ To make the text readable you need to load the corresponding web font to the tex
 ## Special thanks
 
 My special thanks goes to my friend and devops kubernetes specialist [Tino](https://github.com/pandorasNox). Without his knowledge and go workshop lessons the project would not look like the same.
-
-## Currently I am searching for a new name, because Viewcrypt is already used by a Software Team
-
-My ideas:
-
-- enigmatic
-- arcane
-- privy
-- waiver
-- abdication
-- exit

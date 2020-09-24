@@ -10,7 +10,7 @@ const (
 	APIDefaultKeyTo string = "BCDEFGHIJKLMNOPQRSTUVWXYZAbcdefghijklmnopqrstuvwxyza"
 
 	// APIServerHeaderName is shown in the response header as "server: "
-	APIServerHeaderName string = "The Viewcrypt Golang Server"
+	APIServerHeaderName string = "The webgrinch Golang Server"
 
 	// APIDefaultKeyRegex used for key generation if nothing specified
 	APIDefaultKeyRegex string = "[A-Za-z0-9]"
