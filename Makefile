@@ -92,7 +92,7 @@ access:
 # just select ip address from digital ocean droplet
 .PHONY: deploy
  # call like: make deploy dir=$(pwd) ip=64.225.104.7
- deploy: prep-do 
+ deploy: prep-do
 	ssh root@$(ip) "cd /viewcrypt; make build run"
 
 
@@ -100,10 +100,11 @@ access:
  .PHONY: prep-do
  # call like: make prep-do dir=$(pwd) ip=64.225.104.7
  prep-do: clean
+	ssh root@$(ip) "apt-get update; apt-get -y upgrade; apt-get -y install docker.io; systemctl start docker; systemctl enable docker"
 	#ssh root@$(ip) "mkdir viewcrypt"
 	rsync -v --archive --delete --exclude=.git* --compress $(dir) root@$(ip):/
 	#scp -r $(dir) root@$(ip):/
-	ssh root@$(ip) "apt install make; cd /viewcrypt; make clear"
+	ssh root@$(ip) "apt-get -y install make; cd /viewcrypt; make clear"
 
 
 # get shell inside of the first running docker container
