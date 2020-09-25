@@ -10,11 +10,15 @@ This repository contains all required code to run an api server for the encoding
 
 <a href="http://localhost" target="_blank"><img src="https://static1.smartbear.co/swagger/media/assets/images/swagger_logo.svg" height="30px" alt="Run in Swagger-UI" /></a>
 
-### Deploy in production
+### Deploy on PRODUCTION (docker required)
 
-Currently there is no automated pibeline. But it is comming soon.
+**ATTENTION**: this command will **stop and remove** all your docker containers on the remote machine and start the server on port 80. Unit tests are executed automatically during the deploy.
 
-### Deploy local for dev (docker required)
+To ship the code to an remote docker droplet with known ip and ssh access.
+
+    make deploy dir=$(pwd) ip=<address>
+
+### Deploy on LOCAL for dev (docker required)
 
 **ATTENTION**: this command will **stop and remove** all your local docker containers and start the server on port 80. Unit tests and integration tests are executed automatically during the deploy.
 
@@ -22,7 +26,7 @@ You can access over <http://localhost/>
 
     make serve
 
-### Include the text into a web page
+### How to include the text into a web page
 
 To make the text readable you need to load the corresponding web font to the text. For instance:
 
@@ -39,7 +43,6 @@ To make the text readable you need to load the corresponding web font to the tex
 
 ### Run builds
 
-    cd cmd/webgrinchcli; go build
     cd cmd/webgrinchserver; go build
 
 ### Run the tests
@@ -80,7 +83,6 @@ To make the text readable you need to load the corresponding web font to the tex
 - html fragments conversion (dirty)
 - xhtml conversion
 - (xml conversion)
-- epub
 
 ## Special thanks
 

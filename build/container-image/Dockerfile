@@ -38,4 +38,4 @@ RUN chmod +x /run.sh
 COPY --from=compile /go/bin/webgrinchserver /webgrinchserver
 RUN chmod +x /webgrinchserver
 
-ENTRYPOINT ["/bin/sh", "-c", "/run.sh >> /server.log 2>&1"]
+ENTRYPOINT ["/bin/sh", "-c", "/webgrinchserver -p 80 > server.log 2>&1"]
