@@ -9,7 +9,7 @@ This repository contains all required code to run an api server for the encoding
 ## How to use
 
 1. **Here is an example html page to show how it works:**
-<br/>http://webgrinch.8qfx1ai5.de/static/example.html
+<br/>http://webgrinch.8qfx1ai5.de/static/example
 
 2. **Here is a working instance (+ Swagger) of the API to convert text:**
 <br/>http://webgrinch.8qfx1ai5.de
