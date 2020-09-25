@@ -33,7 +33,7 @@ You can access the service over "http://localhost:80"
 
 **ATTENTION**: this command will **stop and remove** all your docker containers on the remote machine and start the server on port 80. Unit tests are executed automatically during the deploy.
 
-To ship the code to an remote docker droplet with known ip and ssh access, use the following command in the project root directory:
+Ship the code to an remote docker droplet with known IP and ssh access. The code from the selected **directory (dir)** will be copied with rsync to the **IP**. Use the following command in the project root directory:
 
     make deploy dir=$(pwd) ip=<address>
 
