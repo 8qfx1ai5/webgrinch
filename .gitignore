@@ -1,5 +1,4 @@
 tmp/*
 *.tmp.*
-webgrinchserver
-webgrinchctl
+webgrinchserver/webgrinchserver
 *.test
