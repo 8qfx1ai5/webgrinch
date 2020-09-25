@@ -31,8 +31,6 @@ RUN mkdir -p webgrinch
 COPY web webgrinch
 COPY api/API_webgrinch_v1.json webgrinch/static
 RUN chmod -R +x webgrinch
-COPY build/run.sh /
-RUN chmod +x /run.sh
 
 
 COPY --from=compile /go/bin/webgrinchserver /webgrinchserver

@@ -6,17 +6,14 @@ This repository contains all required code to run an api server for the encoding
 
 ## How to use
 
+Here is a working instance of the API + Swagger:
+<a href="http://webgrinch.8qfx1ai5.de" target="_blank">http://webgrinch.8qfx1ai5.de</a>
+
+Postman tests and documentation:
+
 <a href="https://app.getpostman.com/run-collection/0c3bbddf36204db54b25#?env%5Blocal%5D=W3sia2V5IjoiYmFzZVVybCIsInZhbHVlIjoiaHR0cDovL2xvY2FsaG9zdC9hcGkiLCJlbmFibGVkIjp0cnVlfV0=" target="_blank"><img src="https://run.pstmn.io/button.svg" height="30px" alt="Run in Postman" /></a>
 
-<a href="http://localhost" target="_blank"><img src="https://static1.smartbear.co/swagger/media/assets/images/swagger_logo.svg" height="30px" alt="Run in Swagger-UI" /></a>
-
-### Deploy on PRODUCTION (docker required)
-
-**ATTENTION**: this command will **stop and remove** all your docker containers on the remote machine and start the server on port 80. Unit tests are executed automatically during the deploy.
-
-To ship the code to an remote docker droplet with known ip and ssh access.
-
-    make deploy dir=$(pwd) ip=<address>
+## Deployment
 
 ### Deploy on LOCAL for dev (docker required)
 
@@ -26,7 +23,15 @@ You can access over <http://localhost/>
 
     make serve
 
-### How to include the text into a web page
+### Deploy on PRODUCTION (docker required)
+
+**ATTENTION**: this command will **stop and remove** all your docker containers on the remote machine and start the server on port 80. Unit tests are executed automatically during the deploy.
+
+To ship the code to an remote docker droplet with known ip and ssh access, use the following command:
+
+    make deploy dir=$(pwd) ip=<address>
+
+## How to include the text into a web page
 
 To make the text readable you need to load the corresponding web font to the text. For instance:
 
