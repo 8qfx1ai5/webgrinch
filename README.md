@@ -9,10 +9,10 @@ This repository contains all required code to run an api server for the encoding
 ## How to use
 
 1. **Here is an example html page to show how it works:**
-<br/>[http://webgrinch.8qfx1ai5.de/static/example.html](http://vc.8qfx1ai5.de){:target="_blank"}
+<br/>http://webgrinch.8qfx1ai5.de/static/example.html
 
 2. **Here is a working instance (+ Swagger) of the API to convert text:**
-<br/><a href="http://webgrinch.8qfx1ai5.de" target="_blank">http://webgrinch.8qfx1ai5.de</a>
+<br/>http://webgrinch.8qfx1ai5.de
 
 3. **Postman tests and documentation for the API:**
 <br/><a href="https://app.getpostman.com/run-collection/0c3bbddf36204db54b25#?env%5Blocal%5D=W3sia2V5IjoiYmFzZVVybCIsInZhbHVlIjoiaHR0cDovL2xvY2FsaG9zdC9hcGkiLCJlbmFibGVkIjp0cnVlfV0=" target="_blank"><img src="https://run.pstmn.io/button.svg" height="30px" alt="Run in Postman" /></a>
