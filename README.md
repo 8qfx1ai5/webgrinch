@@ -1,35 +1,43 @@
 # Project "webgrinch" for html/content encoding
 
-Trigger: the idea was publish content readable for all people, but which is not processable by automated systems and crallers.
+Trigger: the idea was publish content readable for all people, but not processable by automated systems and crallers.
+
+To be more specific: the text is only understandable with visual analysis like ML for image-text recognition or specialized text analysis software based on letter frequencies or so.
 
 This repository contains all required code to run an api server for the encoding part and some other handy scripts to use the functionality.
 
 ## How to use
 
-Here is a working instance of the API + Swagger:
-<a href="http://webgrinch.8qfx1ai5.de" target="_blank">http://webgrinch.8qfx1ai5.de</a>
+1. **Here is an example html page to show how it works:**
+<br/><a href="http://vc.8qfx1ai5.de" target="_blank">http://webgrinch.8qfx1ai5.de/static/example.html</a>
 
-Postman tests and documentation:
+2. **Here is a working instance (+ Swagger) of the API to convert text:**
+<br/><a href="http://webgrinch.8qfx1ai5.de" target="_blank">http://webgrinch.8qfx1ai5.de</a>
 
-<a href="https://app.getpostman.com/run-collection/0c3bbddf36204db54b25#?env%5Blocal%5D=W3sia2V5IjoiYmFzZVVybCIsInZhbHVlIjoiaHR0cDovL2xvY2FsaG9zdC9hcGkiLCJlbmFibGVkIjp0cnVlfV0=" target="_blank"><img src="https://run.pstmn.io/button.svg" height="30px" alt="Run in Postman" /></a>
+3. **Postman tests and documentation for the API:**
+<br/><a href="https://app.getpostman.com/run-collection/0c3bbddf36204db54b25#?env%5Blocal%5D=W3sia2V5IjoiYmFzZVVybCIsInZhbHVlIjoiaHR0cDovL2xvY2FsaG9zdC9hcGkiLCJlbmFibGVkIjp0cnVlfV0=" target="_blank"><img src="https://run.pstmn.io/button.svg" height="30px" alt="Run in Postman" /></a>
 
-## Deployment
+## Deployment of the API
 
-### Deploy on LOCAL for dev (docker required)
+You can setup your own instance of the API on every machine with a docker installation.
 
-**ATTENTION**: this command will **stop and remove** all your local docker containers and start the server on port 80. Unit tests and integration tests are executed automatically during the deploy.
+### Deploy on LOCAL for development (docker required)
 
-You can access over <http://localhost/>
+**ATTENTION**: this command will **stop and remove** all your local docker containers and start the server on port 80. Unit tests and integration tests are executed automatically during the deploy. Use the following command in the project root directory:
 
     make serve
 
-### Deploy on PRODUCTION (docker required)
+You can access the service over "http://localhost:80"
+
+### Deploy on REMOTE (docker required)
 
 **ATTENTION**: this command will **stop and remove** all your docker containers on the remote machine and start the server on port 80. Unit tests are executed automatically during the deploy.
 
-To ship the code to an remote docker droplet with known ip and ssh access, use the following command:
+To ship the code to an remote docker droplet with known ip and ssh access, use the following command in the project root directory:
 
     make deploy dir=$(pwd) ip=<address>
+
+You can access the service over the "http://IP-address"
 
 ## How to include the text into a web page
 
