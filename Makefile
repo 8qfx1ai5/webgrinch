@@ -144,3 +144,9 @@ swagger:
 	go get github.com/rakyll/statik
 	cd third_party/swagger-ui; statik -src=`pwd`/dist
 
+
+# sass
+.PHONY: sass
+sass:
+	docker build -t sass -f ./build/container-image-sass/Dockerfile .
+	cat web/static/example/scss/main.scss | docker run -i sass > web/static/example/css/main.css 

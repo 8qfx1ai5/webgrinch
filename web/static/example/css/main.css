@@ -1,1 +1,119 @@
-body{background-color:LightYellow}body #wrapper{margin-left:auto;margin-right:auto;width:1000px}body #wrapper #main{width:700px;height:450px;margin-left:210px;margin-top:15px;padding:2em;border:1px solid black;background-color:white;border-radius:0 18px 18px 0;box-shadow:5px 5px 5px grey;font-family:OpenSans-ViewCrypt, sans-serif}body #wrapper #main h1{line-height:40px}body #wrapper #main .center{text-align:center}body #wrapper #main p{line-height:20px}body #wrapper #main .bold{font-weight:bold}body #wrapper #main .italic{font-style:italic}body #wrapper #main footer{border:1px solid black;text-align:center}body #wrapper #main section{height:60%}body #wrapper nav{padding-top:2em;padding-bottom:2em;height:450px;float:left;width:200px;background-color:white;border:1px solid black;border-radius:18px 0 0 18px;box-shadow:5px 5px 5px grey}body #wrapper nav #menu{list-style:none}body #wrapper nav #menu>li>button{width:130px;text-align:left}body #wrapper>footer{text-align:center;margin-top:2em}@font-face{font-family:OpenSans;src:url(../fonts/Open_Sans/OpenSans-Regular.ttf) format("truetype")}@font-face{font-family:OpenSans;src:url(../fonts/Open_Sans/OpenSans-Regular.ttf) format("truetype");font-style:italic}@font-face{font-family:OpenSans-ViewCrypt;src:url(../fonts/Open_Sans/OpenSans-Regular-ViewCrypt.ttf) format("truetype")}@font-face{font-family:OpenSans-ViewCrypt;src:url(../fonts/Open_Sans/OpenSans-Regular.ttf) format("truetype");font-style:italic}@font-face{font-family:UbuntuMono;src:url(../fonts/Ubuntu_Mono/UbuntuMono-Regular.ttf) format("truetype")}@font-face{font-family:UbuntuMono;src:url(../fonts/Ubuntu_Mono/UbuntuMono-Regular.ttf) format("truetype");font-style:italic}@font-face{font-family:UbuntuMono-ViewCrypt;src:url(../fonts/Ubuntu_Mono/UbuntuMono-Regular-ViewCrypt.ttf) format("truetype")}@font-face{font-family:UbuntuMono-ViewCrypt;src:url(../fonts/Ubuntu_Mono/UbuntuMono-Regular.ttf) format("truetype");font-style:italic}@font-face{font-family:VT323;src:url(../fonts/VT323/VT323-Regular.ttf) format("truetype")}@font-face{font-family:VT323;src:url(../fonts/VT323/VT323-Regular.ttf) format("truetype");font-style:italic}@font-face{font-family:VT323-ViewCrypt;src:url(../fonts/VT323/VT323-Regular-ViewCrypt.ttf) format("truetype")}@font-face{font-family:VT323-ViewCrypt;src:url(../fonts/VT323/VT323-Regular.ttf) format("truetype");font-style:italic}
+body {
+  background-color: LightYellow;
+}
+body #wrapper {
+  margin-left: auto;
+  margin-right: auto;
+  width: 1000px;
+}
+body #wrapper #main {
+  width: 700px;
+  height: 450px;
+  margin-left: 210px;
+  margin-top: 15px;
+  padding: 2em;
+  border: 1px solid black;
+  background-color: white;
+  border-radius: 0 18px 18px 0;
+  box-shadow: 5px 5px 5px grey;
+  font-family: OpenSans-ViewCrypt, sans-serif;
+}
+body #wrapper #main h1 {
+  line-height: 40px;
+}
+body #wrapper #main .center {
+  text-align: center;
+}
+body #wrapper #main p {
+  line-height: 20px;
+}
+body #wrapper #main .bold {
+  font-weight: bold;
+}
+body #wrapper #main .italic {
+  font-style: italic;
+}
+body #wrapper #main footer {
+  border: 1px solid black;
+  text-align: center;
+}
+body #wrapper #main section {
+  height: 60%;
+}
+body #wrapper nav {
+  padding-top: 2em;
+  padding-bottom: 2em;
+  height: 450px;
+  float: left;
+  width: 200px;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 18px 0 0 18px;
+  box-shadow: 5px 5px 5px grey;
+}
+body #wrapper nav #menu {
+  list-style: none;
+}
+body #wrapper nav #menu > li > button {
+  width: 130px;
+  text-align: left;
+}
+body #wrapper > footer {
+  text-align: center;
+  margin-top: 2em;
+}
+
+@font-face {
+  font-family: OpenSans;
+  src: url(../fonts/Open_Sans/OpenSans-Regular.ttf) format("truetype");
+}
+@font-face {
+  font-family: OpenSans;
+  src: url(../fonts/Open_Sans/OpenSans-Regular.ttf) format("truetype");
+  font-style: italic;
+}
+@font-face {
+  font-family: OpenSans-ViewCrypt;
+  src: url(../fonts/Open_Sans/OpenSans-Regular-ViewCrypt.ttf) format("truetype");
+}
+@font-face {
+  font-family: OpenSans-ViewCrypt;
+  src: url(../fonts/Open_Sans/OpenSans-Regular.ttf) format("truetype");
+  font-style: italic;
+}
+@font-face {
+  font-family: UbuntuMono;
+  src: url(../fonts/Ubuntu_Mono/UbuntuMono-Regular.ttf) format("truetype");
+}
+@font-face {
+  font-family: UbuntuMono;
+  src: url(../fonts/Ubuntu_Mono/UbuntuMono-Regular.ttf) format("truetype");
+  font-style: italic;
+}
+@font-face {
+  font-family: UbuntuMono-ViewCrypt;
+  src: url(../fonts/Ubuntu_Mono/UbuntuMono-Regular-ViewCrypt.ttf) format("truetype");
+}
+@font-face {
+  font-family: UbuntuMono-ViewCrypt;
+  src: url(../fonts/Ubuntu_Mono/UbuntuMono-Regular.ttf) format("truetype");
+  font-style: italic;
+}
+@font-face {
+  font-family: VT323;
+  src: url(../fonts/VT323/VT323-Regular.ttf) format("truetype");
+}
+@font-face {
+  font-family: VT323;
+  src: url(../fonts/VT323/VT323-Regular.ttf) format("truetype");
+  font-style: italic;
+}
+@font-face {
+  font-family: VT323-ViewCrypt;
+  src: url(../fonts/VT323/VT323-Regular-ViewCrypt.ttf) format("truetype");
+}
+@font-face {
+  font-family: VT323-ViewCrypt;
+  src: url(../fonts/VT323/VT323-Regular.ttf) format("truetype");
+  font-style: italic;
+}
