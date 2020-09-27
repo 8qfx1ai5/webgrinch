@@ -1,0 +1,69 @@
+.decode {
+    font-family: OpenSans-WebGrinch, sans-serif;
+}
+
+@font-face {
+    font-family: OpenSans;
+    src: url(../fonts/Open_Sans/OpenSans-Regular.ttf) format("truetype");
+}
+
+@font-face {
+    font-family: OpenSans;
+    src: url(../fonts/Open_Sans/OpenSans-Regular.ttf) format("truetype");
+    font-style: italic;
+}
+
+@font-face {
+    font-family: OpenSans-WebGrinch;
+    src: url(../fonts/Open_Sans/OpenSans-Regular-WebGrinch.ttf) format("truetype");
+}
+
+@font-face {
+    font-family: OpenSans-WebGrinch;
+    src: url(../fonts/Open_Sans/OpenSans-Regular.ttf) format("truetype");
+    font-style: italic;
+}
+
+@font-face {
+    font-family: UbuntuMono;
+    src: url(../fonts/Ubuntu_Mono/UbuntuMono-Regular.ttf) format("truetype");
+}
+
+@font-face {
+    font-family: UbuntuMono;
+    src: url(../fonts/Ubuntu_Mono/UbuntuMono-Regular.ttf) format("truetype");
+    font-style: italic;
+}
+
+@font-face {
+    font-family: UbuntuMono-WebGrinch;
+    src: url(../fonts/Ubuntu_Mono/UbuntuMono-Regular-WebGrinch.ttf) format("truetype");
+}
+
+@font-face {
+    font-family: UbuntuMono-WebGrinch;
+    src: url(../fonts/Ubuntu_Mono/UbuntuMono-Regular.ttf) format("truetype");
+    font-style: italic;
+}
+
+@font-face {
+    font-family: VT323;
+    src: url(../fonts/VT323/VT323-Regular.ttf) format("truetype");
+}
+
+@font-face {
+    font-family: VT323;
+    src: url(../fonts/VT323/VT323-Regular.ttf) format("truetype");
+    font-style: italic;
+}
+
+@font-face {
+    font-family: VT323-WebGrinch;
+    src: url(../fonts/VT323/VT323-Regular-WebGrinch.ttf) format("truetype");
+}
+
+@font-face {
+    font-family: VT323-WebGrinch;
+    src: url(../fonts/VT323/VT323-Regular.ttf) format("truetype");
+    font-style: italic;
+}

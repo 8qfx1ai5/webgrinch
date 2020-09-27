@@ -1,145 +1,84 @@
 body {
-  background-color: LightYellow;
-
-  #wrapper {
-    margin-left: auto;
-    margin-right: auto;
-    width: 1000px;
-
-    #main {
-      width: 700px;
-      height: 450px;
-      margin-left: 210px;
-      margin-top: 15px;
-      padding: 2em;
-      border: 1px solid black;
-      background-color: white;
-      border-radius: 0 18px 18px 0;
-      box-shadow: 5px 5px 5px grey;
-      font-family: OpenSans-ViewCrypt, sans-serif;
-
-      h1 {
-        line-height: 40px;
-      }
-
-      .center {
-        text-align: center;
-      }
-
-      p {
-        line-height: 20px;
-      }
-
-      .bold {
-        font-weight: bold;
-      }
-
-      .italic {
-        font-style: italic;
-      }
-
-      footer {
-        border: 1px solid black;
-        text-align: center;
-      }
-
-      section {
-        height: 60%;
-      }
-    }
-
-    nav {
-      padding-top: 2em;
-      padding-bottom: 2em;
-      height: 450px;
-      float: left;
-      width: 200px;
-      background-color: white;
-      border: 1px solid black;
-      border-radius: 18px 0 0 18px;
-      box-shadow: 5px 5px 5px grey;
-
-      #menu {
-        list-style: none;
-
-        > li {
-          > button {
-            width: 130px;
-            text-align: left;
-          }
+    background-color: white;
+    margin: 0px;
+    font-size: 20;
+    #wrapper {
+        // background-color: lightblue;
+        margin-left: auto;
+        margin-right: auto;
+        width: 1000px;
+        min-height: 100%;
+        padding-top: 2em;
+        padding-bottom: 2em;
+        #main {
+            width: 90%;
+            // height: 450px;
+            // margin-left: 210px;
+            margin: auto;
+            padding: 2em;
+            // border: 1px solid black;
+            background-color: white;
+            // border-radius: 0 18px 18px 0;
+            // box-shadow: 5px 5px 5px grey;
+            h1 {
+                line-height: 40px;
+            }
+            h2 {
+                line-height: 30px;
+            }
+            h3 {
+                line-height: 20px;
+            }
+            blockquote {
+                margin: 0px;
+                border: 1px solid black;
+                text-align: center;
+            }
+            .center {
+                text-align: center;
+            }
+            p {
+                line-height: 20px;
+            }
+            .bold {
+                font-weight: bold;
+            }
+            .italic {
+                font-style: italic;
+            }
+            #font {
+                border: 1px solid black;
+                text-align: center;
+                // padding-top: 2em;
+                // padding-bottom: 2em;
+                margin: auto;
+                // height: 100px;
+                // float: left;
+                width: 100%;
+                background-color: white;
+                // border: 1px solid black;
+                // border-radius: 18px 0 0 18px;
+                // box-shadow: 5px 5px 5px grey;
+                div {
+                    height: 50px;
+                    width: 60%;
+                    margin: auto;
+                }
+                #menu {
+                    margin: auto;
+                    button {
+                        border: none;
+                        padding: 5px;
+                        width: 32%;
+                        text-align: center;
+                        margin: 0px;
+                    }
+                }
+            }
         }
-      }
+        >footer {
+            text-align: center;
+            margin-top: 2em;
+        }
     }
-
-    >footer {
-      text-align: center;
-      margin-top: 2em;
-    }
-  }
-}
-
-@font-face {
-  font-family: OpenSans;
-  src: url(../fonts/Open_Sans/OpenSans-Regular.ttf) format('truetype');
-}
-
-@font-face {
-  font-family: OpenSans;
-  src: url(../fonts/Open_Sans/OpenSans-Regular.ttf) format('truetype');
-  font-style: italic;
-}
-
-@font-face {
-  font-family: OpenSans-ViewCrypt;
-  src: url(../fonts/Open_Sans/OpenSans-Regular-ViewCrypt.ttf) format('truetype');
-}
-
-@font-face {
-  font-family: OpenSans-ViewCrypt;
-  src: url(../fonts/Open_Sans/OpenSans-Regular.ttf) format('truetype');
-  font-style: italic;
-}
-
-@font-face {
-  font-family: UbuntuMono;
-  src: url(../fonts/Ubuntu_Mono/UbuntuMono-Regular.ttf) format('truetype');
-}
-
-@font-face {
-  font-family: UbuntuMono;
-  src: url(../fonts/Ubuntu_Mono/UbuntuMono-Regular.ttf) format('truetype');
-  font-style: italic;
-}
-
-@font-face {
-  font-family: UbuntuMono-ViewCrypt;
-  src: url(../fonts/Ubuntu_Mono/UbuntuMono-Regular-ViewCrypt.ttf) format('truetype');
-}
-
-@font-face {
-  font-family: UbuntuMono-ViewCrypt;
-  src: url(../fonts/Ubuntu_Mono/UbuntuMono-Regular.ttf) format('truetype');
-  font-style: italic;
-}
-
-@font-face {
-  font-family: VT323;
-  src: url(../fonts/VT323/VT323-Regular.ttf) format('truetype');
-}
-
-@font-face {
-  font-family: VT323;
-  src: url(../fonts/VT323/VT323-Regular.ttf) format('truetype');
-  font-style: italic;
-}
-
-@font-face {
-  font-family: VT323-ViewCrypt;
-  src: url(../fonts/VT323/VT323-Regular-ViewCrypt.ttf) format('truetype');
-}
-
-@font-face {
-  font-family: VT323-ViewCrypt;
-  src: url(../fonts/VT323/VT323-Regular.ttf) format('truetype');
-  font-style: italic;
 }

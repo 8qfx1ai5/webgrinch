@@ -7,9 +7,4 @@ FROM alpine:3.12 AS sass
 RUN apk add --update npm --no-cache
 RUN npm install -g sass
 
-ENV WORKDIR /workdir/
-WORKDIR ${WORKDIR}
-
-COPY . ${WORKDIR}
-
 ENTRYPOINT ["sass", "--stdin"]

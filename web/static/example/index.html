@@ -1,68 +1,83 @@
 <!DOCTYPE hmtl>
-<html >
-<head >
-    <meta http-equiv="cache-control" content="no-cache" >
-    <meta http-equiv="pragma" content="no-cache" >
+<html>
+
+<head>
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="pragma" content="no-cache">
     <meta charset="UTF-8" />
-    <link rel="stylesheet" type="text/css" href="css/main.css" >
-    <title >ViewCrypt Verschlüsselung</title >
-    <script >
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/decode.css">
+    <title>WebGrinch Verschlüsselung</title>
+    <script>
         function setFont(newFont) {
-            if (newFont == '') {
-                document.getElementById("main").removeAttribute("style");
-            } else {
-                document.getElementById("main").style.fontFamily = newFont;
+            const elements = document.querySelectorAll(".decode");
+            for (var i = 0; i < elements.length; i++) {
+                elements[i].style.fontFamily = newFont;
             }
         }
-    </script >
-</head >
-<body >
-<div id="wrapper" >
-    <nav >
-        <ul id="menu" >
-            <li ><h2 >Schriften</h2 ></li > <li >
-            <button type="button"
-                    onmouseover="setFont('OpenSans-ViewCrypt');"
-                    onmousedown="setFont('OpenSans');"
-                    onmouseup="setFont('OpenSans-ViewCrypt');"
-                    onmouseout="setFont('')" >OpenSans
-            </button >
-        </li > <li >
-            <button type="button"
-                    onmouseover="setFont('UbuntuMono-ViewCrypt');"
-                    onmousedown="setFont('UbuntuMono');"
-                    onmouseup="setFont('UbuntuMono-ViewCrypt');"
-                    onmouseout="setFont('')" >UbuntuMono
-            </button >
-        </li > <li >
-            <button type="button"
-                    onmouseover="setFont('VT323-ViewCrypt');"
-                    onmousedown="setFont('VT323');"
-                    onmouseup="setFont('VT323-ViewCrypt');"
-                    onmouseout="setFont('')" >VT323
-            </button >
-        </li >
-        </ul >
-    </nav >
-    <div id="main" >
-        <header >
-            <h1 class="center" >Xjmmlpnnfo jn Afjubmufs efs Wfstdimüttfmvoh!&nbsp;<sup >&copy;</sup ></h1 >
-        </header >
-        <section >
-            <p >Bvg ejftfs Tfjuf tfifo Tjf mjwf ejf Xjslvoh eft wpo njs,
-                <span class="bold italic" >Felix Ohnesorge</span >, fouxjdlfmufo Wfstdimüttfmvohtbmhpszuinvt güs ejhubmf Nfejfo bvg IUNM-Cbtjt.</p >
-            <p class="center" >Jdi ofoof ft <span class="bold italic" >"ViewCrypt"!</span >&nbsp;<sup >&copy;</sup ></p >
-            <p >Qsjoajqjfmm löoofo bvg ejftf Xfjtf bmmf Xfctfjufo, FQVCt, Fnbjmt, ... güs fjof ejhjubmf Xfjufswfsbscfjuvoh voavhäohmjdi hfnbdiu xfsefo. Ejf Lpnqmfyjuäu efs Wfstdimüttfmvoh jtu cfmjfcjh tdbmjfscbs.</p >
-            <p >Xjf Tjf mfjdiu tfmctu uftufo löoofo, jtu efs ijfs tufifoef Ufyu ojdiu fjogbdi lpqjfscbs.</p >
-            <p class="bold italic" >Alle Rechte vorbehalten.</p >
-        </section >
-        <footer >
-            <p ><span class="italic" >ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz</span ><br />BCDEFGHIJKLMNOPQRSTUVWXYZA bcdefghijklmnopqrstuvwxyza</p >
-        </footer >
-    </div >
-    <footer >
-        <span >&copy;&nbsp;2015 Felix Ohnesorge,&nbsp;Alle Rechte vorbehalten.</span >
-    </footer >
-</div >
-</body >
-</html >
+    </script>
+</head>
+
+<body>
+    <div id="wrapper">
+
+        <div id="main">
+            <header>
+                <h1 class="center">WebGrinch copy protection<br/> - content encoding</h1>
+            </header>
+            <section>
+                <h2>Try it</h2>
+                <p>Give it a shot and try to "copy & past" the text in the following box:</p>
+                <blockquote class="decode" cite="http://developer.mozilla.org">
+                    <!-- <p>Noting is like it seems to be.</p> -->
+                    <p>Opujoh jt mjlf ju tffnt up cf.</p>
+                </blockquote>
+            </section>
+            <section>
+                <h2>How it works</h2>
+                <p>We are switching letters in the HTML!!! So the original HTML file is unusable by default in the specific area.</br>(have a look)</p>
+                <p>But we can load an associated web font. The font is loading different images for the original unicode, so that the letter change is reversed. </p>
+                <section id="font">
+                    <h3>Other fonts</h3>
+                    <div id="menu">
+                        <button type="button" onmouseover="setFont('OpenSans-WebGrinch');" onmousedown="setFont('OpenSans');" onmouseup="setFont('OpenSans-WebGrinch');" onmouseout="setFont('')">OpenSans</button>
+                        <button type="button" onmouseover="setFont('UbuntuMono-WebGrinch');" onmousedown="setFont('UbuntuMono');" onmouseup="setFont('UbuntuMono-WebGrinch');" onmouseout="setFont('')">UbuntuMono</button>
+                        <button type="button" onmouseover="setFont('VT323-WebGrinch');" onmousedown="setFont('VT323');" onmouseup="setFont('VT323-WebGrinch');" onmouseout="setFont('')">VT323</button>
+                    </div>
+                    <p class="decode"><span class="italic">ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz</span><br />BCDEFGHIJKLMNOPQRSTUVWXYZA bcdefghijklmnopqrstuvwxyza</p>
+                </section>
+            </section>
+            <section>
+                <h2>Possibilities</h2>
+                <p>In general you can encode every digital media which supports web fonts like websites, articles, bogs, emails, ebooks and EPUBs.</p>
+                <p>The example uses a simple letter shift, but the complexity of the encoding is extreme scalable. With this tech you can</p>
+                <ul>
+                    <li>improve ownership tracking of the content</li>
+                    <li>hide content to machines</li>
+                    <li>fake content to machines</li>
+                    <li>visual UX for humans is not affected</li>
+                    <li>compatible with the most browsers and tech</li>
+                    <li>no programming languages or javascript is required</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Disadvantage</h2>
+                <p>Because of the lack of processability for existing algorithms, there are a lot of technologies, that do not work together with them. For instance:</p>
+                <ul>
+                    <li>text translation</li>
+                    <li>inline search</li>
+                    <li>reading out for the blind</li>
+                    <li>listing in search engines</li>
+                    <li>reusing of the digital text without the font</li>
+                </ul>
+                <p>This list of cons is why I named it "WebGrinch".</br>Make the use of the web as bad as possible, like a real Grinch. &#128516;</p>
+            </section>
+        </div>
+        <footer>
+            <p>If you have ideas or questions, feel free to contact me over <a href="https://www.linkedin.com/in/felixohnesorge/">LinkedIn</a>.</p>
+            <span>&copy;&nbsp;2015 Felix Ohnesorge</span>
+        </footer>
+    </div>
+</body>
+
+</html>
