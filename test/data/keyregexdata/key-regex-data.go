@@ -48,14 +48,14 @@ var TestCases = tests{
 		},
 		"simple lower case letter range",
 	},
-	{
-		"b-f",
-		Expected{
-			"[[bcdef]]",
-			true,
-		},
-		"partial lower case letter range",
-	},
+	// {
+	// 	"b-f",
+	// 	Expected{
+	// 		"[[bcdef]]",
+	// 		true,
+	// 	},
+	// 	"partial lower case letter range",
+	// },
 	{
 		"[a-z]",
 		Expected{
@@ -72,14 +72,14 @@ var TestCases = tests{
 		},
 		"simple digits range",
 	},
-	{
-		"5-8",
-		Expected{
-			"[[0123456789]]",
-			true,
-		},
-		"partial digits range",
-	},
+	// {
+	// 	"5-8",
+	// 	Expected{
+	// 		"[[0123456789]]",
+	// 		true,
+	// 	},
+	// 	"partial digits range",
+	// },
 	{
 		"[0-9]",
 		Expected{

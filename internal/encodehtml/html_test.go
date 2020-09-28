@@ -187,7 +187,7 @@ var testCases = []testCase{
 		},
 		expected{
 			translations{},
-			false,
+			true,
 		},
 		"test brocken xml, wrong closing tag",
 	},

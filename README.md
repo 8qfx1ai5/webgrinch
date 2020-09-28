@@ -91,12 +91,18 @@ To make the text readable you need to load the corresponding web font to the tex
 - v0.11 moved product organisation to GitHub projects
 - v1.0 decision to make the project open source under the name "webgrinch"
 
-## Products
+## Features
 
 - plain text conversion
 - html fragments conversion (dirty)
 - xhtml conversion
 - (xml conversion)
+
+## Missing Features
+
+- create a font with a special key
+- advanced regex support for the key generation
+- advanced html understanding of the API
 
 ## Special thanks
 
