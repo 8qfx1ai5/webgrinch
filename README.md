@@ -60,6 +60,9 @@ To make the text readable you need to load the corresponding web font to the tex
 
 ### Run the tests
 
+    make utest # for debugging
+    make utestd # for deploy
+
 #### All tests
 
     go test -v -count=1 ./...
