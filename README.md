@@ -45,12 +45,12 @@ To make the text readable you need to load the corresponding web font to the tex
 
     <style>
         @font-face {
-            font-family: OpenSans-Regular-vc;
-            src: url(https://8qfx1ai5.de/vc/font/open_sans/OpenSans-Regular-vc.ttf) format('truetype');
+            font-family: <your-selected-font-family-name>;
+            src: url(<select-a-WebGrinch-font.ttf>) format('truetype');
         }
 
-        .vc {
-            font-family: OpenSans-Regular-vc, sans-serif;
+        .decode {
+            font-family: <your-selected-font-family-name>;
         }
     </style>
 
