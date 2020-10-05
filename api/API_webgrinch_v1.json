@@ -7,15 +7,13 @@
         "contact": {
             "email": "webgrinch@8qfx1ai5.de",
             "name": "Felix Ohnesorge",
-            "url": "https://8qfx1ai5.de"
+            "url": "http://webgrinch.8qfx1ai5.de"
         },
         "termsOfService": "/api/terms_of_service"
     },
-    "servers": [
-        {
-            "url": "/api"
-        }
-    ],
+    "servers": [{
+        "url": "/api"
+    }],
     "paths": {
         "/encode/html": {
             "post": {
