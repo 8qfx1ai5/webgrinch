@@ -1,71 +1,102 @@
+:root {
+  --main-color: #3f4073;
+  --second-color: white;
+  --third-color: #222342;
+}
+
 body {
-  background-color: white;
+  background-color: var(--second-color);
   margin: 0px;
-  font-size: 20;
+  font-family: sans-serif;
+  min-width: 1000px;
+  /* Suppose you want minimum width of 1000px */
+  width: auto !important;
+  /* Firefox will set width as auto */
+  width: 1000px;
 }
 body #wrapper {
+  width: 100%;
+}
+body #wrapper #demo,
+body #wrapper #contact,
+body #wrapper #footer {
+  background-color: var(--main-color);
+  color: var(--second-color);
+}
+body #wrapper .content,
+body #wrapper nav {
+  max-width: 800px;
   margin-left: auto;
   margin-right: auto;
-  width: 1000px;
-  min-height: 100%;
-  padding-top: 2em;
-  padding-bottom: 2em;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
-body #wrapper #main {
-  width: 90%;
-  margin: auto;
-  padding: 2em;
-  background-color: white;
+body #wrapper .content.content:last-child(),
+body #wrapper nav.content:last-child() {
+  padding-bottom: 10vh;
 }
-body #wrapper #main h1 {
-  line-height: 40px;
-}
-body #wrapper #main h2 {
-  line-height: 30px;
-}
-body #wrapper #main h3 {
-  line-height: 20px;
-}
-body #wrapper #main blockquote {
-  margin: 0px;
-  border: 1px solid black;
-  text-align: center;
-}
-body #wrapper #main .center {
-  text-align: center;
-}
-body #wrapper #main p {
-  line-height: 20px;
-}
-body #wrapper #main .bold {
-  font-weight: bold;
-}
-body #wrapper #main .italic {
-  font-style: italic;
-}
-body #wrapper #main #font {
-  border: 1px solid black;
-  text-align: center;
-  margin: auto;
-  width: 100%;
-  background-color: white;
-}
-body #wrapper #main #font div {
+body #wrapper nav {
   height: 50px;
-  width: 60%;
-  margin: auto;
+  position: relative;
 }
-body #wrapper #main #font #menu {
-  margin: auto;
+body #wrapper nav ul {
+  list-style-type: none;
+  right: 0px;
+  margin: unset;
+  text-align: right;
+  font-size: 1.3em;
+  position: absolute;
+  bottom: 0px;
 }
-body #wrapper #main #font #menu button {
-  border: none;
-  padding: 5px;
-  width: 32%;
-  text-align: center;
-  margin: 0px;
+body #wrapper nav ul li {
+  float: right;
+  padding-left: 3em;
 }
-body #wrapper > footer {
-  text-align: center;
-  margin-top: 2em;
+body #wrapper nav h2 {
+  float: left;
+  margin: unset;
+  position: absolute;
+  bottom: 0px;
+}
+body #wrapper #nav {
+  position: fixed;
+  background-color: var(--second-color);
+}
+body #wrapper #start {
+  color: var(--main-color);
+  background-image: url(../images/start_image.png);
+  background-repeat: no-repeat;
+  background-position: 40% bottom;
+  background-size: auto 70%;
+  min-height: 90vh;
+}
+body #wrapper #start h1 {
+  font-size: 3em;
+  margin-top: 50px;
+}
+body #wrapper #start h1 .subheading {
+  color: var(--third-color);
+  font-size: 40%;
+  font-weight: normal;
+}
+body #wrapper #start img {
+  position: absolute;
+  bottom: 0px;
+  max-height: 70%;
+  right: 10%;
+  max-width: 70%;
+}
+body #wrapper section {
+  padding-bottom: 15px;
+  padding-top: 10vh;
+  padding-left: 0px;
+  padding-right: 0px;
+  min-height: 85vh;
+  width: 100vw;
+}
+body #wrapper section#nav {
+  padding-top: 0px;
+}
+body #wrapper section#nav, body #wrapper section#footer, body #wrapper section#contact {
+  min-height: auto;
 }

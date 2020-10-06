@@ -7,7 +7,7 @@
     <meta charset="UTF-8" />
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <link rel="stylesheet" type="text/css" href="css/decode.css">
-    <title>WebGrinch - Content Encoding</title>
+    <title>WebGrinch - content encoding - ownership tracking - prevent theft</title>
     <script>
         function setFont(newFont) {
             const elements = document.querySelectorAll(".decode");
@@ -20,48 +20,57 @@
 
 <body>
     <div id="wrapper">
-
-        <div id="main">
-            <header>
-                <h1 class="center">WebGrinch copy protection<br/> - content encoding</h1>
-            </header>
-            <section>
-                <h2>Try it</h2>
+        <section id="nav">
+            <nav>
+                <h2>WebGrinch</h2>
+                <ul>
+                    <li>Demo</li>
+                    <li>About</li>
+                    <li>Contact</li>
+                </ul>
+            </nav>
+        </section>
+        <section id="start">
+            <div class="content">
+                <h1 class="center">WebGrinch<br/><span class="subheading">content encoding<br/>for creators<br/>and publisher</span></h1>
+            </div>
+            <!-- <img src="images/start_image.png" /> -->
+            <!-- <div id="start_image_surface"></div> -->
+        </section>
+        <section id="demo">
+            <div class="content">
+                <h2>Demo</h2>
                 <p>Give it a shot and try to "copy & past" the text in the following box:</p>
                 <blockquote class="decode" cite="http://developer.mozilla.org">
                     <!-- <p>Noting is like it seems to be.</p> -->
                     <p>Opujoh jt mjlf ju tffnt up cf.</p>
                 </blockquote>
-            </section>
-            <section>
+                <button type="button" onmousedown="setFont('OpenSans');" onmouseup="setFont('OpenSans-WebGrinch');" onmouseout="setFont('')">View original text.</button>
+            </div>
+            <div class="content">
                 <h2>How it works</h2>
                 <p>We are switching letters in the HTML!!! So the original HTML file is unusable by default in the specific area.</br>(have a look)</p>
                 <p>Then we can load a special associated web font. The font is using different images for the original unicode, so that the letter change is reversed. </p>
-                <section id="font">
-                    <h3>Other fonts</h3>
-                    <div id="menu">
-                        <button type="button" onmouseover="setFont('OpenSans-WebGrinch');" onmousedown="setFont('OpenSans');" onmouseup="setFont('OpenSans-WebGrinch');" onmouseout="setFont('')">OpenSans</button>
-                        <button type="button" onmouseover="setFont('UbuntuMono-WebGrinch');" onmousedown="setFont('UbuntuMono');" onmouseup="setFont('UbuntuMono-WebGrinch');" onmouseout="setFont('')">UbuntuMono</button>
-                        <button type="button" onmouseover="setFont('VT323-WebGrinch');" onmousedown="setFont('VT323');" onmouseup="setFont('VT323-WebGrinch');" onmouseout="setFont('')">VT323</button>
-                    </div>
-                    <p class="decode"><span class="italic">ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz</span><br />BCDEFGHIJKLMNOPQRSTUVWXYZA bcdefghijklmnopqrstuvwxyza</p>
-                </section>
-            </section>
-            <section>
+                <p><span class="italic"><span class="label">What you see:</span> abcdefghijklmnopqrstuvwxyz</span><br /><span class="label">What is written:</span> bcdefghijklmnopqrstuvwxyza</p>
+            </div>
+        </section>
+        <section id="features">
+            <div class="content">
                 <h2>Possibilities</h2>
                 <p>In general you can encode every digital media which supports web fonts like websites, articles, bogs, emails, ebooks and EPUBs.</p>
                 <p>The example uses a simple letter shift, but the complexity of the encoding is extreme scalable. With this tech you can</p>
                 <ul>
-                    <li>improve ownership tracking of the content</li>
-                    <li>hide content to machines</li>
-                    <li>fake content to machines</li>
                     <li>visual UX for humans is not affected</li>
+                    <li>sign your content</li>
+                    <li>improve ownership tracking of the content</li>
                     <li>compatible with the most browsers and tech</li>
                     <li>no programming languages or javascript is required</li>
+                    <li>hide content to machines</li>
+                    <li>fake content to machines</li>
                 </ul>
-            </section>
-            <section>
-                <h2>Incompatibilities</h2>
+            </div>
+            <div class="content">
+                <h2>Side Effects</h2>
                 <p>Because of the lack of processability for existing algorithms, there are a lot of technologies, that do not work together with them. For instance:</p>
                 <ul>
                     <li>text translation</li>
@@ -70,13 +79,20 @@
                     <li>listing in search engines</li>
                     <li>reusing of the digital text without the font</li>
                 </ul>
-            </section>
-        </div>
-        <footer>
-            <p>The project on <a target="_blank" href="https://github.com/8qfx1ai5/webgrinch">github: webgrinch</a>.<br/>Or if you have ideas or questions, feel free to contact me over <a target="_blank" href="https://www.linkedin.com/in/felixohnesorge/">LinkedIn</a><br/>or
-                send me an <a href="mailto:webgrinch@8qfx1ai5.de">email to webgrinch@8qfx1ai5.de</a>.</p>
-            <span>&copy;&nbsp;2015 Felix Ohnesorge</span>
-        </footer>
+            </div>
+        </section>
+        <section id="contact">
+            <div class="content">
+                <h2>Contact</h2>
+                <p>You can find the project on github: <a target="_blank" href="https://github.com/8qfx1ai5/webgrinch">webgrinch</a>.<br/>If you are interested, have ideas, questions or want to support the project, feel free to contact me over <a target="_blank"
+                        href="https://www.linkedin.com/in/felixohnesorge/">LinkedIn</a><br/>or send me an email: <a href="mailto:webgrinch@8qfx1ai5.de">webgrinch@8qfx1ai5.de</a>.</p>
+            </div>
+        </section>
+        <section id="footer">
+            <div class="content">
+                <span>&copy;&nbsp;2015 Felix Ohnesorge</span>
+            </div>
+        </section>
     </div>
 </body>
 
