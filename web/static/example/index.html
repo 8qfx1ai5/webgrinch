@@ -22,17 +22,18 @@
     <div id="wrapper">
         <section id="nav">
             <nav>
-                <h2>WebGrinch</h2>
+                <h2><a href="#start">WebGrinch</a></h2>
                 <ul>
-                    <li>Demo</li>
-                    <li>About</li>
-                    <li>Contact</li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#features">About</a></li>
+                    <li><a href="#demo">Demo</a></li>
                 </ul>
             </nav>
         </section>
         <section id="start">
             <div class="content">
-                <h1 class="center">WebGrinch<br/><span class="subheading">content encoding<br/>for creators<br/>and publisher</span></h1>
+                <h1 class="center">WebGrinch<br/><span class="subheading"><i>secure content encoding</i></span></h1>
+                <p>For creators<br/>For publishers<br/>For all</p>
             </div>
             <!-- <img src="images/start_image.png" /> -->
             <!-- <div id="start_image_surface"></div> -->
@@ -40,13 +41,18 @@
         <section id="demo">
             <div class="content">
                 <h2>Demo</h2>
-                <p>Give it a shot and try to "copy & past" the text in the following box:</p>
+                <h3>1. Try to "copy & past" the text from the following box:</h3>
                 <blockquote class="decode" cite="http://developer.mozilla.org">
                     <!-- <p>Noting is like it seems to be.</p> -->
-                    <p>Opujoh jt mjlf ju tffnt up cf.</p>
+                    <p>"Opujoh jt mjlf ju tffnt up cf."</p>
                 </blockquote>
-                <button type="button" onmousedown="setFont('OpenSans');" onmouseup="setFont('OpenSans-WebGrinch');" onmouseout="setFont('')">View original text.</button>
+                <input type="text" placeholder="Insert here!" />
+                <h3>2. View original text</h3>
+                <button type="button" onmousedown="setFont('OpenSans');" onmouseup="setFont('OpenSans-WebGrinch');" onmouseout="setFont('OpenSans-WebGrinch')">&uarr; have a look &uarr;</button>
             </div>
+        </section>
+        <div id="demo-transition"></div>
+        <section id="how">
             <div class="content">
                 <h2>How it works</h2>
                 <p>We are switching letters in the HTML!!! So the original HTML file is unusable by default in the specific area.</br>(have a look)</p>
@@ -54,6 +60,7 @@
                 <p><span class="italic"><span class="label">What you see:</span> abcdefghijklmnopqrstuvwxyz</span><br /><span class="label">What is written:</span> bcdefghijklmnopqrstuvwxyza</p>
             </div>
         </section>
+        <div id="how-transition"></div>
         <section id="features">
             <div class="content">
                 <h2>Possibilities</h2>
@@ -69,6 +76,8 @@
                     <li>fake content to machines</li>
                 </ul>
             </div>
+        </section>
+        <section id="sideeffects">
             <div class="content">
                 <h2>Side Effects</h2>
                 <p>Because of the lack of processability for existing algorithms, there are a lot of technologies, that do not work together with them. For instance:</p>

@@ -4,8 +4,13 @@
   --third-color: #222342;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background-color: var(--second-color);
+  color: var(--main-color);
   margin: 0px;
   font-family: sans-serif;
   min-width: 1000px;
@@ -18,6 +23,7 @@ body #wrapper {
   width: 100%;
 }
 body #wrapper #demo,
+body #wrapper #features,
 body #wrapper #contact,
 body #wrapper #footer {
   background-color: var(--main-color);
@@ -35,11 +41,17 @@ body #wrapper .content.content:last-child(),
 body #wrapper nav.content:last-child() {
   padding-bottom: 10vh;
 }
-body #wrapper nav {
-  height: 50px;
+body #wrapper #nav {
+  position: fixed;
+  background-color: var(--second-color);
+  color: var(--third-color);
+}
+body #wrapper #nav nav {
+  height: 30px;
+  min-height: 1cm;
   position: relative;
 }
-body #wrapper nav ul {
+body #wrapper #nav nav ul {
   list-style-type: none;
   right: 0px;
   margin: unset;
@@ -48,36 +60,46 @@ body #wrapper nav ul {
   position: absolute;
   bottom: 0px;
 }
-body #wrapper nav ul li {
+body #wrapper #nav nav ul li {
   float: right;
   padding-left: 3em;
 }
-body #wrapper nav h2 {
+body #wrapper #nav nav h2 {
   float: left;
   margin: unset;
   position: absolute;
   bottom: 0px;
+  font-size: 2em;
 }
-body #wrapper #nav {
-  position: fixed;
-  background-color: var(--second-color);
+body #wrapper #nav nav a {
+  color: inherit;
+  text-decoration: none;
+}
+body #wrapper #nav nav a:visited {
+  color: inherit;
 }
 body #wrapper #start {
   color: var(--main-color);
   background-image: url(../images/start_image.png);
   background-repeat: no-repeat;
-  background-position: 40% bottom;
+  background-position: 30% bottom;
   background-size: auto 70%;
   min-height: 90vh;
+  text-align: initial;
+  padding-top: 60px;
 }
 body #wrapper #start h1 {
-  font-size: 3em;
+  font-size: 3.5em;
   margin-top: 50px;
+  margin-bottom: 10px;
 }
 body #wrapper #start h1 .subheading {
   color: var(--third-color);
-  font-size: 40%;
+  font-size: 0.3em;
   font-weight: normal;
+}
+body #wrapper #start p {
+  font-size: 1.5em;
 }
 body #wrapper #start img {
   position: absolute;
@@ -86,17 +108,65 @@ body #wrapper #start img {
   right: 10%;
   max-width: 70%;
 }
+body #wrapper #demo blockquote {
+  background-color: var(--third-color);
+  margin-left: 0px;
+  margin-right: 0px;
+  padding: 20px;
+  font-size: 1.5em;
+}
+body #wrapper #demo button {
+  background-color: red;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+  color: var(--second-color);
+  padding: 10px 30px 10px 30px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+}
+body #wrapper #demo button:active, body #wrapper #demo button:hover {
+  border: none;
+  outline: none;
+}
+body #wrapper #demo input {
+  display: block;
+  padding: 20px;
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-bottom: 20px;
+  height: 100px;
+  width: 100%;
+  text-align: center;
+  font-size: 1.5em;
+}
+body #wrapper #demo h3 {
+  font-weight: normal;
+  text-align: left;
+}
 body #wrapper section {
-  padding-bottom: 15px;
+  padding-bottom: 30px;
   padding-top: 10vh;
   padding-left: 0px;
   padding-right: 0px;
-  min-height: 85vh;
   width: 100vw;
+  text-align: center;
+}
+body #wrapper section h2 {
+  font-size: 3em;
 }
 body #wrapper section#nav {
   padding-top: 0px;
 }
 body #wrapper section#nav, body #wrapper section#footer, body #wrapper section#contact {
   min-height: auto;
+}
+body #wrapper #demo-transition {
+  border-top: 30px solid var(--main-color);
+  border-left: 80vw solid var(--second-color);
+  border-right: 20vw solid var(--second-color);
+}
+body #wrapper #how-transition {
+  border-top: 30px solid var(--second-color);
+  border-left: 40vw solid var(--main-color);
+  border-right: 60vw solid var(--main-color);
 }
