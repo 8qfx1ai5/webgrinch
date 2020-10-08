@@ -16,11 +16,8 @@ body {
   color: var(--main-color);
   margin: 0px;
   font-family: sans-serif;
-  min-width: 1000px;
   /* Suppose you want minimum width of 1000px */
-  width: auto !important;
   /* Firefox will set width as auto */
-  width: 1000px;
 }
 body #wrapper {
   width: 100%;
@@ -219,6 +216,8 @@ body #wrapper section {
   padding-right: 0px;
   width: 100vw;
   text-align: center;
+  margin-top: -1px;
+  margin-bottom: -1px;
 }
 body #wrapper section h2 {
   font-size: 3em;
@@ -229,23 +228,32 @@ body #wrapper section#nav {
 body #wrapper section#nav, body #wrapper section#footer, body #wrapper section#contact {
   min-height: auto;
 }
+body #wrapper .transition {
+  width: 0px;
+  margin-top: -1px;
+  margin-bottom: -1px;
+}
 body #wrapper #demo-transition {
   border-top: 30px solid var(--main-color);
   border-left: 80vw solid var(--second-color);
+  border-bottom: 1px solid var(--second-color);
   border-right: 20vw solid var(--second-color);
 }
 body #wrapper #features-transition {
   border-top: 30px solid var(--second-color);
   border-left: 40vw solid var(--main-color);
+  border-bottom: 1px solid var(--main-main);
   border-right: 60vw solid var(--main-color);
 }
 body #wrapper #how-transition {
   border-top: 30px solid var(--main-color);
   border-left: 0vw solid var(--second-color);
+  border-bottom: 1px solid var(--second-color);
   border-right: 100vw solid var(--second-color);
 }
 body #wrapper #sideeffects-transition {
   border-top: 30px solid var(--second-color);
   border-left: 55vw solid var(--main-color);
+  border-bottom: 1px solid var(--main-main);
   border-right: 45vw solid var(--main-color);
 }

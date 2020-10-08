@@ -15,11 +15,6 @@ body {
     color: var(--main-color);
     margin: 0px;
     font-family: sans-serif;
-    min-width: 1000px;
-    /* Suppose you want minimum width of 1000px */
-    width: auto !important;
-    /* Firefox will set width as auto */
-    width: 1000px;
     #wrapper {
         width: 100%;
         #demo,
@@ -229,6 +224,8 @@ body {
             // min-height: 85vh;
             width: 100vw;
             text-align: center;
+            margin-top: -1px;
+            margin-bottom: -1px;
             h2 {
                 font-size: 3em;
             }
@@ -241,28 +238,33 @@ body {
                 min-height: auto;
             }
         }
+        .transition {
+            width: 0px;
+            margin-top: -1px;
+            margin-bottom: -1px;
+        }
         #demo-transition {
             border-top: 30px solid var(--main-color);
             border-left: 80vw solid var(--second-color);
-            // border-bottom: 0 solid #D94948;
+            border-bottom: 1px solid var(--second-color);
             border-right: 20vw solid var(--second-color);
         }
         #features-transition {
             border-top: 30px solid var(--second-color);
             border-left: 40vw solid var(--main-color);
-            // border-bottom: 30px solid var(--main-main);
+            border-bottom: 1px solid var(--main-main);
             border-right: 60vw solid var(--main-color);
         }
         #how-transition {
             border-top: 30px solid var(--main-color);
             border-left: 0vw solid var(--second-color);
-            // border-bottom: 0 solid #D94948;
+            border-bottom: 1px solid var(--second-color);
             border-right: 100vw solid var(--second-color);
         }
         #sideeffects-transition {
             border-top: 30px solid var(--second-color);
             border-left: 55vw solid var(--main-color);
-            // border-bottom: 30px solid var(--main-main);
+            border-bottom: 1px solid var(--main-main);
             border-right: 45vw solid var(--main-color);
         }
     }
