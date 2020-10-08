@@ -35,8 +35,6 @@
                 <h1 class="center">WebGrinch<br/><span class="subheading"><i>secure content encoding</i></span></h1>
                 <p>For creators<br/>For publishers<br/>For all</p>
             </div>
-            <!-- <img src="images/start_image.png" /> -->
-            <!-- <div id="start_image_surface"></div> -->
         </section>
         <section id="demo">
             <div class="content">
@@ -48,24 +46,16 @@
                 </blockquote>
                 <input type="text" placeholder="Insert here!" />
                 <h3>2. View original text</h3>
-                <button type="button" onmousedown="setFont('OpenSans');" onmouseup="setFont('OpenSans-WebGrinch');" onmouseout="setFont('OpenSans-WebGrinch')">&uarr; have a look &uarr;</button>
+                <button type="button" onmousedown="setFont('OpenSans');" onmouseup="setFont('OpenSans-WebGrinch');" onmouseout="setFont('OpenSans-WebGrinch')">&uarr; have a look with normal font &uarr;</button>
             </div>
         </section>
         <div id="demo-transition"></div>
-        <section id="how">
-            <div class="content">
-                <h2>How it works</h2>
-                <p>We are switching letters in the HTML!!! So the original HTML file is unusable by default in the specific area.</br>(have a look)</p>
-                <p>Then we can load a special associated web font. The font is using different images for the original unicode, so that the letter change is reversed. </p>
-                <p><span class="italic"><span class="label">What you see:</span> abcdefghijklmnopqrstuvwxyz</span><br /><span class="label">What is written:</span> bcdefghijklmnopqrstuvwxyza</p>
-            </div>
-        </section>
-        <div id="how-transition"></div>
         <section id="features">
             <div class="content">
-                <h2>Possibilities</h2>
+                <h2>Features</h2>
                 <p>In general you can encode every digital media which supports web fonts like websites, articles, bogs, emails, ebooks and EPUBs.</p>
-                <p>The example uses a simple letter shift, but the complexity of the encoding is extreme scalable. With this tech you can</p>
+                <p>The example uses a simple letter shift, but the complexity of the encoding is extreme scalable.</p>
+                <p>With this tech you can:</p>
                 <ul>
                     <li>visual UX for humans is not affected</li>
                     <li>sign your content</li>
@@ -77,10 +67,21 @@
                 </ul>
             </div>
         </section>
+        <div id="features-transition"></div>
+        <section id="how">
+            <div class="content">
+                <h2>How it works</h2>
+                <p>We are switching letters in the HTML!!!<br/>So the original HTML file is unusable by default in the specific area.</br>(have a look on the demo section)</p>
+                <p>Then we load a special associated web font.<br/>The font is using different images for the original unicode, so that the letter change is reversed. </p>
+                <div id="letterdemo"><span class="label">What you see:</span> abcdefghijklmnopqrstuvwxyz<br /><span class="label">What is written:</span> bcdefghijklmnopqrstuvwxyza</div>
+            </div>
+        </section>
+        <div id="how-transition"></div>
         <section id="sideeffects">
             <div class="content">
                 <h2>Side Effects</h2>
-                <p>Because of the lack of processability for existing algorithms, there are a lot of technologies, that do not work together with them. For instance:</p>
+                <p>Because of the lack of processability for existing algorithms, there are a lot of technologies, that do not work together with them out of the box.</p>
+                <p>For instance:</p>
                 <ul>
                     <li>text translation</li>
                     <li>inline search</li>
@@ -88,13 +89,21 @@
                     <li>listing in search engines</li>
                     <li>reusing of the digital text without the font</li>
                 </ul>
+                <p>But you can handle them with workarounds if necessary, depending on the use case.</p>
             </div>
         </section>
+        <div id="sideeffects-transition"></div>
         <section id="contact">
             <div class="content">
-                <h2>Contact</h2>
-                <p>You can find the project on github: <a target="_blank" href="https://github.com/8qfx1ai5/webgrinch">webgrinch</a>.<br/>If you are interested, have ideas, questions or want to support the project, feel free to contact me over <a target="_blank"
-                        href="https://www.linkedin.com/in/felixohnesorge/">LinkedIn</a><br/>or send me an email: <a href="mailto:webgrinch@8qfx1ai5.de">webgrinch@8qfx1ai5.de</a>.</p>
+                <h2>WebGrinch</h2>
+                <div id="footerlinks">
+                    <p>If you are interested, have ideas, questions or want to support the project, feel free to contact me.</p>
+                    <ul>
+                        <li>GitHub: <a target="_blank" href="https://github.com/8qfx1ai5/webgrinch">8qfx1ai5/webgrinch</a></li>
+                        <li>Email:<a href="mailto:webgrinch@8qfx1ai5.de">webgrinch@8qfx1ai5.de</a></li>
+                        <li>LinkedIn:<a target="_blank" href="https://www.linkedin.com/in/felixohnesorge/">felixohnesorge</a></li>
+                    </ul>
+                </div>
             </div>
         </section>
         <section id="footer">

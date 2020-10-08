@@ -1,7 +1,10 @@
+@charset "UTF-8";
 :root {
   --main-color: #3f4073;
   --second-color: white;
+  --second-color-transparent: rgba(255, 255, 255, .3);
   --third-color: #222342;
+  --fourth-color: red;
 }
 
 html {
@@ -23,7 +26,7 @@ body #wrapper {
   width: 100%;
 }
 body #wrapper #demo,
-body #wrapper #features,
+body #wrapper #how,
 body #wrapper #contact,
 body #wrapper #footer {
   background-color: var(--main-color);
@@ -116,13 +119,14 @@ body #wrapper #demo blockquote {
   font-size: 1.5em;
 }
 body #wrapper #demo button {
-  background-color: red;
+  background-color: var(--fourth-color);
   border-radius: 20px;
   border: none;
   outline: none;
   color: var(--second-color);
   padding: 10px 30px 10px 30px;
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  font-size: 1em;
 }
 body #wrapper #demo button:active, body #wrapper #demo button:hover {
   border: none;
@@ -143,9 +147,74 @@ body #wrapper #demo h3 {
   font-weight: normal;
   text-align: left;
 }
+body #wrapper #how .label {
+  float: left;
+  font-size: 20px;
+  width: 10em;
+  text-align: left;
+}
+body #wrapper #how #letterdemo {
+  background-color: var(--third-color);
+  padding: 20px;
+  font-family: monospace;
+  text-align: right;
+  font-size: 1.5em;
+}
+body #wrapper #features ul {
+  list-style: none;
+}
+body #wrapper #features ul li:before {
+  content: "✓ ";
+}
+body #wrapper #features .content {
+  max-width: 30em;
+  text-align: left;
+  font-size: 1.5em;
+}
+body #wrapper #sideeffects ul {
+  list-style: none;
+}
+body #wrapper #sideeffects ul li:before {
+  content: "✗ ";
+}
+body #wrapper #sideeffects .content {
+  max-width: 30em;
+  text-align: left;
+  font-size: 1.5em;
+}
+body #wrapper #contact .content {
+  text-align: left;
+}
+body #wrapper #contact .content h2 {
+  height: 2em;
+  max-width: 8em;
+  display: inline-block;
+  text-align: left;
+  font-size: 2em;
+}
+body #wrapper #contact .content #footerlinks {
+  max-width: 24em;
+  float: right;
+}
+body #wrapper #contact .content #footerlinks a,
+body #wrapper #contact .content #footerlinks a:visited {
+  color: var(--second-color);
+  text-decoration: none;
+  float: right;
+}
+body #wrapper #contact .content #footerlinks ul {
+  list-style-type: none;
+}
+body #wrapper #footer {
+  padding-top: 0px;
+}
+body #wrapper #footer .content {
+  border-top: 1px solid var(--second-color-transparent);
+  padding-top: 30px;
+}
 body #wrapper section {
   padding-bottom: 30px;
-  padding-top: 10vh;
+  padding-top: 5vh;
   padding-left: 0px;
   padding-right: 0px;
   width: 100vw;
@@ -165,8 +234,18 @@ body #wrapper #demo-transition {
   border-left: 80vw solid var(--second-color);
   border-right: 20vw solid var(--second-color);
 }
-body #wrapper #how-transition {
+body #wrapper #features-transition {
   border-top: 30px solid var(--second-color);
   border-left: 40vw solid var(--main-color);
   border-right: 60vw solid var(--main-color);
+}
+body #wrapper #how-transition {
+  border-top: 30px solid var(--main-color);
+  border-left: 0vw solid var(--second-color);
+  border-right: 100vw solid var(--second-color);
+}
+body #wrapper #sideeffects-transition {
+  border-top: 30px solid var(--second-color);
+  border-left: 55vw solid var(--main-color);
+  border-right: 45vw solid var(--main-color);
 }
