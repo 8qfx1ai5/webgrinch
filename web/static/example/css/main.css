@@ -16,6 +16,7 @@ body {
   color: var(--main-color);
   margin: 0px;
   font-family: sans-serif;
+  font-size: 1.8em;
 }
 body #wrapper {
   width: 100%;
@@ -27,93 +28,117 @@ body #wrapper #footer {
   background-color: var(--main-color);
   color: var(--second-color);
 }
-body #wrapper .content,
-body #wrapper nav {
-  max-width: 800px;
+body #wrapper section {
+  padding-bottom: 30px;
+  padding-top: 5vh;
+  padding-left: 0px;
+  padding-right: 0px;
+  width: 100%;
+  margin-top: -1px;
+  margin-bottom: -1px;
+}
+body #wrapper section h2 {
+  font-size: 2em;
+}
+body #wrapper section .content,
+body #wrapper section nav {
+  max-width: 850px;
   margin-left: auto;
   margin-right: auto;
   padding-top: 10px;
   padding-bottom: 10px;
+  padding-left: 25px;
+  padding-right: 25px;
+  min-width: 500px;
 }
-body #wrapper .content.content:last-child(),
-body #wrapper nav.content:last-child() {
+body #wrapper section .content.content:last-child(),
+body #wrapper section nav.content:last-child() {
   padding-bottom: 10vh;
 }
-body #wrapper #nav {
+body #wrapper section#nav {
+  padding-top: 0px;
+  padding-bottom: 10px;
   position: fixed;
   background-color: var(--second-color);
   color: var(--third-color);
 }
-body #wrapper #nav nav {
-  height: 30px;
+body #wrapper section#nav nav {
+  height: 2.5em;
   min-height: 1cm;
   position: relative;
 }
-body #wrapper #nav nav ul {
+body #wrapper section#nav nav ul {
   list-style-type: none;
-  right: 0px;
+  right: 25px;
   margin: unset;
   text-align: right;
-  font-size: 1.3em;
+  font-size: 1em;
   position: absolute;
-  bottom: 0px;
+  bottom: 8px;
+  padding: 0px;
+  width: 60%;
 }
-body #wrapper #nav nav ul li {
+body #wrapper section#nav nav ul li {
   float: right;
-  padding-left: 3em;
+  padding-left: calc(1% * 5);
 }
-body #wrapper #nav nav h2 {
+body #wrapper section#nav nav h2 {
   float: left;
   margin: unset;
   position: absolute;
   bottom: 0px;
   font-size: 2em;
 }
-body #wrapper #nav nav a {
+body #wrapper section#nav nav a {
   color: inherit;
   text-decoration: none;
 }
-body #wrapper #nav nav a:visited {
+body #wrapper section#nav nav a:visited {
   color: inherit;
 }
-body #wrapper #start {
+body #wrapper section#start {
   color: var(--main-color);
   background-image: url(../images/start_image.png);
   background-repeat: no-repeat;
-  background-position: 30% bottom;
-  background-size: auto 70%;
+  background-position: 80% bottom;
+  background-size: auto 50%;
   min-height: 90vh;
   text-align: initial;
-  padding-top: 60px;
 }
-body #wrapper #start h1 {
+body #wrapper section#start h1 {
   font-size: 3.5em;
   margin-top: 50px;
   margin-bottom: 10px;
 }
-body #wrapper #start h1 .subheading {
+body #wrapper section#start h1 .subheading {
   color: var(--third-color);
   font-size: 0.3em;
   font-weight: normal;
 }
-body #wrapper #start p {
+body #wrapper section#start p {
   font-size: 1.5em;
 }
-body #wrapper #start img {
+body #wrapper section#start img {
   position: absolute;
   bottom: 0px;
   max-height: 70%;
   right: 10%;
   max-width: 70%;
 }
-body #wrapper #demo blockquote {
+body #wrapper section#start .content {
+  padding-top: 5%;
+}
+body #wrapper section#demo {
+  text-align: center;
+}
+body #wrapper section#demo blockquote {
   background-color: var(--third-color);
   margin-left: 0px;
   margin-right: 0px;
   padding: 20px;
-  font-size: 1.5em;
+  font-size: 1em;
 }
-body #wrapper #demo button {
+body #wrapper section#demo button {
   background-color: var(--fourth-color);
   border-radius: 20px;
   border: none;
@@ -123,11 +148,11 @@ body #wrapper #demo button {
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
   font-size: 1em;
 }
-body #wrapper #demo button:active, body #wrapper #demo button:hover {
+body #wrapper section#demo button:active, body #wrapper section#demo button:hover {
   border: none;
   outline: none;
 }
-body #wrapper #demo input {
+body #wrapper section#demo input {
   display: block;
   padding: 20px;
   margin-left: 0px;
@@ -136,122 +161,99 @@ body #wrapper #demo input {
   height: 100px;
   width: 100%;
   text-align: center;
-  font-size: 1.5em;
+  font-size: 1em;
 }
-body #wrapper #demo h3 {
+body #wrapper section#demo h3 {
   font-weight: normal;
   text-align: left;
+  font-size: 1em;
 }
-body #wrapper #how .label {
-  float: left;
-  font-size: 20px;
-  width: 10em;
-  text-align: left;
-}
-body #wrapper #how #letterdemo {
+body #wrapper section#how #letterdemo {
   background-color: var(--third-color);
-  padding: 20px;
+  padding: 30px;
   font-family: monospace;
-  text-align: right;
-  font-size: 1.5em;
+  text-align: center;
+  font-size: 1em;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
-body #wrapper #features ul {
+body #wrapper section#how #letterdemo .label {
+  width: 100%;
+  font-family: sans-serif;
+  text-decoration: underline;
+}
+body #wrapper section#features ul {
   list-style: none;
+  padding-inline-start: 10%;
 }
-body #wrapper #features ul li:before {
+body #wrapper section#features ul li:before {
   content: "✓ ";
 }
-body #wrapper #features .content {
-  max-width: 30em;
-  text-align: left;
-  font-size: 1.5em;
-}
-body #wrapper #sideeffects ul {
+body #wrapper section#sideeffects ul {
   list-style: none;
+  padding-inline-start: 10%;
 }
-body #wrapper #sideeffects ul li:before {
+body #wrapper section#sideeffects ul li:before {
   content: "✗ ";
 }
-body #wrapper #sideeffects .content {
-  max-width: 30em;
-  text-align: left;
-  font-size: 1.5em;
-}
-body #wrapper #contact .content {
-  text-align: left;
-}
-body #wrapper #contact .content h2 {
-  height: 2em;
-  max-width: 8em;
-  display: inline-block;
-  text-align: left;
-  font-size: 2em;
-}
-body #wrapper #contact .content #footerlinks {
-  max-width: 24em;
-  float: right;
-}
-body #wrapper #contact .content #footerlinks a,
-body #wrapper #contact .content #footerlinks a:visited {
+body #wrapper section#contact .content #footerlinks a,
+body #wrapper section#contact .content #footerlinks a:visited {
   color: var(--second-color);
   text-decoration: none;
   float: right;
 }
-body #wrapper #contact .content #footerlinks ul {
+body #wrapper section#contact .content #footerlinks ul {
   list-style-type: none;
 }
-body #wrapper #footer {
+body #wrapper section#footer {
   padding-top: 0px;
+  text-align: center;
 }
-body #wrapper #footer .content {
+body #wrapper section#footer .content {
   border-top: 1px solid var(--second-color-transparent);
   padding-top: 30px;
-}
-body #wrapper section {
-  padding-bottom: 30px;
-  padding-top: 5vh;
-  padding-left: 0px;
-  padding-right: 0px;
-  width: 100vw;
-  text-align: center;
-  margin-top: -1px;
-  margin-bottom: -1px;
-}
-body #wrapper section h2 {
-  font-size: 3em;
-}
-body #wrapper section#nav {
-  padding-top: 0px;
-}
-body #wrapper section#nav, body #wrapper section#footer, body #wrapper section#contact {
-  min-height: auto;
 }
 body #wrapper .transition {
   width: 0px;
   margin-top: -1px;
   margin-bottom: -1px;
 }
-body #wrapper #demo-transition {
+body #wrapper .transition#demo-transition {
   border-top: 30px solid var(--main-color);
   border-left: 80vw solid var(--second-color);
   border-bottom: 1px solid var(--second-color);
   border-right: 20vw solid var(--second-color);
 }
-body #wrapper #features-transition {
+body #wrapper .transition#features-transition {
   border-top: 30px solid var(--second-color);
   border-left: 40vw solid var(--main-color);
   border-bottom: 1px solid var(--main-main);
   border-right: 60vw solid var(--main-color);
 }
-body #wrapper #how-transition {
+body #wrapper .transition#how-transition {
   border-top: 30px solid var(--main-color);
   border-left: 0vw solid var(--second-color);
   border-bottom: 1px solid var(--second-color);
   border-right: 100vw solid var(--second-color);
 }
-body #wrapper #sideeffects-transition {
+body #wrapper .transition#sideeffects-transition {
   border-top: 30px solid var(--second-color);
   border-left: 55vw solid var(--main-color);
   border-bottom: 1px solid var(--main-main);
   border-right: 45vw solid var(--main-color);
+}
+
+.noselect {
+  -webkit-touch-callout: none;
+  /* iOS Safari */
+  -webkit-user-select: none;
+  /* Safari */
+  -khtml-user-select: none;
+  /* Konqueror HTML */
+  -moz-user-select: none;
+  /* Old versions of Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
+  user-select: none;
+  /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
 }

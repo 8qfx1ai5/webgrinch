@@ -4,6 +4,7 @@
 <head>
     <meta http-equiv="cache-control" content="no-cache">
     <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="content-language" content="en" />
     <meta charset="UTF-8" />
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <link rel="stylesheet" type="text/css" href="css/decode.css">
@@ -40,14 +41,13 @@
         <section id="demo">
             <div class="content">
                 <h2>Demo</h2>
-                <h3>1. Try to "copy & past" the text from the following box:</h3>
-                <blockquote class="decode" cite="http://developer.mozilla.org">
-                    <!-- <p>Noting is like it seems to be.</p> -->
+                <h3>1. Try to "copy & past" the following text:</h3>
+                <blockquote class="decode">
                     <p>"Opujoh jt mjlf ju tffnt up cf."</p>
                 </blockquote>
                 <input type="text" placeholder="Insert here!" />
                 <h3>2. View original text</h3>
-                <button type="button" onmousedown="setFont('OpenSans');" onmouseup="setFont('OpenSans-WebGrinch');" onmouseout="setFont('OpenSans-WebGrinch')">&uarr; have a look with normal font &uarr;</button>
+                <button class="noselect" id="demo-button" type="button">&uarr; unmask &uarr;</button>
             </div>
         </section>
         <div id="demo-transition" class="transition"></div>
@@ -58,13 +58,14 @@
                 <p>The example uses a simple letter shift, but the complexity of the encoding is extreme scalable.</p>
                 <p>With this tech you can:</p>
                 <ul>
-                    <li>visual UX for humans is not affected</li>
+                    <li>visual UX compatible</li>
                     <li>sign your content</li>
-                    <li>improve ownership tracking of the content</li>
-                    <li>compatible with the most browsers and tech</li>
-                    <li>no programming languages or javascript is required</li>
+                    <li>ownership tracking</li>
+                    <li>great browser support</li>
+                    <li>no javascript required</li>
                     <li>hide content to machines</li>
                     <li>fake content to machines</li>
+                    <li>slective encoding</li>
                 </ul>
             </div>
         </section>
@@ -74,7 +75,7 @@
                 <h2>How it works</h2>
                 <p>We are switching letters in the HTML!!!<br/>So the original HTML file is unusable by default in the specific area.</br>(have a look on the demo section)</p>
                 <p>Then we load a special associated web font.<br/>The font is using different images for the original unicode, so that the letter change is reversed. </p>
-                <div id="letterdemo"><span class="label">What you see:</span> abcdefghijklmnopqrstuvwxyz<br /><span class="label">What is written:</span> bcdefghijklmnopqrstuvwxyza</div>
+                <div id="letterdemo"><span class="label">What you see:</span> abcdefghijklmnopqrstuvwxyz<br /><br/><span class="label">What is written:</span> bcdefghijklmnopqrstuvwxyza</div>
             </div>
         </section>
         <div id="how-transition" class="transition"></div>
@@ -88,15 +89,15 @@
                     <li>inline search</li>
                     <li>reading out for the blind</li>
                     <li>listing in search engines</li>
-                    <li>reusing of the digital text without the font</li>
+                    <li>reusing of text</li>
                 </ul>
-                <p>But you can handle them with workarounds if necessary, depending on the use case.</p>
+                <p>You can handle them with workarounds if necessary, depending on the use case.</p>
             </div>
         </section>
         <div id="sideeffects-transition" class="transition"></div>
         <section id="contact">
             <div class="content">
-                <h2>WebGrinch</h2>
+                <h2>Contact</h2>
                 <div id="footerlinks">
                     <p>If you are interested, have ideas, questions or want to support the project, feel free to contact me.</p>
                     <ul>
@@ -113,6 +114,24 @@
             </div>
         </section>
     </div>
+    <script type="text/javascript">
+        var demoButton = document.getElementById("demo-button")
+        demoButton.addEventListener("mousedown", function() {
+            setFont('OpenSans')
+        })
+        demoButton.addEventListener("touchstart", function() {
+            setFont('OpenSans')
+        })
+        demoButton.addEventListener("mouseup", function() {
+            setFont('OpenSans-WebGrinch')
+        })
+        demoButton.addEventListener("touchend", function() {
+            setFont('OpenSans-WebGrinch')
+        })
+        demoButton.addEventListener("mouseout", function() {
+            setFont('OpenSans-WebGrinch')
+        })
+    </script>
 </body>
 
 </html>
