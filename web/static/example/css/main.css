@@ -16,8 +16,6 @@ body {
   color: var(--main-color);
   margin: 0px;
   font-family: sans-serif;
-  /* Suppose you want minimum width of 1000px */
-  /* Firefox will set width as auto */
 }
 body #wrapper {
   width: 100%;

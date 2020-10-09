@@ -148,5 +148,5 @@ swagger:
 # sass
 .PHONY: sass
 sass:
-	docker build -t sass -f ./build/container-image-sass/Dockerfile .
-	cat web/static/example/scss/main.scss | docker run -i sass > web/static/example/css/main.css 
+	cd build/container-image-sass; docker build -t sass .
+	cat web/static/example/scss/main.scss | docker run -i sass > web/static/example/css/main.css
