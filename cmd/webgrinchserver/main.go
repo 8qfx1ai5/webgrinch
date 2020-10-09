@@ -21,8 +21,9 @@ func main() {
 
 	var cliArguments = handleCliArguments()
 
+	http.Handle("/", http.FileServer(http.Dir(filepath.Join("webgrinch", "static", "example"))))
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir(filepath.Join("webgrinch", "static")))))
-	http.Handle("/", http.StripPrefix("/", swagger.FileServer()))
+	http.Handle("/api/", http.StripPrefix("/api/", swagger.FileServer()))
 	http.HandleFunc(baseURL+"/api/encode/html", encode.HTMLHandler)
 	http.HandleFunc(baseURL+"/api/encode/text", encode.TextHandler)
 	http.HandleFunc(baseURL+"/api/key", key.Handler)
