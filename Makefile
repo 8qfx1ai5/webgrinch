@@ -11,12 +11,15 @@ deploy: prep-do
 
 # build container image from container manifest file
 build:
+	-mkdir -p tmp/certs
+	if [ ! -f tmp/certs/cert.pem ] && [ -f $(TLSCERTPATH) ]; then cp $(TLSCERTPATH) tmp/certs/cert.pem; fi
+	if [ ! -f tmp/certs/privkey.pem ] && [ -f $(TLSCERTKEYPATH) ]; then cp $(TLSCERTKEYPATH) tmp/certs/privkey.pem; fi
 	docker build -t webgrinch-alpha -f ./build/container-image/Dockerfile .
 
 
 # run container based on an image
 run:
-	docker run --restart=always -d -p "80:80" webgrinch-alpha
+	docker run --restart=always -d -p "80:80" -p "443:443" webgrinch-alpha
 
 
 # prepare droplet on digital ocean from remote
@@ -42,6 +45,7 @@ clean:
 	find . -type f -name '*.tmp.*' -print0 | xargs -0 rm
 	find . -type f -name 'webgrinch*' -print0 | xargs -0 rm
 	find . -type f -name '*.test' -print0 | xargs -0 rm
+	rm -rf tmp
 
 
 # main app development phonies
@@ -51,7 +55,7 @@ clean:
 
 # run container for dev local based on an image
 rundev:
-	docker run --rm  -d -p "80:80" --name api webgrinch-alpha
+	docker run --rm -d -p "80:80" -p "443:443" --name api webgrinch-alpha
 
 
 # run local api tests
@@ -64,7 +68,7 @@ runtapid:
 
 
 # run service on local docker env for development
-serve: clear build rundev itestd
+serve: clean clear tls build rundev itestd
 
 
 # ssh to digital ocean
@@ -133,7 +137,7 @@ test:
 
 
 # service phonies
-.PHONY: swagger sass
+.PHONY: swagger sass tls
 # -------------------------------------------------------------------------
 
 
@@ -147,3 +151,11 @@ swagger:
 sass:
 	cd build/container-image-sass; docker build -t sass .
 	cat web/static/example/scss/main.scss | docker run -i sass > web/static/example/css/main.css
+
+
+# create self signed certificate for local development
+tls:
+	cd build/container-image-tls; docker build -t tls .
+	-mkdir -p tmp/certs
+	docker run -i tls cert.pem > tmp/certs/cert.pem
+	docker run -i tls privkey.pem > tmp/certs/privkey.pem
