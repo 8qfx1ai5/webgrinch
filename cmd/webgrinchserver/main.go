@@ -4,6 +4,7 @@ import (
 	"flag"
 	"fmt"
 	"log"
+	"net"
 	"net/http"
 	"os"
 	"path/filepath"
@@ -23,6 +24,8 @@ func main() {
 
 	var cliArguments = handleCliArguments()
 
+	go redirectPort80(cliArguments.apiPort)
+
 	http.Handle("/", http.FileServer(http.Dir(filepath.Join("webgrinch", "web", "static", "example"))))
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir(filepath.Join("webgrinch", "web", "static")))))
 	http.Handle("/api/", http.StripPrefix("/api/", swagger.FileServer()))
@@ -36,7 +39,7 @@ func main() {
 	_, errKey := os.Stat(tlsCertKeyPath)
 	if errCert == nil && errKey == nil {
 		log.Printf("Start server in TSL mode.")
-		err := http.ListenAndServeTLS(":443", tlsCertPath, tlsCertKeyPath, nil)
+		err := http.ListenAndServeTLS(fmt.Sprintf(":%s", cliArguments.apiPort), tlsCertPath, tlsCertKeyPath, nil)
 		if err != nil {
 			log.Print(err)
 		}
@@ -63,4 +66,23 @@ func handleCliArguments() (out cliArguments) {
 	out.apiPort = *apiPort
 
 	return out
+}
+
+func redirectPort80(tlsPort string) {
+	log.Println("Start redirect server on port 80.")
+	httpSrv := http.Server{
+		Addr: ":80",
+		Handler: http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+			host, _, err := net.SplitHostPort(r.Host)
+			if err != nil {
+				host = r.Host
+			}
+			u := r.URL
+			u.Host = net.JoinHostPort(host, tlsPort)
+			u.Scheme = "https"
+			log.Printf("u.String()=%s", u.String())
+			http.Redirect(w, r, u.String(), http.StatusMovedPermanently)
+		}),
+	}
+	log.Println(httpSrv.ListenAndServe())
 }
