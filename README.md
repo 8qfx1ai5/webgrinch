@@ -1,6 +1,6 @@
 # Project "webgrinch" for html/content encoding
 
-Trigger: the idea was publish content readable for all people, but not processable by automated systems and crallers.
+Trigger: the idea was publish content readable for all people, but not processable by automated systems and crawlers.
 
 To be more specific: the text is only understandable with visual analysis like ML for image-text recognition or specialized text analysis software based on letter frequencies or so.
 
