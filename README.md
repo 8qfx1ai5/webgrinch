@@ -93,6 +93,7 @@ To make the text readable you need to load the corresponding web font to the tex
 - v0.10 use contract testing for the api + swagger
 - v0.11 moved product organisation to GitHub projects
 - v1.0 decision to make the project open source under the name "webgrinch"
+- v1.1 add tls encryption to the webserver
 
 ## Features
 
