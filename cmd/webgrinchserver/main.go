@@ -8,6 +8,7 @@ import (
 	"net/http"
 	"os"
 	"path/filepath"
+	"strings"
 
 	"github.com/8qfx1ai5/webgrinch/internal/api/encode"
 	"github.com/8qfx1ai5/webgrinch/internal/api/key"
@@ -18,6 +19,9 @@ import (
 const (
 	baseURL string = ""
 )
+
+var tlsCertPath = filepath.FromSlash("/webgrinch/tmp/certs/cert.pem")
+var tlsCertKeyPath = filepath.FromSlash("/webgrinch/tmp/certs/privkey.pem")
 
 // initialize webserver and route to the controllers
 func main() {
@@ -33,11 +37,7 @@ func main() {
 	http.HandleFunc(baseURL+"/api/encode/text", encode.TextHandler)
 	http.HandleFunc(baseURL+"/api/key", key.Handler)
 
-	var tlsCertPath = filepath.FromSlash("/webgrinch/tmp/certs/cert.pem")
-	var tlsCertKeyPath = filepath.FromSlash("/webgrinch/tmp/certs/privkey.pem")
-	_, errCert := os.Stat(tlsCertPath)
-	_, errKey := os.Stat(tlsCertKeyPath)
-	if errCert == nil && errKey == nil {
+	if handleTLSCert() {
 		log.Printf("Start server in TSL mode.")
 		err := http.ListenAndServeTLS(fmt.Sprintf(":%s", cliArguments.apiPort), tlsCertPath, tlsCertKeyPath, nil)
 		if err != nil {
@@ -45,13 +45,52 @@ func main() {
 		}
 	} else {
 		log.Printf("TSL cert missing!!! Start without TSL. (cert: \"%s\" - key: \"%s\")", tlsCertPath, tlsCertKeyPath)
-		log.Print(errCert)
-		log.Print(errKey)
 		err := http.ListenAndServe(fmt.Sprintf(":%s", cliArguments.apiPort), nil)
 		if err != nil {
 			log.Print(err)
 		}
 	}
+}
+
+func handleTLSCert() bool {
+	// get the TLS cert credentials from the environment vars
+	var tlsCert = os.Getenv("TLSCERT")
+	if tlsCert == "" {
+		log.Println("environment variable TLSCERT is empty")
+	}
+	var tlsCertKey = os.Getenv("TLSCERTKEY")
+	if tlsCertKey == "" {
+		log.Println("environment variable TLSCERTKEY is empty")
+	}
+	// create temporary directory for the cert files
+	if _, err := os.Stat(filepath.Dir(tlsCertPath)); os.IsNotExist(err) {
+		err = os.MkdirAll(filepath.Dir(tlsCertPath), 0700)
+		if err != nil {
+			log.Println(err)
+		}
+	}
+	// create the cert files with the input from the environment vars
+	tlsCertFile, _ := os.Create(tlsCertPath)
+	_, _ = tlsCertFile.WriteString(strings.Replace(tlsCert, "#", "\n", -1))
+	if err := tlsCertFile.Sync(); err != nil {
+		log.Print(err)
+	}
+	tlsCertKeyFile, _ := os.Create(tlsCertKeyPath)
+	_, _ = tlsCertKeyFile.WriteString(strings.Replace(tlsCertKey, "#", "\n", -1))
+	if err := tlsCertKeyFile.Sync(); err != nil {
+		log.Print(err)
+	}
+
+	// check that files exist
+	if _, err := os.Stat(tlsCertPath); err != nil {
+		log.Print(err)
+		return false
+	}
+	if _, err := os.Stat(tlsCertKeyPath); err != nil {
+		log.Print(err)
+		return false
+	}
+	return true
 }
 
 // all expected cli arguments as return type

@@ -30,7 +30,6 @@ RUN apk add libxslt --no-cache
 RUN mkdir -p webgrinch
 COPY web webgrinch/web
 COPY api/API_webgrinch_v1.json webgrinch/web/static
-COPY tmp webgrinch/tmp
 RUN chmod -R +x webgrinch
 
 
