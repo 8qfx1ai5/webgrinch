@@ -1,6 +1,8 @@
+[![pipeline status](https://gitlab.com/8qfx1ai5/webgrinch/badges/master/pipeline.svg)](https://gitlab.com/8qfx1ai5/webgrinch/-/commits/master)
+
 # Project "webgrinch" for html/content encoding
 
-Trigger: the idea was publish content readable for all people, but not processable by automated systems and crawlers.
+Trigger: the idea was to publish content readable for all people, but not processable by automated systems and crawlers.
 
 To be more specific: the text is only understandable with visual analysis like ML for image-text recognition or specialized text analysis software based on letter frequencies or so.
 
