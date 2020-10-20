@@ -8,7 +8,7 @@ docker-utest:
   services:
     - docker:dind
   script:
-    - docker build --pull -t "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG:utest" -f build/container-image-utest/Dockerfile .
+    - docker build -t "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG:utest" -f build/container-image-utest/Dockerfile .
     - docker run "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG:utest"
 
 docker-build-master:
