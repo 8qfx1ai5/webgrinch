@@ -1,5 +1,29 @@
 stages:
   - build
+  - test
+
+docker-utest:
+  image: docker:latest
+  stage: test
+  services:
+    - docker:dind
+  script:
+    - docker build --pull -t "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG:utest" -f build/container-image-utest/Dockerfile .
+    - docker run "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG:utest"
+
+docker-build-master:
+  image: docker:latest
+  stage: build
+  services:
+    - docker:dind
+  before_script:
+    - echo $CI_BUILD_TOKEN | docker login -u "$CI_REGISTRY_USER" --password-stdin $CI_REGISTRY
+  script:
+    - docker build --pull -t "$CI_REGISTRY_IMAGE" -f ./build/container-image/Dockerfile .
+    - docker push "$CI_REGISTRY_IMAGE"
+  only:
+    - master
+
 
 docker-build:
   # Official docker image.
@@ -10,5 +34,7 @@ docker-build:
   before_script:
     - echo $CI_BUILD_TOKEN | docker login -u "$CI_REGISTRY_USER" --password-stdin $CI_REGISTRY
   script:
-    - docker build --pull -t "$CI_REGISTRY_IMAGE" -f ./build/container-image/Dockerfile .
-    - docker push "$CI_REGISTRY_IMAGE"
+    - docker build --pull -t "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG" -f ./build/container-image/Dockerfile .
+    - docker push "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG"
+  except:
+    - master

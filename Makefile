@@ -98,7 +98,8 @@ ps:
 
 # run go unit tests
 utest:
-	go test -v -count=1 ./internal/... | sed ''/PASS/s//`printf "\033[32mPASS\033[0m"`/'' | sed ''/FAIL/s//`printf "\033[31mFAIL\033[0m"`/''
+	docker build -t utest -f build/container-image-utest/Dockerfile .
+	docker run utest
 
 
 # run go unit tests during deploy
