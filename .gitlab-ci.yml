@@ -1,18 +1,20 @@
 stages:
-  - build & test
+  - build and test
 
 docker-utest:
   image: docker:latest
-  stage: build & test
+  stage: build and test
   services:
     - docker:dind
+  before_script:
+    - echo $CI_BUILD_TOKEN | docker login -u "$CI_REGISTRY_USER" --password-stdin $CI_REGISTRY
   script:
-    - docker build -t "$CI_COMMIT_REF_SLUG_utest" -f build/container-image-utest/Dockerfile .
-    - docker run "$CI_COMMIT_REF_SLUG_utest"
+    - docker build --pull -t "utest:$CI_COMMIT_REF_SLUG" -f build/container-image-utest/Dockerfile .
+    - docker run "utest:$CI_COMMIT_REF_SLUG"
 
 docker-build-master:
   image: docker:latest
-  stage: build & test
+  stage: build and test
   services:
     - docker:dind
   before_script:
@@ -27,7 +29,7 @@ docker-build-master:
 docker-build:
   # Official docker image.
   image: docker:latest
-  stage: build & test
+  stage: build and test
   services:
     - docker:dind
   before_script:
