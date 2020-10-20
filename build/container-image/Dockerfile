@@ -19,8 +19,6 @@ RUN go mod download
 COPY . ${WORKDIR}
 RUN cd ${WORKDIR}; go install ./cmd/webgrinchserver
 
-#RUN make utestd
-
 
 # 2nd image is going to be our application image
 FROM alpine:3.11 as app

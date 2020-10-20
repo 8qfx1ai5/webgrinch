@@ -9,7 +9,7 @@ unit-tests:
   before_script:
     - echo $CI_BUILD_TOKEN | docker login -u "$CI_REGISTRY_USER" --password-stdin $CI_REGISTRY
   script:
-    - docker build --pull -t "utest:$CI_COMMIT_REF_SLUG" -f build/container-image-utest/Dockerfile .
+    - docker build -t "utest:$CI_COMMIT_REF_SLUG" -f build/container-image-utest/Dockerfile .
     - docker run "utest:$CI_COMMIT_REF_SLUG"
 
 build-master:

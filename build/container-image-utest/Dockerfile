@@ -18,4 +18,6 @@ RUN go mod download
 
 COPY . ${WORKDIR}
 
-RUN go test -v -count=1 ./internal/... | sed ''/PASS/s//`printf "\033[32mPASS\033[0m"`/'' | sed ''/FAIL/s//`printf "\033[31mFAIL\033[0m"`/''
+ENTRYPOINT ["/bin/sh", "-c", "go test -v -count=1 ./internal/..."]
+# go test -v -count=1 ./internal/... | sed ''/PASS/s//`printf "\033[32mPASS\033[0m"`/'' | sed ''/FAIL/s//`printf "\033[31mFAIL\033[0m"`/''
+
