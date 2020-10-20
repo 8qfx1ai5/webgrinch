@@ -1,9 +1,9 @@
 stages:
-  - build and test
+  - preparation
 
-docker-utest:
+unit-tests:
   image: docker:latest
-  stage: build and test
+  stage: preparation
   services:
     - docker:dind
   before_script:
@@ -12,9 +12,9 @@ docker-utest:
     - docker build --pull -t "utest:$CI_COMMIT_REF_SLUG" -f build/container-image-utest/Dockerfile .
     - docker run "utest:$CI_COMMIT_REF_SLUG"
 
-docker-build-master:
+build-master:
   image: docker:latest
-  stage: build and test
+  stage: preparation
   services:
     - docker:dind
   before_script:
@@ -26,10 +26,9 @@ docker-build-master:
     - master
 
 
-docker-build:
-  # Official docker image.
+build:
   image: docker:latest
-  stage: build and test
+  stage: preparation
   services:
     - docker:dind
   before_script:
