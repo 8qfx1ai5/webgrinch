@@ -1,7 +1,7 @@
 stages:
   - preparation
   - staging
-  - integration-test
+  - integration-tests
   - deploy
 
 image: docker:19.03.13
