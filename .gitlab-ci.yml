@@ -4,9 +4,9 @@ stages:
   - integration-tests
   - deploy
 
-image: docker:19.02
+image: docker:18.09.9
 services:
-  - docker:19.02-dind
+  - docker:18.09.9-dind
 
 before_script:
   - echo $CI_BUILD_TOKEN | docker login -u "$CI_REGISTRY_USER" --password-stdin $CI_REGISTRY
