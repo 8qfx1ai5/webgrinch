@@ -1,40 +1,65 @@
 stages:
   - preparation
+  - staging
+  - integration-test
+  - deploy
+
+image: docker:19.03.13
+services:
+  - docker:19.03.13-dind
+
+before_script:
+  - echo $CI_BUILD_TOKEN | docker login -u "$CI_REGISTRY_USER" --password-stdin $CI_REGISTRY
 
 unit-tests:
-  image: docker:latest
   stage: preparation
-  services:
-    - docker:dind
-  before_script:
-    - echo $CI_BUILD_TOKEN | docker login -u "$CI_REGISTRY_USER" --password-stdin $CI_REGISTRY
+  variables:
+    IMAGE_TAG: $CI_REGISTRY_IMAGE/utest:$CI_COMMIT_REF_SLUG
   script:
-    - docker build -t "utest:$CI_COMMIT_REF_SLUG" -f build/container-image-utest/Dockerfile .
-    - docker run "utest:$CI_COMMIT_REF_SLUG"
+    - docker build -t $IMAGE_TAG -f build/container-image-utest/Dockerfile .
+    - docker push $IMAGE_TAG
+    - docker run $IMAGE_TAG
+
+
+integration-tests:
+  stage: integration-tests
+  variables:
+    IMAGE_TAG: $CI_REGISTRY_IMAGE/itest:$CI_COMMIT_REF_SLUG
+  script:
+    - echo todo
+
 
 build-master:
-  image: docker:latest
   stage: preparation
-  services:
-    - docker:dind
-  before_script:
-    - echo $CI_BUILD_TOKEN | docker login -u "$CI_REGISTRY_USER" --password-stdin $CI_REGISTRY
+  variables:
+    IMAGE_TAG: $CI_REGISTRY_IMAGE
   script:
-    - docker build --pull -t "$CI_REGISTRY_IMAGE" -f ./build/container-image/Dockerfile .
-    - docker push "$CI_REGISTRY_IMAGE"
+    - docker build --pull -t $IMAGE_TAG -f ./build/container-image/Dockerfile .
+    - docker push $IMAGE_TAG
   only:
     - master
 
 
 build:
-  image: docker:latest
   stage: preparation
-  services:
-    - docker:dind
-  before_script:
-    - echo $CI_BUILD_TOKEN | docker login -u "$CI_REGISTRY_USER" --password-stdin $CI_REGISTRY
+  variables:
+    IMAGE_TAG: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
   script:
-    - docker build --pull -t "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG" -f ./build/container-image/Dockerfile .
-    - docker push "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG"
+    - docker build --pull -t $IMAGE_TAG -f ./build/container-image/Dockerfile .
+    - docker push $IMAGE_TAG
   except:
     - master
+
+
+staging:
+  stage: staging
+  script:
+    - echo todo
+
+  
+deploy:
+  stage: deploy
+  script:
+    - echo todo
+  only:
+    - tags
