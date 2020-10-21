@@ -4,9 +4,9 @@ stages:
   - integration-tests
   - deploy
 
-image: docker:19.03.13
+image: docker:19.02
 services:
-  - docker:19.03.13-dind
+  - docker:19.02-dind
 
 before_script:
   - echo $CI_BUILD_TOKEN | docker login -u "$CI_REGISTRY_USER" --password-stdin $CI_REGISTRY
@@ -29,17 +29,6 @@ integration-tests:
     - echo todo
 
 
-build-master:
-  stage: preparation
-  variables:
-    IMAGE_TAG: $CI_REGISTRY_IMAGE
-  script:
-    - docker build --pull -t $IMAGE_TAG -f ./build/container-image/Dockerfile .
-    - docker push $IMAGE_TAG
-  only:
-    - master
-
-
 build:
   stage: preparation
   variables:
@@ -47,8 +36,6 @@ build:
   script:
     - docker build --pull -t $IMAGE_TAG -f ./build/container-image/Dockerfile .
     - docker push $IMAGE_TAG
-  except:
-    - master
 
 
 staging:
