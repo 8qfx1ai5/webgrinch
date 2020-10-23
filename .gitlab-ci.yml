@@ -4,12 +4,15 @@ stages:
   - integration-tests
   - deploy
 
-image: docker:18.09.9
+
+image: docker:19.03
 services:
-  - docker:18.09.9-dind
+  - docker:19.03-dind
+
 
 before_script:
   - echo $CI_BUILD_TOKEN | docker login -u "$CI_REGISTRY_USER" --password-stdin $CI_REGISTRY
+
 
 unit-tests:
   stage: preparation
@@ -21,14 +24,6 @@ unit-tests:
     - docker run $IMAGE_TAG
 
 
-integration-tests:
-  stage: integration-tests
-  variables:
-    IMAGE_TAG: $CI_REGISTRY_IMAGE/itest:$CI_COMMIT_REF_SLUG
-  script:
-    - echo todo
-
-
 build:
   stage: preparation
   variables:
@@ -38,15 +33,46 @@ build:
     - docker push $IMAGE_TAG
 
 
-staging:
-  stage: staging
+integration-tests:
+  stage: integration-tests
+  variables:
+    IMAGE_TAG: $CI_REGISTRY_IMAGE/itest:$CI_COMMIT_REF_SLUG
   script:
     - echo todo
 
-  
-deploy:
+
+deploy_stage:
   stage: deploy
+  environment:
+    name: stage
+    url: https://stage.webgrinch.8qfx1ai5.de
+    on_stop: stop_stage
   script:
     - echo todo
   only:
-    - tags
+    - master
+
+  
+deploy_prod:
+  stage: deploy
+  environment:
+    name: production
+    url: https://stage.webgrinch.8qfx1ai5.de
+    on_stop: stop_prod
+  script:
+    - echo todo
+  when: manual
+  only:
+    - master
+
+
+deploy_review:
+  stage: deploy
+  environment:
+      name: review/$CI_COMMIT_REF_SLUG
+      url: https://$CI_COMMIT_REF_SLUG.stage.webgrinch.8qfx1ai5.de
+      on_stop: stop_review
+  script:
+    - echo todo
+  only:
+    - merge_requests
