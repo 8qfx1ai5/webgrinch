@@ -46,7 +46,6 @@ deploy_stage:
   environment:
     name: stage
     url: https://stage.webgrinch.8qfx1ai5.de
-    on_stop: stop_stage
   script:
     - echo todo
   only:
@@ -58,7 +57,6 @@ deploy_prod:
   environment:
     name: production
     url: https://stage.webgrinch.8qfx1ai5.de
-    on_stop: stop_prod
   script:
     - echo todo
   when: manual
@@ -71,7 +69,6 @@ deploy_review:
   environment:
       name: review/$CI_COMMIT_REF_SLUG
       url: https://$CI_COMMIT_REF_SLUG.stage.webgrinch.8qfx1ai5.de
-      on_stop: stop_review
   script:
     - echo todo
   only:
