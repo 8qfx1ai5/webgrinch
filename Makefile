@@ -135,7 +135,7 @@ test:
 
 
 # service phonies
-.PHONY: swagger sass tls
+.PHONY: swagger sass tls cirunner
 # -------------------------------------------------------------------------
 
 
@@ -160,3 +160,11 @@ export_tls:
 	# to get tls running, you need to create env vars with the cert info
 	#export TLSCERT=$(docker run -i tls cert.pem | tr '\n' '#')  
 	#export TLSCERTKEY=$(docker run -i tls privkey.pem | tr '\n' '#')
+
+
+cirunner:
+	# start gitlab ci runners if necessary from docker container
+	docker run -d --name gitlab-runner --restart always \
+     -v /srv/gitlab-runner/config:/etc/gitlab-runner \
+     -v /var/run/docker.sock:/var/run/docker.sock \
+     gitlab/gitlab-runner:latest

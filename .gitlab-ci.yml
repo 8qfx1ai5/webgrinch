@@ -1,17 +1,19 @@
+image: docker:19.03
+
+variables:
+  DOCKER_TLS_CERTDIR: "/certs"
+
+services:
+  - docker:19.03-dind
+
+before_script:
+  - echo $CI_BUILD_TOKEN | docker login -u "$CI_REGISTRY_USER" --password-stdin $CI_REGISTRY
+
 stages:
   - preparation
   - staging
   - integration-tests
   - deploy
-
-
-image: docker:19.03
-services:
-  - docker:19.03-dind
-
-
-before_script:
-  - echo $CI_BUILD_TOKEN | docker login -u "$CI_REGISTRY_USER" --password-stdin $CI_REGISTRY
 
 
 unit-tests:
