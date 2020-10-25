@@ -2,7 +2,6 @@ image: docker:19.03
 
 variables:
   DOCKER_TLS_CERTDIR: "/certs"
-  DOCKER_DRIVER: overlay2
 
 services:
   - docker:19.03-dind
@@ -22,7 +21,7 @@ unit-tests:
   variables:
     IMAGE_TAG: $CI_REGISTRY_IMAGE/utest:$CI_COMMIT_REF_SLUG
   script:
-    - docker build -t $IMAGE_TAG -f build/container-image-utest/Dockerfile .
+    - docker build --cache-from $IMAGE_TAG --pull -t $IMAGE_TAG -f build/container-image-utest/Dockerfile .
     - docker push $IMAGE_TAG
     - docker run $IMAGE_TAG
 
@@ -32,7 +31,7 @@ build:
   variables:
     IMAGE_TAG: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
   script:
-    - docker build --pull -t $IMAGE_TAG -f ./build/container-image/Dockerfile .
+    - docker build --cache-from $IMAGE_TAG --pull -t $IMAGE_TAG -f ./build/container-image/Dockerfile .
     - docker push $IMAGE_TAG
 
 
