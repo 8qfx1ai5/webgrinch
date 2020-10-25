@@ -11,9 +11,9 @@ before_script:
 
 stages:
   - preparation
-  - staging
+  - deploy-stage
   - integration-tests
-  - deploy
+  - deploy-prod
 
 
 unit-tests:
@@ -46,7 +46,8 @@ integration-tests:
 
 
 deploy_stage:
-  stage: deploy
+  stage: deploy-stage
+  needs: ["build"]
   environment:
     name: stage
     url: https://stage.webgrinch.8qfx1ai5.de
@@ -57,7 +58,7 @@ deploy_stage:
 
   
 deploy_prod:
-  stage: deploy
+  stage: deploy-prod
   environment:
     name: production
     url: https://stage.webgrinch.8qfx1ai5.de
@@ -69,7 +70,7 @@ deploy_prod:
 
 
 deploy_review:
-  stage: deploy
+  stage: deploy-stage
   environment:
       name: review/$CI_COMMIT_REF_SLUG
       url: https://$CI_COMMIT_REF_SLUG.stage.webgrinch.8qfx1ai5.de
