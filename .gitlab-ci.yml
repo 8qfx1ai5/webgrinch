@@ -1,10 +1,10 @@
-image: docker:19.03
+image: docker:19.03.13
 
 variables:
   DOCKER_TLS_CERTDIR: "/certs"
 
 services:
-  - docker:19.03-dind
+  - docker:19.03.13-dind
 
 before_script:
   - echo $CI_BUILD_TOKEN | docker login -u "$CI_REGISTRY_USER" --password-stdin $CI_REGISTRY
