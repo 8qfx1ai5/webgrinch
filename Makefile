@@ -16,7 +16,12 @@ build:
 
 # run container based on an image
 run:
-	docker run --restart=always -d -p "80:80" --env TLSCERT --env TLSCERTKEY -p "443:443" webgrinch-alpha
+	docker run --restart=always -d \
+		-v $(shell readlink -f /etc/letsencrypt/live/webgrinch.8qfx1ai5.de/cert.pem):/certs/cert.pem \
+		-v $(shell readlink -f /etc/letsencrypt/live/webgrinch.8qfx1ai5.de/privkey.pem):/certs/privkey.pem \
+		-p "80:80" \
+		-p "443:443" \
+		webgrinch-alpha
 
 
 # prepare droplet on digital ocean from remote
@@ -52,7 +57,11 @@ clean:
 
 # run container for dev local based on an image
 rundev:
-	docker run --rm -d -p "80:80" --env TLSCERT --env TLSCERTKEY -p "443:443" --name api webgrinch-alpha
+	docker run --rm -d --name api \
+		-v $(shell pwd)/tmp/certs:/certs \
+		-p "80:80" \
+		-p "443:443" \
+		webgrinch-alpha
 
 
 # run local api tests
@@ -77,7 +86,7 @@ access:
 # get shell inside of the first running docker container
 # call like: make login
 login:
-	docker exec -it --env TLSCERT --env TLSCERTKEY `docker ps -a -q | head -n 1` /bin/sh
+	docker exec -it `docker ps -a -q | head -n 1` /bin/sh
 
 
 # get shell inside of a stoped docker container
@@ -154,17 +163,7 @@ sass:
 # create self signed certificate for local development
 tls:
 	cd build/container-image-tls; docker build -t tls .
+	mkdir -p tmp/certs
+	docker run -i tls cert.pem > tmp/certs/cert.pem
+	docker run -i tls privkey.pem > tmp/certs/privkey.pem
 
-
-export_tls:
-	# to get tls running, you need to create env vars with the cert info
-	#export TLSCERT=$(docker run -i tls cert.pem | tr '\n' '#')  
-	#export TLSCERTKEY=$(docker run -i tls privkey.pem | tr '\n' '#')
-
-
-cirunner:
-	# start gitlab ci runners if necessary from docker container
-	docker run -d --name gitlab-runner --restart always \
-     -v /srv/gitlab-runner/config:/etc/gitlab-runner \
-     -v /var/run/docker.sock:/var/run/docker.sock \
-     gitlab/gitlab-runner:latest
