@@ -202,4 +202,5 @@ le-renew:
             certbot/certbot certonly --standalone --force-renew --cert-name webgrinch.8qfx1ai5.de
 	# restart the server
 	make run
+	## if you want to deploy to the server and for ssh access, you maybe need to update your .ssh/known_hosts file
 
