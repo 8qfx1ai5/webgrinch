@@ -144,7 +144,7 @@ test:
 
 
 # service phonies
-.PHONY: swagger sass tls cirunner
+.PHONY: swagger sass tls cirunner le-list le-create le-renew
 # -------------------------------------------------------------------------
 
 
@@ -166,4 +166,40 @@ tls:
 	mkdir -p tmp/certs
 	docker run -i tls cert.pem > tmp/certs/cert.pem
 	docker run -i tls privkey.pem > tmp/certs/privkey.pem
+
+
+# list all the registered certificates on the system from letsencrypt
+# run on remote host
+le-list:
+	sudo docker run -it --rm --name certbot \
+            -v "/etc/letsencrypt:/etc/letsencrypt" \
+            -v "/var/lib/letsencrypt:/var/lib/letsencrypt" \
+            certbot/certbot certificates
+
+
+# create a new letsencrypt certificate (only if you do not have an old one)
+# run on remote host
+le-create:
+	sudo docker run -it --rm --name certbot \
+            -p 80:80 \
+            -p 443:443 \
+            -v "/etc/letsencrypt:/etc/letsencrypt" \
+            -v "/var/lib/letsencrypt:/var/lib/letsencrypt" \
+            certbot/certbot certonly --standalone
+
+
+# renew a letsencrypt certificate specified by name (also see list certificates)
+# run on remote host
+le-renew:
+	# stop the current running server (downtime)
+	docker stop `docker ps -a -q`
+	# renew the cert
+	sudo docker run -it --rm --name certbot \
+            -p "80:80" \
+            -p "443:443" \
+            -v "/etc/letsencrypt:/etc/letsencrypt" \
+            -v "/var/lib/letsencrypt:/var/lib/letsencrypt" \
+            certbot/certbot certonly --standalone --force-renew --cert-name webgrinch.8qfx1ai5.de
+	# restart the server
+	make run
 
