@@ -192,15 +192,16 @@ le-create:
 # run on remote host
 le-renew:
 	# stop the current running server (downtime)
-	docker stop `docker ps -a -q`
+	-docker stop `docker ps -a -q`
 	# renew the cert
 	sudo docker run -it --rm --name certbot \
             -p "80:80" \
             -p "443:443" \
             -v "/etc/letsencrypt:/etc/letsencrypt" \
             -v "/var/lib/letsencrypt:/var/lib/letsencrypt" \
-            certbot/certbot certonly --standalone --force-renew --cert-name webgrinch.8qfx1ai5.de
+            certbot/certbot certonly --standalone --force-renew --cert-name webgrinch.8qfx1ai5.de &
 	# restart the server
-	make run
+	# -make run
 	## if you want to deploy to the server and for ssh access, you maybe need to update your .ssh/known_hosts file
-
+	#
+	# auto renew is triggerd by cron "sudo crontab -e" 
