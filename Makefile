@@ -4,7 +4,8 @@
 
 # deploy from local with production config to remote
 # just select ip address from digital ocean droplet
-# call like: make deploy dir=$(pwd) ip=64.225.104.7
+# first run in cli to omit ssh questions $ "ssh-add"
+# call like: $ make deploy dir=$(pwd) ip=64.225.104.7
 deploy: prep-do
 	ssh root@$(ip) "cd /webgrinch; make build run"
 
