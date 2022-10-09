@@ -1,5 +1,4 @@
-[![pipeline status](https://gitlab.com/8qfx1ai5/webgrinch/badges/master/pipeline.svg)](https://gitlab.com/8qfx1ai5/webgrinch/-/commits/master)
-
+[![Netlify Status](https://api.netlify.com/api/v1/badges/bd4c3bfd-2000-47a2-a24c-e9831f2754a5/deploy-status)](https://app.netlify.com/sites/webgrinch/deploys)
 # Project "webgrinch" for html/content encoding
 
 Trigger: the idea was to publish content readable for all people, but not processable by automated systems and crawlers.
